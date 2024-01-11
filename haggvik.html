@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reload Page Extension</title>
+    <script src="haggvik.js" defer></script>
+    <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="node_modules/ol/dist/ol.css" type="text/css">
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        };
+
+        function myFunction() {
+            const element = document.getElementById("myP");
+            element.style.fontSize = "24px";
+        }
+
+
+
+        let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
+
+
+        function func() {
+            //var SchoolId = 0;
+            window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
+        }
+
+        function myFunction() {
+            alert("ladda om")
+            location.reload();
+        }
+
+    </script>
+    <style>
+        /* Set the map height */
+        #osm-map {
+            height: 500px;
+        }
+    </style>
+
+    <style>
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+        #popup-container2 table th,
+        #popup-container2 table td {
+            padding: 0;
+            margin: 0;
+        }
+
+        #popup-container {
+            position: absolute;
+            top: 20px;
+            left: 400px;
+            height: 200px;
+            width: 200px;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            /*background-color: rgba(255, 0, 0, 0.5);  Red with 50% opacity */
+        }
+
+
+
+        /*Andelsvägen*/
+        #popup-container2 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        /*   table2, tr2, td2 {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }*/
+
+        #popup-container3 {
+            position: absolute;
+            top: 185px;
+            left: 645px;
+            height: 100px;
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            background-color: blue;
+            opacity: 0.5;
+            display: none; /* Initially hidden */
+        }
+
+        /*Smedjevägen*/
+        #popup-container4 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        #popup-container5 {
+            position: absolute;
+            top: 235px;
+            left: 760px;
+            height: 30px;
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            background-color: blue;
+            opacity: 0.5;
+            display: none; /* Initially hidden */
+        }
+
+        /*Hammarbacken*/
+        #popup-container6 {
+            position: absolute;
+            top: 20px;
+            left: 320px;
+            height: 200px;
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            background-color: blue;
+            opacity: 0.5;
+            display: none; /* Initially hidden */
+        }
+
+        #popup-container7 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+    <!--<button id="loadSwaggerButton">Load Swagger UI</button>-->
+    <!-- Script to conditionally load Swagger UI -->
+    <script>
+        /*
+                    document.getElementById('loadSwaggerButton').addEventListener('click', function () {
+                        const ui = SwaggerUIBundle({
+                            url: "https://localhost:7221/swagger/index.html",
+                            dom_id: '#swagger-ui',
+                            defaultModelsExpandDepth: -1,
+                        });
+                    });*/
+
+    </script>
+
+
+
+    <div id="osm-map">
+        <div class="dropdown">
+
+            <a href="index.html">
+                <button>Tillbaka</button>
+            </a>
+            </div>
+        </div>
+
+        <!-- OpenLayers library -->
+        <script src="node_modules/ol/dist/ol.js"></script>
+
+        <!-- Your custom JavaScript file -->
+        <script type="module" src="src/haggvik.js"></script>
+
+        <div id="popup-container">
+            <!--Tabell över parkeringar-->
+            <div w3-include-html="content_haggvik.html"></div>
+            <script>
+                includeHTML();
+            </script>
+            <!-- <div id="popup-content"> -->
+            <!--</div>-->
+        </div>
+        <!--Andelsvägen-->
+        <div id="popup-container2">
+            <table width="300" border="0">
+
+                <tr>
+                    <th width="15"><img src="parking.svg"></th>
+
+
+
+                    <th colspan=" 4" align="left">Andelsvägen</th>
+
+
+                </tr>
+                <tr>
+                    <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
+                </tr>
+            </table>
+        </div>
+        <!--Smedjevägen-->
+        <div id="popup-container2">
+            <table width="300" border="0">
+
+                <tr>
+                    <th width="15"><img src="parking.svg"></th>
+
+
+
+                    <th colspan=" 4" align="left">Andelsvägen</th>
+
+
+                </tr>
+                <tr>
+                    <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
+                </tr>
+            </table>
+        </div>
+        <!--Smedjevägen-->
+        <div id="popup-container4">
+            <table width="300" border="0">
+
+                <tr>
+                    <th width="15"><img src="parking2.svg"></th>
+
+
+
+                    <th colspan=" 4" align="left">Smedjevägen</th>
+
+
+                </tr>
+                <tr>
+                    <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9030 Parkering zon A</td></tr><tr><td>Kostnad: 10 kr per timme, helger ingen kostnad</td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
+                </tr>
+            </table>
+        </div>
+        <div id="popup-container7">
+            <table width="300" border="0">
+
+                <tr>
+                    <th width="15"><img src="parking2.svg"></th>
+
+
+
+                    <th colspan=" 4" align="left">Hammarbacken</th>
+
+
+                </tr>
+                <tr>
+                    <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9030 Parkering zon A</td></tr><tr><td>Kostnad: 10 kr per timme, helger ingen kostnad</td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+        <!--<div id="popup-container3"></div>-->
+
+
+        <div id="popup-container3">
+
+        </div>
+
+        <div id="popup-container4">
+
+        </div>
+
+        <div id="popup-container5">
+
+        </div>
+
+
+        <div id="popup-container6">
+
+        </div>
+
+        <div id="popup-container7">
+
+        </div>
+
+
+
+        <script>
+
+
+            /*  if (id === "start") { <script>location.replace*/
+
+
+            const popupContainer = document.getElementById('popup-container3');
+
+            //const popupContainer = document.getElementById('popup-container4'); }
+
+            // Update the position when the map is moved or zoomed
+            map.on('moveend', function () {
+
+                const center = map.getView().getCenter();
+                const pixel = map.getPixelFromCoordinate(center);
+
+                // Set the position of the popup container based on the pixel coordinates
+                popupContainer.style.left = pixel[0] + 'px';
+                popupContainer.style.top = pixel[1] + 'px';
+            });
+            {
+
+            }
+
+            function mouseOver(id) {
+                // Check the ID and perform actions accordingly
+                if (id === "demo") {
+                    //alert(document.getElementById("demo").innerHTML)
+                    document.getElementById("demo").innerHTML = "Andelsvägen";
+                    document.getElementById("popup-container2").style.display = "block";
+                    document.getElementById("popup-container3").style.display = "block";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                } else if (id === "demo2") {
+                    document.getElementById("demo2").innerHTML = "Smedjevägen";
+                    document.getElementById("popup-container4").style.display = "block";
+                    document.getElementById("popup-container5").style.display = "block";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                } else if (id === "demo3") {
+                    document.getElementById("demo3").innerHTML = "Hammarbacken";
+                    document.getElementById("popup-container6").style.display = "block";
+                    document.getElementById("popup-container7").style.display = "block";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                }
+            }
+            function mouseOut() {
+
+                if (id === "demo") {
+                    document.getElementById("demo").innerHTML = "Andelsvägen";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                } else if (id === "demo2") {
+                    document.getElementById("demo2").innerHTML = "Smedjevägen";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                } else if (id === "demo3") {
+                    document.getElementById("demo3").innerHTML = "Smedjevägen";
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                }
+            }
+
+        </script>
+
+        <!--<div id="popup-content"></div>-->
+</body>
+</html>

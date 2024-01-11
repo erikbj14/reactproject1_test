@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reload Page Extension</title>
+    <script src="main.js" defer></script>
+    <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="node_modules/ol/dist/ol.css" type="text/css">
+    <style>
+        /* Set the map height */
+        #osm-map {
+            position: relative;
+            height: 500px;
+        }
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+                bottom: 100%;
+            }
+
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+
+        #popup2 {
+            position: absolute;
+            top: 225px;
+            left: 100px;
+            height: 90px;
+            width: 500px;
+            opacity: 0.4;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            z-index: 3500;
+        }
+
+        #popup3 {
+            position: absolute;
+            top: 245px;
+            left: 150px;
+            font-size: 50px;
+            color: blue;
+            font-size: 50px;
+            z-index: 3600; /* Set a higher z-index value */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="osm-map">
+        <!-- Link to Page 2 (index1.html) -->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Märstalinjen 41/42</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Märsta</a>
+                <a href="#home">Rosersberg</a>
+                <a href="#home">Upplands Väsby</a>
+                <a href="rotebro.html" target="_self">Rotebro</a>
+                <a href="#home">Norrviken</a>
+                <a href="haggvik.html" target="_self">Häggvik</a>
+                <a href="#home">Sollentuna</a>
+                <a href="#home">Helenelund</a>
+                <a href="#home">Ulriksdal</a>
+                <a href="#home">Solna</a>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+    <div id="popup2">
+        <!-- Content for popup2 goes here -->
+    </div>
+
+    
+        <div id="popup3"><i><b>Parkeringen</b></i></div>
+    
+<!-- Testkommentar -->
+
+
+    <!-- OpenLayers library -->
+    <script src="node_modules/ol/dist/ol.js"></script>
+
+    <!-- Your custom JavaScript file -->
+    <script type="module" src="src/main.js"></script>
+
+    <h1>This is Page 1</h1>
+    <p>Welcome to the first page.</p>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
