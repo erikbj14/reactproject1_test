@@ -1,50 +1,66 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>OpenStreetMap Example</title>
-    <!--<meta charset="utf-8" /-->>
-    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script type="module" src="./src/rotebro.js" defer></script>
-
+    <meta charset="UTF-8">
+    <title>Reload Page Extension</title>
+    <script src="rotebro.js" defer></script>
+    <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="node_modules/ol/dist/ol.css" type="text/css">
     <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        };
+
         function myFunction() {
+            const element = document.getElementById("myP");
+            element.style.fontSize = "24px";
+        }
+
+
+
+        let flag = 10; // Flagga för att hålla reda på highlight- sollentunaholmsvagen
+
+
+        function func() {
+            //var SchoolId = 0;
+            window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=rotebro&ArrDep=target_blank";
+        }
+
+        function myFunction() {
+            alert("ladda om")
             location.reload();
         }
-    
-        //chrome.runtime.sendMessage({ action: 'reloadPage' });
-    
-    
-        var invisible = function () {
-            document.getElementById('start').style.display = "none";  // for hide button
-        }
-    
-    
-    
-            
-    
-            function myFunction() {
-                const element = document.getElementById("myP");
-                element.style.fontSize = "24px";
-            }
-    
-    
-    
-            let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
-    
-    
-            function func() {
-                //var SchoolId = 0;
-                window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
-            }
-    
-        </script>
+
+    </script>
     <style>
         /* Set the map height */
-        #osm-map {
+        #osm3-map {
             height: 500px;
+            width: auto;
         }
     </style>
 
@@ -252,24 +268,13 @@
 
 
 
-    <div id="osm-map">
+    <div id="osm3-map">
         <div class="dropdown">
-
             <a href="index.html">
                 <button>Tillbaka</button>
             </a>
-            </div>
         </div>
-
-        <script>var map = new ol.Map({
-            target: 'osm-map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            })    </script>    
-
-
+    </div>
     <!-- OpenLayers library -->
     <script src="node_modules/ol/dist/ol.js"></script>
 
@@ -439,14 +444,14 @@
         const popupContainer = document.getElementById('popup-container3');
 
         // Update the position when the map is moved or zoomed
-      /*  map3.on('moveend', function () {
+        map3.on('moveend', function () {
             const center = map3.getView().getCenter();
             const pixel = map3.getPixelFromCoordinate(center);
 
             // Set the position of the popup container based on the pixel coordinates
             popupContainer.style.left = pixel[0] + 'px';
             popupContainer.style.top = pixel[1] + 'px';
-        });*/
+        });
 
         function mouseOver(id) {
             // Check the ID and perform actions accordingly
@@ -591,7 +596,7 @@
     </script>
 
 
- <!--testkommentar-->
+
 
     <!--<div id="popup-content"></div>-->
 </body>
