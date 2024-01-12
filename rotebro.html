@@ -43,9 +43,8 @@
         </script>
     <style>
         /* Set the map height */
-        #osm3-map {
+        #osm-map {
             height: 500px;
-            width: auto;
         }
     </style>
 
@@ -253,13 +252,24 @@
 
 
 
-    <div id="osm3-map">
+    <div id="osm-map">
         <div class="dropdown">
+
             <a href="index.html">
                 <button>Tillbaka</button>
             </a>
+            </div>
         </div>
-    </div>
+
+        <script>var map = new ol.Map({
+            target: 'osm-map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            })    </script>    
+
+
     <!-- OpenLayers library -->
     <script src="node_modules/ol/dist/ol.js"></script>
 
