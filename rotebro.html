@@ -458,14 +458,14 @@
         const popupContainer = document.getElementById('popup-container3');
 
         // Update the position when the map is moved or zoomed
-        map3.on('moveend', function () {
+      /*  map3.on('moveend', function () {
             const center = map3.getView().getCenter();
             const pixel = map3.getPixelFromCoordinate(center);
 
             // Set the position of the popup container based on the pixel coordinates
             popupContainer.style.left = pixel[0] + 'px';
             popupContainer.style.top = pixel[1] + 'px';
-        });
+        });*/
 
         function mouseOver(id) {
             // Check the ID and perform actions accordingly
