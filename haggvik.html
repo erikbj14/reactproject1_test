@@ -265,56 +265,30 @@ const vectorLayer = new ol.layer.Vector({
 
 map.addLayer(vectorLayer);
 
-// Function to get dynamic scale based on the zoom level
-function getDynamicScale() {
-    const zoom = map.getView().getZoom();
-    // Adjust the scale factor based on your preference
-    // You may need to experiment to find the right scaling for your application
-    const scaleFactor = 0.2; // Adjust as needed
-    return scaleFactor / Math.pow(2, zoom);
-}
-
 // Marker 2 Häggvik
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93119, 59.44468])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93119, 59.44468])), // Adjust the longitude value
 });
-
-// Initial scale
-const initialScale = getDynamicScale();
 
 const markerStyle2 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         src: './Bild4.png',
-        scale: initialScale,
+        scale: 0.2,
     }),
 });
 
 marker2.setStyle(markerStyle2);
 
 const vectorSource2 = new ol.source.Vector({
-    features: [marker2],
+    features: [marker2], // Use marker2 as the feature
 });
 
 const vectorLayer2 = new ol.layer.Vector({
-    source: vectorSource2,
+    source: vectorSource2, // Use vectorSource2 for the source
 });
 
 map.addLayer(vectorLayer2);
-
-// Event listener to update the scale when the map is zoomed
-map.on('moveend', function () {
-    const scale = getDynamicScale();
-    const newStyle = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: './Bild4.png',
-            scale: scale,
-        }),
-    });
-    marker2.setStyle(newStyle);
-});
-
 </script>
 <script>
 // Andelsvägen
