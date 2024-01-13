@@ -274,7 +274,7 @@ const markerStyle2 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         src: './Bild4.png',
-        scale: 0.2,
+        scale: getDynamicScale(),
     }),
 });
 
@@ -289,6 +289,22 @@ const vectorLayer2 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer2);
+
+// Function to get dynamic scale based on the zoom level
+function getDynamicScale() {
+    const zoom = map.getView().getZoom();
+    // Adjust the scale factor based on your preference
+    // You may need to experiment to find the right scaling for your application
+    const scaleFactor = 0.2; // Adjust as needed
+    return scaleFactor / Math.pow(2, zoom);
+}
+
+// Event listener to update the scale when the map is zoomed
+map.on('moveend', function () {
+    const scale = getDynamicScale();
+    markerStyle2.getImage().setScale(scale);
+});
+
 </script>
 <script>
 // Andelsvägen
