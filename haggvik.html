@@ -248,8 +248,8 @@
             const markerStyle1 = new ol.style.Style({
                 image: new ol.style.Icon({
                     anchor: [0.5, 1],
-                  // src: './location-dot-solid.svg',
-                   src: './Bild2.png',
+                    src: './location-dot-solid.svg',
+                    //src: './Bild2.png',
                     scale: 1
                 })
             });
@@ -265,6 +265,31 @@
             });
 
             map.addLayer(vectorLayer);
+
+            // Marker 2 Häggvik
+    const marker2 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9, 59.]))
+            });
+
+            const markerStyle2 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: './Bild2.png',
+                    scale: 1
+                })
+            });
+
+            marker2.setStyle(markerStyle2);
+
+            const vectorSource2 = new ol.source.Vector({
+                features: [marker1]
+            });
+
+            const vectorLayer2 = new ol.layer.Vector({
+                source: vectorSource
+            });
+
+            map.addLayer(vectorLayer2);
 </script>
 <script>
 // Andelsvägen
