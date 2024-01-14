@@ -289,6 +289,31 @@ const vectorLayer2 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer2);
+
+// Marker 2 Häggvik
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93144, 59.4442])), // Adjust the longitude value 
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 0.2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker2], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
 </script>
 <script>
 // Andelsvägen
