@@ -299,14 +299,14 @@ const markerStyle3 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         src: './parking.svg',
-        scale: 0.2,
+        scale: 1,
     }),
 });
 
 marker3.setStyle(markerStyle3);
 
 const vectorSource3 = new ol.source.Vector({
-    features: [marker2], // Use marker2 as the feature
+    features: [marker3], // Use marker2 as the feature
 });
 
 const vectorLayer3 = new ol.layer.Vector({
