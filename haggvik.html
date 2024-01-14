@@ -290,7 +290,7 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// Marker 3 Andelsvägen 2
+// Marker 3 Andelsvägen
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93144, 59.4442])), // Adjust the longitude value 
 });
@@ -314,32 +314,8 @@ const vectorLayer3 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer3);
-
-// Marker 4 Andelsvägen 3
-/*const marker4 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93058, 59.44464])), // Adjust the longitude value 
-});
-
-const markerStyle4 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './parking.svg',
-        scale: 1,
-    }),
-});
-
-marker4.setStyle(markerStyle4);
-
-const vectorSource4 = new ol.source.Vector({
-    features: [marker4], // Use marker2 as the feature
-});
-
-const vectorLayer4 = new ol.layer.Vector({
-    source: vectorSource4, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer4);*/
-
+</script>
+<script>
 // Andelsvägen
 // Create a new Polygon feature
 /*const newPolygonFeatureII = new Feature({
