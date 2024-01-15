@@ -396,6 +396,34 @@ const vectorLayer6 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer6);
 
+// Marker 7 Hammarbacken
+const marker7 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])), // Adjust the longitude value
+}); 
+
+const markerStyle7 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker7.setStyle(markerStyle7);
+
+const vectorSource7 = new ol.source.Vector({
+    features: [marker7], // Use marker2 as the feature
+});
+
+const vectorLayer7 = new ol.layer.Vector({
+    source: vectorSource7, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7);
+
+
+
 
 // Andelsvägen
 // Create a new Polygon feature
