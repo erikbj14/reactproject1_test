@@ -449,6 +449,33 @@ const vectorLayer8 = new ol.layer.Vector({
 map.addLayer(vectorLayer8);
 
 
+// Marker 9 Smedjevägen
+const marker9 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93344, 59.44437])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle9 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild6.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker9.setStyle(markerStyle9);
+
+const vectorSource9 = new ol.source.Vector({
+    features: [marker9], // Use marker2 as the feature
+});
+
+const vectorLayer9 = new ol.layer.Vector({
+    source: vectorSource9, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer9);
+
+
 
 
 // Andelsvägen
