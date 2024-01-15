@@ -422,6 +422,32 @@ const vectorLayer7 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer7);
 
+// Marker 8 Andelsvägen
+const marker8 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93118, 59.44467])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle8 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild5.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker8.setStyle(markerStyle8);
+
+const vectorSource8 = new ol.source.Vector({
+    features: [marker8], // Use marker2 as the feature
+});
+
+const vectorLayer8 = new ol.layer.Vector({
+    source: vectorSource8, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer8);
+
 
 
 
