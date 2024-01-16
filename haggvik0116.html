@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <style> 
  .highlight_Andelsvagen:hover {
@@ -172,7 +172,7 @@
         }
 
         /*Hammarbacken*/
-    /*    #popup-container6 {
+        #popup-container6 {
             position: absolute;
             top: 145px;
             left: 90px;
@@ -186,7 +186,7 @@
             background-color: blue;
             opacity: 0.5;
             display: none; /* Initially hidden */
-        }*/
+        }
 
         #popup-container7 {
             position: absolute;
@@ -201,10 +201,6 @@
             max-width: 300px;
             z-index: 3000;
             display: none; /* Initially hidden */
-        }
-
-        #popup-container6 {
-            
         }
 
         /*#popup8 {
@@ -651,32 +647,7 @@ const iconFeatures = [
 
 
     <div id="popup-container6">
-  <script>      // Marker 6 Hammarbacken
-const marker10 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])), // Adjust the longitude value
-}); 
 
-const markerStyle10 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './Bild10.png', //Gjorde en bild som liknade en polygon
-        //src: './parking2.svg',
-        scale: 1,
-    }),
-});
-
-marker10.setStyle(markerStyle10);
-
-const vectorSource10 = new ol.source.Vector({
-    features: [marker10], // Use marker2 as the feature
-});
-
-const vectorLayer10 = new ol.layer.Vector({
-    source: vectorSource10, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer10);
-</script>
     </div>
 
     <div id="popup-container7">
