@@ -203,14 +203,25 @@
             display: none; /* Initially hidden */
         }
 
-        #popup-container6 {
-            display: none; /* Initially hidden */
-        }
 
-        .z-indexed-container {
-  /* Set the z-index value as needed */
-  z-index: 4000;
+        #popup-container6 {
+  display: none; /* Initially hidden */
 }
+
+.z-indexed-container {
+  /* Set the z-index value as needed */
+  position: relative;
+}
+
+.z-indexed-container img {
+  /* Set the position, z-index, and other styles as needed */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+}
+
 
         /*#popup8 {
             position: absolute; 
@@ -658,33 +669,70 @@ const iconFeatures = [
 
     <div id="popup-container6" class="z-indexed-container">
         <script>
-          // Marker 6 Hammarbacken
+          // Marker 1 Häggvik
           const marker10 = new ol.Feature({
-            geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.444])), // Adjust the longitude value
-          }); 
+            geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+          });
       
           const markerStyle10 = new ol.style.Style({
             image: new ol.style.Icon({
               anchor: [0.5, 1],
-              src: './Bild10.png', //Gjorde en bild som liknade en polygon
-              //src: './parking2.svg',
-              scale: 1,
-            }),
+              src: './Bild4.png',
+              scale: 1
+            })
           });
       
-          marker10.setStyle(markerStyle10);
-      
-          const vectorSource10 = new ol.source.Vector({
-            features: [marker10], // Use marker2 as the feature
-          });
-      
-          const vectorLayer10 = new ol.layer.Vector({
-            source: vectorSource10, // Use vectorSource2 for the source
-          });
-      
-          map.addLayer(vectorLayer10);
-        </script>
+          // Marker 1 Häggvik
+const marker10 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+});
+
+const markerStyle10 = new ol.style.Style({
+  image: new ol.style.Icon({
+    anchor: [0.5, 1],
+    src: './Bild4.png',
+    scale: 1
+  })
+});
+
+marker10.setStyle(markerStyle10);
+
+const vectorSource10 = new ol.source.Vector({
+  features: [marker10]
+});
+
+const vectorLayer10 = new ol.layer.Vector({
+  source: vectorSource10
+});
+
+map.addLayer(vectorLayer10);
+
+// Marker 2 Häggvik
+const marker20 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+});
+
+const markerStyle20 = new ol.style.Style({
+  image: new ol.style.Icon({
+    anchor: [0.5, 1],
+    src: './parking2.svg',
+    scale: 1
+  })
+});
+
+marker20.setStyle(markerStyle20);
+
+const vectorSource20 = new ol.source.Vector({
+  features: [marker20]
+});
+
+const vectorLayer20 = new ol.layer.Vector({
+  source: vectorSource20
+});
+
+map.addLayer(vectorLayer20);        </script>
       </div>
+      
 
 
 
