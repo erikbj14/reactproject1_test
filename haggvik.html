@@ -208,19 +208,6 @@
   display: none; /* Initially hidden */
 }
 
-.z-indexed-container {
-  /* Set the z-index value as needed */
-  position: relative;
-}
-
-.z-indexed-container img {
-  /* Set the position, z-index, and other styles as needed */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3000;
-}
 
 
         /*#popup8 {
@@ -667,58 +654,7 @@ const iconFeatures = [
     </div>
 
 
-    <div id="popup-container6" class="z-indexed-container">
-<script>
-    // Marker 1 Häggvik
-    const marker1 = new ol.Feature({
-      geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
-    });
-
-    const markerStyle1 = new ol.style.Style({
-      image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './Bild4.png',
-        scale: 1
-      })
-    });
-
-    marker1.setStyle(markerStyle1);
-
-    const vectorSource = new ol.source.Vector({
-      features: [marker1]
-    });
-
-    const vectorLayer = new ol.layer.Vector({
-      source: vectorSource
-    });
-
-    map.addLayer(vectorLayer);
-
-    // Marker 2 Häggvik
-    const marker2 = new ol.Feature({
-      geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
-    });
-
-    const markerStyle2 = new ol.style.Style({
-      image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './parking2.svg',
-        scale: 1
-      })
-    });
-
-    marker2.setStyle(markerStyle2);
-
-    const vectorSource2 = new ol.source.Vector({
-      features: [marker2]
-    });
-
-    const vectorLayer2 = new ol.layer.Vector({
-      source: vectorSource2
-    });
-
-    map.addLayer(vectorLayer2);
-  </script>
+    <div id="popup-container6">
 </div>
       
 
