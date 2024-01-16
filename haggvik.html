@@ -670,11 +670,11 @@ const iconFeatures = [
     <div id="popup-container6" class="z-indexed-container">
         <script>
           // Marker 1 Häggvik
-          const marker10 = new ol.Feature({
+          const marker1 = new ol.Feature({
             geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
           });
       
-          const markerStyle10 = new ol.style.Style({
+          const markerStyle1 = new ol.style.Style({
             image: new ol.style.Icon({
               anchor: [0.5, 1],
               src: './Bild4.png',
@@ -683,11 +683,11 @@ const iconFeatures = [
           });
       
           // Marker 1 Häggvik
-const marker10 = new ol.Feature({
+const marker1 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
 });
 
-const markerStyle10 = new ol.style.Style({
+const markerStyle1 = new ol.style.Style({
   image: new ol.style.Icon({
     anchor: [0.5, 1],
     src: './Bild4.png',
@@ -695,24 +695,24 @@ const markerStyle10 = new ol.style.Style({
   })
 });
 
-marker10.setStyle(markerStyle10);
+marker1.setStyle(markerStyle1);
 
-const vectorSource10 = new ol.source.Vector({
+const vectorSource1 = new ol.source.Vector({
   features: [marker10]
 });
 
-const vectorLayer10 = new ol.layer.Vector({
+const vectorLayer1 = new ol.layer.Vector({
   source: vectorSource10
 });
 
-map.addLayer(vectorLayer10);
+map.addLayer(vectorLayer1);
 
 // Marker 2 Häggvik
-const marker20 = new ol.Feature({
+const marker2 = new ol.Feature({
   geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
 });
 
-const markerStyle20 = new ol.style.Style({
+const markerStyle2 = new ol.style.Style({
   image: new ol.style.Icon({
     anchor: [0.5, 1],
     src: './parking2.svg',
@@ -720,17 +720,17 @@ const markerStyle20 = new ol.style.Style({
   })
 });
 
-marker20.setStyle(markerStyle20);
+marker2.setStyle(markerStyle2);
 
-const vectorSource20 = new ol.source.Vector({
-  features: [marker20]
+const vectorSource2 = new ol.source.Vector({
+  features: [marker2]
 });
 
-const vectorLayer20 = new ol.layer.Vector({
-  source: vectorSource20
+const vectorLayer2 = new ol.layer.Vector({
+  source: vectorSource2
 });
 
-map.addLayer(vectorLayer20);        </script>
+map.addLayer(vectorLayer2);        </script>
       </div>
       
 
