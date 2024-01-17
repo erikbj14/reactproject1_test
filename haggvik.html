@@ -487,57 +487,7 @@ const vectorLayer9 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer9);
 
-// Marker 10 Hammarbacken
-const marker10 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
-});  
 
-const markerStyle10 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './Bild10.png', 
-        //src: './parking2.svg',
-        scale: 1,
-    }),
-});
-
-marker10.setStyle(markerStyle10);
-
-const vectorSource10 = new ol.source.Vector({
-    features: [marker10], // Use marker2 as the feature
-});
-
-const vectorLayer10 = new ol.layer.Vector({
-    source: vectorSource10, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer10);
-
-// Marker 11 Hammarbacken
-const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4449])), // 0,0045 är ca 500 m
-});  
-
-const markerStyle11 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        //src: './Bild10.png', 
-        src: './parking2.svg',
-        scale: 1,
-    }),
-});
-
-marker11.setStyle(markerStyle11);
-
-const vectorSource11 = new ol.source.Vector({
-    features: [marker11], // Use marker2 as the feature
-});
-
-const vectorLayer11 = new ol.layer.Vector({
-    source: vectorSource11, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer11);
 
 
 // Andelsvägen
@@ -833,6 +783,67 @@ map.addLayer(vectorLayer10);
                 document.getElementById("popup-container3").style.display = "none";
                 document.getElementById("popup-container4").style.display = "none";
                 document.getElementById("popup-container5").style.display = "none";
+
+                // Marker 10 Hammarbacken
+const marker10 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle10 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild10.png', 
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker10.setStyle(markerStyle10);
+
+const vectorSource10 = new ol.source.Vector({
+    features: [marker10], // Use marker2 as the feature
+});
+
+const vectorLayer10 = new ol.layer.Vector({
+    source: vectorSource10, // Use vectorSource2 for the source
+});
+
+vectorLayer10.set('id', 'marker10Layer');
+
+
+map.addLayer(vectorLayer10);
+
+// Marker 11 Hammarbacken
+const marker11 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4449])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle11 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild10.png', 
+        src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker11.setStyle(markerStyle11);
+
+const vectorSource11 = new ol.source.Vector({
+    features: [marker11], // Use marker2 as the feature
+});
+
+const vectorLayer11 = new ol.layer.Vector({
+    source: vectorSource11, // Use vectorSource2 for the source
+});
+
+vectorLayer11.set('id', 'marker11Layer');
+
+map.addLayer(vectorLayer11);
+
+
+
+
             }
         }
         function mouseOut(id) {
