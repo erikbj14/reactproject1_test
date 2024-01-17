@@ -487,6 +487,31 @@ const vectorLayer9 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer9);
 
+// Marker 10 Hammarbacken
+const marker10 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle10 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild10.png', //
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker10.setStyle(markerStyle10);
+
+const vectorSource10 = new ol.source.Vector({
+    features: [marker10], // Use marker2 as the feature
+});
+
+const vectorLayer10 = new ol.layer.Vector({
+    source: vectorSource10, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer10);
 
 
 
