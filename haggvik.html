@@ -809,6 +809,34 @@ map.addLayer(vectorLayer10);
             popupContainer.style.left = pixel[0] + 'px';
             popupContainer.style.top = pixel[1] + 'px';
         });
+
+
+        // Function to show images by ID
+function showImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(true); // Show the layer's source
+    }
+}
+
+// Function to hide images by ID
+function hideImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(false); // Hide the layer's source
+    }
+}
+
+
+
+
+
+
+
         function mouseOver(id) {
             // Check the ID and perform actions accordingly
             if (id === "demo") {
