@@ -487,6 +487,33 @@ const vectorLayer9 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer9);
 
+//--------------------------------------------------------------------------
+// Function to show images by ID
+function showImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(true); // Show the layer's source
+    }
+}
+
+// Function to hide images by ID
+function hideImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(false); // Hide the layer's source
+    }
+}
+
+
+//------------------------------------------------------------------------------
+
+
+
+
 // Marker 10 Hammarbacken
 const marker10 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
@@ -835,6 +862,8 @@ map.addLayer(vectorLayer10);
             } else if (id === "demo3") {
                 //alert('Kolla: ' + id);
                 document.getElementById("demo3").innerHTML = "Hammarbacken";
+                showImagesById("marker10Layer");
+                showImagesById("marker11Layer");
                 document.getElementById("popup-container6").style.display = "block";
                 document.getElementById("popup-container7").style.display = "block";
                 document.getElementById("popup-container2").style.display = "none";
@@ -863,8 +892,10 @@ map.addLayer(vectorLayer10);
                 document.getElementById("popup-container6").style.display = "none";
                 document.getElementById("popup-container7").style.display = "none";
             } else if (id === "demo3") {
-                //alert('Kolla2: ' + id);
+                alert('Demo3out: ' + id);
                 document.getElementById("demo3").innerHTML = "Hammarbacken";
+                hideImagesById("marker10Layer");
+                hideImagesById("marker11Layer");
                 document.getElementById("popup-container6").style.display = "none";
                 document.getElementById("popup-container7").style.display = "none";
                 document.getElementById("popup-container2").style.display = "none";
