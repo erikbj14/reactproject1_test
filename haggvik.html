@@ -501,30 +501,60 @@ const markerStyle10 = new ol.style.Style({
     }),
 });
 
+// Function to show images by ID
+function showImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(true); // Show the layer's source
+    }
+}
+
+// Function to hide images by ID
+function hideImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(false); // Hide the layer's source
+    }
+}
+
+// Marker 10 Hammarbacken
+const marker10 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])),
+});
+
+const markerStyle10 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild10.png',
+        scale: 1,
+    }),
+});
+
 marker10.setStyle(markerStyle10);
 
 const vectorSource10 = new ol.source.Vector({
-    features: [marker10], // Use marker2 as the feature
+    features: [marker10],
 });
 
 const vectorLayer10 = new ol.layer.Vector({
-    source: vectorSource10, // Use vectorSource2 for the source
+    source: vectorSource10,
 });
 
 vectorLayer10.set('id', 'marker10Layer');
-
-
 map.addLayer(vectorLayer10);
 
 // Marker 11 Hammarbacken
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4449])), // 0,0045 är ca 500 m
-});  
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4449])),
+});
 
 const markerStyle11 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        //src: './Bild10.png', 
         src: './parking2.svg',
         scale: 1,
     }),
@@ -533,17 +563,15 @@ const markerStyle11 = new ol.style.Style({
 marker11.setStyle(markerStyle11);
 
 const vectorSource11 = new ol.source.Vector({
-    features: [marker11], // Use marker2 as the feature
+    features: [marker11],
 });
 
 const vectorLayer11 = new ol.layer.Vector({
-    source: vectorSource11, // Use vectorSource2 for the source
+    source: vectorSource11,
 });
 
 vectorLayer11.set('id', 'marker11Layer');
-
 map.addLayer(vectorLayer11);
-
 
 // Andelsvägen
 // Create a new Polygon feature
