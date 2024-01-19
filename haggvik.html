@@ -543,7 +543,7 @@ vectorLayer10.set('id', 'marker10Layer');
 
 var elem = document.getElementById('marker10Layer');
 
-elem.style.display = 'revert'; // hide
+//elem.style.display = 'revert'; // hide
 
 map.addLayer(vectorLayer10);
 
@@ -868,7 +868,8 @@ map.addLayer(vectorLayer10);
                 document.getElementById("demo3").innerHTML = "Hammarbacken";
                 //document.getElementById(marker10Layer).style.visibility = "visible";
                 document.getElementById(marker10Layer).setVisible="true";
-                //document.getElementById(marker11Layer).style.visibility = "block";  
+                //document.getElementById(marker11Layer).style.visibility = "block";
+                elem.style.display = 'visible';  
                 document.getElementById("popup-container7").style.display = "block";
                 document.getElementById("popup-container6").style.display = "block";
                 document.getElementById("popup-container2").style.display = "none";
