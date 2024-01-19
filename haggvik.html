@@ -527,6 +527,8 @@ scale: 1,
 
 });
 
+
+
 marker10.setStyle(markerStyle10);
 
 const vectorSource10 = new ol.source.Vector({
@@ -539,6 +541,9 @@ source: vectorSource10, // Use vectorSource2 for the source
 
 vectorLayer10.set('id', 'marker10Layer');
 
+var elem = document.getElementById('marker10Layer');
+
+elem.style.display = 'none'; // hide
 
 map.addLayer(vectorLayer10);
 
