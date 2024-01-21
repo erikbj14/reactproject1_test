@@ -831,42 +831,7 @@ map.addLayer(vectorLayer10);
 
         // Update the position when the map is moved or zoomed
         map.on('moveend', function () {
-
-            //------------------------------------------------
-
-            // Marker 6 Hammarbacken
-const marker6 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])), // Adjust the longitude value
-}); 
-
-const markerStyle6 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: '',
-        scale: 1,
-    }),
-});
-
-marker6.setStyle(markerStyle6);
-
-const vectorSource6 = new ol.source.Vector({
-    features: [marker6], // Use marker2 as the feature
-});
-
-const vectorLayer6 = new ol.layer.Vector({
-    source: vectorSource6, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer6);
-
-            //------------------------------------------------
-
-
-
-
-
-            alert("zoomad IGEN")
+            //alert("zoomad IGEN")
             const center = map.getView().getCenter();
             const pixel = map.getPixelFromCoordinate(center);
 
