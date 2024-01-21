@@ -484,7 +484,7 @@ const vectorLayer9 = new ol.layer.Vector({
 map.addLayer(vectorLayer9);
 
 //--------------------------------------------------------------------------
-// Function to show images by ID
+// Function to show images by ID (Har inte fått den att fungera)
 function showImagesById(id) {
     const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
 
@@ -819,7 +819,7 @@ map.addLayer(vectorLayer10);
     });
 
 
-
+ 
 
 
         /*  if (id === "start") { <script>location.replace*/
@@ -831,7 +831,7 @@ map.addLayer(vectorLayer10);
 
         // Update the position when the map is moved or zoomed
         map.on('moveend', function () {
-            //alert("zoomad IGEN")
+            alert("zoomad IGEN")
             const center = map.getView().getCenter();
             const pixel = map.getPixelFromCoordinate(center);
 
