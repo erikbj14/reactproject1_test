@@ -435,6 +435,9 @@ const marker8 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93100, 59.44390])), // 0,0045 är ca 500 m
 });  
 
+//document.getElementById(id).style.visibility = "marker11Layer"; 
+vectorLayer7.set('id', 'marker7Layer');
+
 const markerStyle8 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
@@ -786,7 +789,8 @@ map.addLayer(vectorLayer10);
 
             // Add click event listener to the map view
     map.on('click', function (event) {
-        alert("zoomat och klickat")
+        document.getElementById(id).style.visibility = "marker11Layer"; 
+        alert(document.getElementById(id).style.visibility = "marker11Layer")
         // F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
         // Get the clicked coordinate
        // if (flag == 10) {
