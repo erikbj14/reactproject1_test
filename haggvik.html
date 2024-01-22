@@ -257,7 +257,7 @@ const markerStyle1 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         src: './location-dot-solid.svg',
-        scale: 1,
+        scale: 2,
     }),
 });
 
@@ -405,7 +405,7 @@ const vectorLayer6 = new ol.layer.Vector({
 map.addLayer(vectorLayer6);
 
 // Marker 7 Hammarbacken
-const marker7 = new ol.Feature({
+/*const marker7 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
 });  
 
@@ -484,7 +484,7 @@ const vectorLayer9 = new ol.layer.Vector({
     source: vectorSource9, // Use vectorSource2 for the source
 });
 
-map.addLayer(vectorLayer9);
+map.addLayer(vectorLayer9);*/
 
 //--------------------------------------------------------------------------
 // Function to show images by ID (Har inte fått den att fungera)
