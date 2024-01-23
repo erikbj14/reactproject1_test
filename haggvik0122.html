@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <style> 
 /* .highlight_Andelsvagen:hover {
@@ -403,15 +403,6 @@ const vectorLayer6 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer6);
-
-function handleParkingClick(event) {
-    // Your custom logic here
-    console.log('Parking image clicked!');
-    // You can call your JavaScript function here
-}
-
-// Attach the click event listener to the vector layer
-vectorLayer6.getSource().on('click', handleParkingClick);
 
 // Marker 7 Hammarbacken Kommentar marker 7 till 9. De bilderna (layers) fungerade inte riktigt som de skulle (speciellt efter zoom)
 /*const marker7 = new ol.Feature({
