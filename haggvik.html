@@ -383,10 +383,15 @@ const marker6 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])), // Adjust the longitude value
 }); 
 
+// Marker 6 Hammarbacken
+const marker6 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])),
+});
+
 const markerStyle6 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        // src: './Bild4.png',
         src: './parking2.svg',
         scale: 2,
     }),
@@ -395,15 +400,16 @@ const markerStyle6 = new ol.style.Style({
 marker6.setStyle(markerStyle6);
 
 const vectorSource6 = new ol.source.Vector({
-    features: [marker6], // Use marker2 as the feature
+    features: [marker6],
 });
 
 const vectorLayer6 = new ol.layer.Vector({
-    source: vectorSource6, // Use vectorSource2 for the source
+    source: vectorSource6,
 });
 
 map.addLayer(vectorLayer6);
 
+// Function to handle the click event on the parking2.svg image
 function handleParkingClick(event) {
     // Your custom logic here
     console.log('Parking image clicked!');
