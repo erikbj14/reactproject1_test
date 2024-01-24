@@ -1,63 +1,66 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<style>
-table {
-    background-color:rgba(255, 99, 71, 0.5);
-}
-</style>
 <head>
-    <title>OpenStreetMap</title>
-    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <meta charset="UTF-8">
+    <title>Reload Page Extension</title>
     <script src="rotebro.js" defer></script>
+    <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="node_modules/ol/dist/ol.css" type="text/css">
     <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        };
+
         function myFunction() {
+            const element = document.getElementById("myP");
+            element.style.fontSize = "24px";
+        }
+
+
+
+        let flag = 10; // Flagga för att hålla reda på highlight- sollentunaholmsvagen
+
+
+        function func() {
+            //var SchoolId = 0;
+            window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=rotebro&ArrDep=target_blank";
+        }
+
+        function myFunction() {
+            alert("ladda om")
             location.reload();
         }
-    
-        //chrome.runtime.sendMessage({ action: 'reloadPage' });
-    
-    
-        var invisible = function () {
-            document.getElementById('start').style.display = "none";  // for hide button
-        }
-    
-    
-    
-            
-    
-            function myFunction() {
-                const element = document.getElementById("myP");
-                element.style.fontSize = "24px";
-            }
-    
-    
-    
-            let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
-    
-    
-            function func() {
-                //var SchoolId = 0;
-                window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
-            }
-    
+
     </script>
     <style>
         /* Set the map height */
         #osm3-map {
             height: 500px;
             width: auto;
-        }
-
-        /* Set the map height */
-        #osm-map {
-            position: absolute;
-            height: 700px;
-            width: 500px;
-            top: 115px;
-            left: 8px;
         }
     </style>
 
@@ -81,8 +84,8 @@ table {
 
         #popup-container {
             position: absolute;
-            top: 139px;
-            left: 0px;
+            top: 20px;
+            left: 400px;
             height: 250px;
             width: 250px;
             background-color: white;
@@ -99,7 +102,7 @@ table {
         /*Staffans väg/ Norrvikenleden*/
         #popup-container2 {
             position: absolute;
-            top: 139px;
+            top: 0px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -113,7 +116,7 @@ table {
         }
 
 
-       /* #popup-container3 {
+        #popup-container3 {
             position: absolute;
             top: 320px;
             left: 790px;
@@ -126,8 +129,8 @@ table {
             z-index: 3000;
             background-color: blue;
             opacity: 0.5;
-            display: none;  Initially hidden 
-        }*/
+            display: none; /* Initially hidden */
+        }
 
         /*Staffans väg, 9028*/
         #popup-container4 {
@@ -145,7 +148,7 @@ table {
             display: none; /* Initially hidden */
         }
 
-        /*#popup-container5 {
+        #popup-container5 {
             position: absolute;
             top: 250px;
             left: 770px;
@@ -158,11 +161,11 @@ table {
             z-index: 3000;
             background-color: blue;
             opacity: 0.5;
-            display: none;  Initially hidden
-        }*/
+            display: none; /* Initially hidden */
+        }
 
         /*Staffans väg vid Rotevägen, 9029*/
-        /*#popup-container6 {
+        #popup-container6 {
             position: absolute;
             top: 90px;
             left: 695px;
@@ -175,12 +178,12 @@ table {
             z-index: 3000;
             background-color: blue;
             opacity: 0.5;
-            display: none; Initially hidden 
-        } */
+            display: none; /* Initially hidden */
+        }
 
         #popup-container7 {
             position: absolute;
-            top: 139px;
+            top: 0px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -194,7 +197,7 @@ table {
         }
 
         /*Rotebrovägen/ Kung Hans väg*/
-        /*#popup-container8 {
+        #popup-container8 {
             position: absolute;
             top: 315px;
             left: 750px;
@@ -207,12 +210,12 @@ table {
             z-index: 3000;
             background-color: blue;
             opacity: 0.5;
-            display: none; Initially hidden 
-        } */
+            display: none; /* Initially hidden */
+        }
 
         #popup-container9 {
             position: absolute;
-            top: 139px;
+            top: 0px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -226,7 +229,7 @@ table {
         }
 
         /*Rotebrovägen/ Kung Hans väg*/
-        /*#popup-container10 {
+        #popup-container10 {
             position: absolute;
             top: 135px;
             left: 670px;
@@ -239,12 +242,12 @@ table {
             z-index: 3000;
             background-color: blue;
             opacity: 0.5;
-            display: none; Initially hidden 
-        } */
+            display: none; /* Initially hidden */
+        }
 
         #popup-container11 {
             position: absolute;
-            top: 139px;
+            top: 0px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -260,6 +263,11 @@ table {
     </style>
 </head>
 <body>
+
+
+
+
+
     <div id="osm3-map">
         <div class="dropdown">
             <a href="index.html">
@@ -267,177 +275,21 @@ table {
             </a>
         </div>
     </div>
-    <script>var map = new ol.Map({
-        target: 'osm-map',
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-        ],
-        view: new ol.View({
-            center: ol.proj.fromLonLat([17.91465, 59.47586]),//0,0045 är ca 500 m
-        zoom: 15 // You can adjust the zoom level as needed
-        })})
-        
-        // Marker 1 Staffans väg/ Norrvikenleden 9027
-    const marker1 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91749, 59.47374])),
-    });
-    
-    const markerStyle1 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: './location-dot-solid.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker1.setStyle(markerStyle1);
-    
-    const vectorSource = new ol.source.Vector({
-        features: [marker1],
-    });
-    
-    const vectorLayer = new ol.layer.Vector({
-        source: vectorSource,
-    });
-    
-    map.addLayer(vectorLayer);
-    
-    // Marker 2 Rotebrovägen/ Kung Hans v�g 9025
-    const marker2 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91553, 59.47411])), // Adjust the longitude value
-    });
-    
-    const markerStyle2 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-            src: './parking.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker2.setStyle(markerStyle2);
-    
-    const vectorSource2 = new ol.source.Vector({
-        features: [marker2], // Use marker2 as the feature
-    });
-    
-    const vectorLayer2 = new ol.layer.Vector({
-        source: vectorSource2, // Use vectorSource2 for the source
-    });
-    
-    map.addLayer(vectorLayer2);
-    
-    // Rotebrovägen/ Hertig Karls väg 9026 (laddstolpsidan)
-    const marker3 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91313, 59.47666])), // Adjust the longitude value
-    }); 
-    
-    const markerStyle3 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-            src: './parking.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker3.setStyle(markerStyle3);
-    
-    const vectorSource3 = new ol.source.Vector({
-        features: [marker3], // Use marker2 as the feature
-    });
-    
-    const vectorLayer3 = new ol.layer.Vector({
-        source: vectorSource3, // Use vectorSource2 for the source
-    });
-    
-    map.addLayer(vectorLayer3);
-    
-    // Rotebrovägen/ Hertig Karls väg 9026
-    const marker4 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91275,59.47738])), // Adjust the longitude value
-    });
-    
-    const markerStyle4 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-            src: './parking.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker4.setStyle(markerStyle4);
-    
-    const vectorSource4 = new ol.source.Vector({
-        features: [marker4], // Use marker2 as the feature
-    });
-    
-    const vectorLayer4 = new ol.layer.Vector({
-        source: vectorSource4, // Use vectorSource2 for the source
-    });
-    
-    map.addLayer(vectorLayer4);
-    
-    
-    // Staffans väg/ Rotevägen 9029
-    const marker5 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91486, 59.47925])), // Adjust the longitude value
-    });
-    
-    const markerStyle5 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-            src: './parking2.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker5.setStyle(markerStyle5);
-    
-    const vectorSource5 = new ol.source.Vector({
-        features: [marker5], // Use marker2 as the feature
-    });
-    
-    const vectorLayer5 = new ol.layer.Vector({
-        source: vectorSource5, // Use vectorSource2 for the source
-    });
-    
-    map.addLayer(vectorLayer5);
-    
-    // Staffans väg/ Rotevägen (andra delen närmast spåret) 9029
-    const marker6 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91283, 59.4787])),
-    });
-    
-    const markerStyle6 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            // src: './Bild4.png',
-            src: './parking2.svg',
-            scale: 2,
-        }),
-    });
-    
-    marker6.setStyle(markerStyle6);
-    
-    const vectorSource6 = new ol.source.Vector({
-        features: [marker6],
-    });
-    
-    const vectorLayer6 = new ol.layer.Vector({
-        source: vectorSource6,
-    });
-    
-    map.addLayer(vectorLayer6);
-    </script>
+    <!-- OpenLayers library -->
+    <script src="node_modules/ol/dist/ol.js"></script>
 
+    <!-- Your custom JavaScript file -->
+    <!--<script type="module" src="src/rotebro.js"></script>-->
 
-
+    <div id="popup-container">
+        <!--Tabell över parkeringar-->
+        <div w3-include-html="content_rotebro.html"></div>
+        <script>
+            includeHTML();
+        </script>
+        <!-- <div id="popup-content"> -->
+        <!--</div>-->
+    </div>
     <!--sollentunaholmsvagen-->
     <div id="popup-container2">
         <table width="300" border="0">
