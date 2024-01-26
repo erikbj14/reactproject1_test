@@ -238,7 +238,7 @@ const vectorLayer5 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer5);
 
-// Rotebrovogen/ Kung Hans väg 9025
+// Rotebrovägen/ Kung Hans väg 9025
 const marker6 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9157, 59.4741])), // Adjust the longitude value
 }); 
@@ -263,6 +263,32 @@ const vectorLayer6 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer6);
+
+// Rotebrovägen/ Hertig Karls väg 9026 (laddstolpsidan)
+const marker7 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9157, 59.4741])), // Adjust the longitude value
+}); 
+
+const markerStyle7 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker7.setStyle(markerStyle7);
+
+const vectorSource7 = new ol.source.Vector({
+    features: [marker7], // Use marker2 as the feature
+});
+
+const vectorLayer7 = new ol.layer.Vector({
+    source: vectorSource7, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7);
 
 </script>
 </body>
