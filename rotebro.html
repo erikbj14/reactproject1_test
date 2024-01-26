@@ -12,36 +12,7 @@ table {
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script type="module" src="./src/rotebro.js" defer></script>
-    <script>
-        function myFunction() {
-            location.reload();
-        }
-    
-        //chrome.runtime.sendMessage({ action: 'reloadPage' });
-    
-    
-        var invisible = function () {
-            document.getElementById('start').style.display = "none";  // for hide button
-        }
-    
-    
-    
-            
-    
-            function myFunction() {
-                const element = document.getElementById("myP");
-                element.style.fontSize = "24px";
-            }
-    
-    
-    
-            let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
-    
-    
-            function func() {
-                //var SchoolId = 0;
-                window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
-            }
+        
     
     </script>
     <style>
@@ -49,6 +20,16 @@ table {
     </style>
 </head>
 <body>
-
+    <script>var map = new ol.Map({
+        target: 'osm-map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([17.91164 + 0.0200, 59.4442]),//0,0045 är ca 500 m
+        zoom: 15 // You can adjust the zoom level as needed
+        })})</script>
 </body>
 </html>
