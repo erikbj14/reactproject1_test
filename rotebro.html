@@ -125,6 +125,16 @@ const markerStyle1 = new ol.style.Style({
 
 marker1.setStyle(markerStyle1);
 
+const vectorSource = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+
+map.addLayer(vectorLayer);
+
 
         </script>
 
