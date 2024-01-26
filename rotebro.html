@@ -97,24 +97,17 @@
     <!-- Map Script -->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script>
-
-
-
-
-
-        
             var map = new ol.Map({
-                target: 'osm-map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
-                view: new ol.View({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
                     center: ol.proj.fromLonLat([17.91465, 59.47587]), 
-                    zoom: 15
-                })
-            });
+                    zoom: 15 // You can adjust the zoom level as needed
+    })})
         
 
         // Marker 1 Häggvik
