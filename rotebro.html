@@ -89,7 +89,7 @@
 <body>
     
 <!-- First Map -->
-<div id="osm-map" style="width: 100%; height: 500px;"></div>
+<div id="osm-map" style="width: 100%; height: 500px;">
 
 <!-- Second Map 
 <div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
@@ -114,7 +114,7 @@
 
         // Marker 1 Häggvik
 const marker1 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91465, 59.47587])),
 });
 
 const markerStyle1 = new ol.style.Style({
@@ -127,17 +127,16 @@ const markerStyle1 = new ol.style.Style({
 
 marker1.setStyle(markerStyle1);
 
-const vectorSource = new ol.source.Vector({
+const vectorSource1 = new ol.source.Vector({
     features: [marker1],
 });
 
-const vectorLayer = new ol.layer.Vector({
-    source: vectorSource,
+const vectorLayer1 = new ol.layer.Vector({
+    source: vectorSource1,
 });
 
-map.addLayer(vectorLayer);
-
+map.addLayer(vectorLayer1);
 </script>
-
+</div>
 </body>
 </html>
