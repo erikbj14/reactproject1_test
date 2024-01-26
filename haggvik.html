@@ -331,7 +331,7 @@ map.addLayer(vectorLayer3);
 
 // Marker 4 Andelsvägen 3
 const marker4 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93058, 59.44464])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9314, 59.44421])), // Adjust the longitude value
 });
 
 const markerStyle4 = new ol.style.Style({
@@ -342,7 +342,7 @@ const markerStyle4 = new ol.style.Style({
         scale: 2,
     }),
 });
-//test
+
 marker4.setStyle(markerStyle4);
 
 const vectorSource4 = new ol.source.Vector({
@@ -354,7 +354,6 @@ const vectorLayer4 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer4);
-
 
 // Marker 5 Smedjevägen
 const marker5 = new ol.Feature({
