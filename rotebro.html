@@ -162,7 +162,7 @@ map.addLayer(vectorLayer2);
 
 // Marker 2 Andelsvägen 2
 const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91750, 59.473540])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91505, 59.47695])), // Adjust the longitude value
 });
 
 const markerStyle3 = new ol.style.Style({
@@ -181,10 +181,11 @@ const vectorSource3 = new ol.source.Vector({
 });
 
 const vectorLayer3 = new ol.layer.Vector({
-    source: vectorSource3, // Use vectorSource2 for the source
+    source: vectorSource, // Use vectorSource2 for the source
 });
 
 map.addLayer(vectorLayer3);
+
 
 </script>
 </body>
