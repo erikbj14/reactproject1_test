@@ -704,7 +704,7 @@ document.getElementById("popup-container7").style.display = "none";
 document.getElementById("popup-container8").style.display = "none";
 document.getElementById("popup-container9").style.display = "none";
 document.getElementById("popup-container10").style.display = "none";
-document.getElementById("popup-container11").style.display = "none";
+document.getElementById("popup-container").style.display = "none";
 const clickedCoord = event.coordinate;
 
 // Adjust the clicked coordinate (move slightly to the left and up)
@@ -817,7 +817,7 @@ popupContainer.style.top = pixel[1] + 'px';
         function mouseOut() {
             // No parameter (id) is needed in this function
             // Perform actions based on the logic you need
-            if (id === "demo") {
+            if (id === "demo") {alert("mouseout demo");
                 document.getElementById("demo").innerHTML = "Staffans väg/ Norrvikenleden";
                 document.getElementById("popup-container2").style.display = "none";
                 document.getElementById("popup-container3").style.display = "none";
