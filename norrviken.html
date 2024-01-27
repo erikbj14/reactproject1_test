@@ -104,6 +104,31 @@
                 })
             });
         });
+
+        // Marker 1 Häggvik
+const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9242, 59.459])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+map.addLayer(vectorLayer);
+
         </script>
 </body>
 </html>
