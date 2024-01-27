@@ -13,8 +13,8 @@
             position: absolute;
             height: 700px;
             width: 500px;
-            top: 0px;
-            left: 0px;
+            top: 146px;
+            left: 8px;
         }
    
         .dropdown {
@@ -82,15 +82,24 @@
 </head>
 <body>
     
-<!-- First Map -->
-<div id="map" style="width: 100%; height: 500px;"></div>
+    <div id="osm-map">
+        <div class="dropdown">
 
-<!-- Second Map 
-<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
-    <!-- First Map Script -->
-    <!-- Map Script -->
-    <script>
-        var map = new ol.Map({
+            <a href="index.html">
+                <button>Tillbaka</button>
+            </a>
+            </div>
+        </div>
+
+        <div id="popup-container">
+            <!--Tabell över parkeringar-->
+            
+            <!-- <div id="popup-content"> -->
+            <!--</div>-->
+        </div>
+
+        <script>
+            var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -98,11 +107,12 @@
         })
     ],
     view: new ol.View({
-                    center: ol.proj.fromLonLat([17.91465, 59.47587]), 
+                    center: ol.proj.fromLonLat([17.9242, 59.459]), 
                     zoom: 15 // You can adjust the zoom level as needed
     })})
+        
 
-        // Marker 1 Norrviken
+        // Marker 1 Häggvik
 const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9242, 59.459])),
 });
@@ -124,7 +134,6 @@ const vectorSource = new ol.source.Vector({
 const vectorLayer = new ol.layer.Vector({
     source: vectorSource,
 });
-
 map.addLayer(vectorLayer);
 </script>
 </body>
