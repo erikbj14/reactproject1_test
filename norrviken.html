@@ -331,12 +331,12 @@ map.on('click', function (event) {
     function mouseOver(id) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
-            //alert('Kolla: ' + id);
+            alert('Kolla: ' + id);
             demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
-            //alert('Kolla: ' + id);
+            alert('Kolla: ' + id);
             document.getElementById("demo2").innerHTML = "Skolvägen";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
@@ -344,12 +344,12 @@ map.on('click', function (event) {
     }
     function mouseOut(id) {
         if (id === "demo") {
-            //alert('Kolla2: ' + id);
+            alert('Kolla2: ' + id);
             demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
-            //alert('Kolla2: ' + id);
+            alert('Kolla2: ' + id);
             document.getElementById("demo2").innerHTML = "Skolvägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
