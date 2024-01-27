@@ -204,9 +204,9 @@ map.addLayer(vectorLayer3);
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen/ Postvägen 9024</td>
+        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_Andelsvagen">Stationsvägen/ Postvägen 9024</td>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Skolvägen</td>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_hammarbacken">Skolvägen</td>
     </tr>
     <tr>
         <th width="15"></th>
@@ -229,138 +229,5 @@ map.addLayer(vectorLayer3);
         </td>
     </tr>
 </table>
-<!--Andelsvägen-->
-<div id="popup-container2">
-    <table width="300" border="0">
-
-        <tr>
-            <th width="15"><img src="parking.svg"></th>
-
-
-
-            <th colspan=" 4" align="left">Stationsvägen/ Postvägen 9024</th>
-
-
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
-        </tr>
-    </table>
-</div>
-
-<!--Skolvägen-->
-<div id="popup-container4">
-    <table width="300" border="0">
-
-        <tr>
-            <th width="15"><img src="parking2.svg"></th>
-
-
-
-            <th colspan=" 4" align="left">Skolvägen</th>
-
-
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9030 Parkering zon A</td></tr><tr><td>Kostnad: 10 kr per timme, helger ingen kostnad</td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
-        </tr>
-    </table>
-</div>
-<div id="popup-container2">
-
-</div>
-
-<div id="popup-container4">
-
-</div> <script>
-    const demoElement = document.getElementById("demo");
-
-        // Add click event listener to the map view
-map.on('click', function (event) {
-    //alert("zoom")
-    // F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
-    // Get the clicked coordinate
-   // if (flag == 10) {
-   //     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
-        document.getElementById('reloadButton').addEventListener('click', function () {
-            location.reload();
-        });
-        //Nedan rensa vid zoom
-        document.getElementById("reloadButton").hidden = "";
-        //document.getElementById("marker7Layer").style.visibility = "none"; 
-        //document.getElementById("popup-container4").style.display = "none";
-        document.getElementById("popup-container2").style.display = "none";
-        document.getElementById("popup-container4").style.display = "none";
-        const clickedCoord = event.coordinate;
-
-        // Adjust the clicked coordinate (move slightly to the left and up)
-        const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
-
-        // Get the current zoom level
-        const currentZoom = map.getView().getZoom();
-
-        // Set the new zoom level (you can adjust this value)
-        const newZoom = currentZoom + 1;
-
-        // Set the new zoom level and center the map on the adjusted coordinate
-        map.getView().animate({ zoom: newZoom, center: adjustedCoord });
-    //};
-});
-
-
-
-
-
-    /*  if (id === "start") { <script>location.replace*/
-
-
-    const popupContainer = document.getElementById('popup-container3');
-
-    //const popupContainer = document.getElementById('popup-container4'); }
-
-    // Update the position when the map is moved or zoomed
-    map.on('moveend', function () {
-        //alert("zoomad IGEN")
-        const center = map.getView().getCenter();
-        const pixel = map.getPixelFromCoordinate(center);
-
-        // Set the position of the popup container based on the pixel coordinates
-        popupContainer.style.left = pixel[0] + 'px';
-        popupContainer.style.top = pixel[1] + 'px';
-    });
-    function mouseOver(id) {
-        // Check the ID and perform actions accordingly
-        if (id === "demo") {
-            //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
-            document.getElementById("popup-container2").style.display = "block";
-            document.getElementById("popup-container4").style.display = "none";
-        } else if (id === "demo2") {
-            //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
-            document.getElementById("popup-container4").style.display = "block";
-            document.getElementById("popup-container2").style.display = "none";
-        }
-    }
-    function mouseOut(id) {
-        if (id === "demo") {
-            //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container4").style.display = "none";
-        } else if (id === "demo2") {
-            //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container4").style.display = "none";
-        }
-    }
-    //console.log('Demo Element:', demoElement);
-</script>
-
-<!--<div id="popup-content"></div>-->
-</div>
-
-<!--<div id="popup8"><i><b>Parkeringen</b></i></div>-->
 </body>
 </html>
