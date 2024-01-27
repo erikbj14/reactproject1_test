@@ -83,29 +83,26 @@
 <body>
     
 <!-- First Map -->
-<div id="osm-map" style="width: 100%; height: 500px;"></div>
+<div id="map" style="width: 100%; height: 500px;"></div>
 
 <!-- Second Map 
 <div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
     <!-- First Map Script -->
     <!-- Map Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var map = new ol.Map({
-                target: 'osm-map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([17.9242, 59.459]),
-                    zoom: 15
-                })
-            });
-        });
+        var map = new ol.Map({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
+                    center: ol.proj.fromLonLat([17.91465, 59.47587]), 
+                    zoom: 15 // You can adjust the zoom level as needed
+    })})
 
-        // Marker 1 Häggvik
+        // Marker 1 Norrviken
 const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9242, 59.459])),
 });
@@ -127,8 +124,8 @@ const vectorSource = new ol.source.Vector({
 const vectorLayer = new ol.layer.Vector({
     source: vectorSource,
 });
-map.addLayer(vectorLayer);
 
-        </script>
+map.addLayer(vectorLayer);
+</script>
 </body>
 </html>
