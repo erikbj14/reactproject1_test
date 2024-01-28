@@ -97,20 +97,20 @@
     <!-- First Map Script -->
     <!-- Map Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var map = new ol.Map({
-                target: 'osm-map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([17.9010, 59.5200]),
-                    zoom: 15
-                })
-            });
-        });
+
+var map = new ol.Map({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
+        center: ol.proj.fromLonLat([17.9010, 59.5200]),//0,0045 är ca 500 m
+    zoom: 15 // You can adjust the zoom level as needed
+    })})
+
+
 
 
          // Marker 1 industrivägen TEST
