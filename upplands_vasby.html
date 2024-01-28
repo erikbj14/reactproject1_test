@@ -114,26 +114,10 @@
 
 
  // Marker 1 Upplands Väsby station
- // Initialize the map
-var map = new ol.Map({
-    target: 'osm-map', // Assuming your map container has the id 'osm-map'
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    view: new ol.View({
-        center: ol.proj.fromLonLat([17.91465, 59.47587]),
-        zoom: 15
-    })
-});
-
-// Create a marker feature
-const marker = new ol.Feature({
+ const marker = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5208])),
 });
 
-// Style for the marker
 const markerStyle = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
@@ -142,10 +126,8 @@ const markerStyle = new ol.style.Style({
     }),
 });
 
-// Set the style for the marker feature
 marker.setStyle(markerStyle);
 
-// Create a vector source and layer
 const vectorSource = new ol.source.Vector({
     features: [marker],
 });
@@ -153,10 +135,7 @@ const vectorSource = new ol.source.Vector({
 const vectorLayer = new ol.layer.Vector({
     source: vectorSource,
 });
-
-// Add the vector layer to the map
 map.addLayer(vectorLayer);
-
 
         // Marker 1 industrivägen
         const marker1 = new ol.Feature({
