@@ -114,11 +114,11 @@
 
 
  // Marker 1 Upplands Väsby station
- const marker = new ol.Feature({
+ const marker11 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5208])),
 });
 
-const markerStyle = new ol.style.Style({
+const markerStyle11 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         src: './location-dot-solid.svg',
@@ -126,16 +126,16 @@ const markerStyle = new ol.style.Style({
     }),
 });
 
-marker.setStyle(markerStyle);
+marker11.setStyle(markerStyle11);
 
-const vectorSource = new ol.source.Vector({
-    features: [marker],
+const vectorSource11 = new ol.source.Vector({
+    features: [marker11],
 });
 
-const vectorLayer = new ol.layer.Vector({
-    source: vectorSource,
+const vectorLayer11 = new ol.layer.Vector({
+    source: vectorSource11,
 });
-map.addLayer(vectorLayer);
+map.addLayer(vectorLayer11);
 
         // Marker 1 industrivägen
         const marker1 = new ol.Feature({
