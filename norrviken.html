@@ -134,6 +134,31 @@
                     center: ol.proj.fromLonLat([17.9242, 59.459]), 
                     zoom: 15 // You can adjust the zoom level as needed
     })})
+
+     // Marker 1 Upplands Väsby station
+const marker = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5208])),
+});
+
+const markerStyle = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker.setStyle(markerStyle);
+
+const vectorSource = new ol.source.Vector({
+    features: [marker],
+});
+
+const vectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+map.addLayer(vectorLayer);
+
         
 
         // Marker 1 Norrviken
@@ -144,21 +169,21 @@ const marker1 = new ol.Feature({
 const markerStyle1 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        src: './location-dot-solid.svg',
+        src: './parking.svg',
         scale: 2,
     }),
 });
 
 marker1.setStyle(markerStyle1);
 
-const vectorSource = new ol.source.Vector({
+const vectorSource1 = new ol.source.Vector({
     features: [marker1],
 });
 
-const vectorLayer = new ol.layer.Vector({
-    source: vectorSource,
+const vectorLayer1 = new ol.layer.Vector({
+    source: vectorSource1,
 });
-map.addLayer(vectorLayer);
+map.addLayer(vectorLayer1);
 
 // Stationsvägen/ Postvägen 9024
 const marker2 = new ol.Feature({
