@@ -312,95 +312,157 @@ map.addLayer(vectorLayer4);
 
 </script>
 
-<table width="500" border="1">
+<table width="500" border="0">
     <tr>
+
         <th width="15"><img src="parking.svg"></th>
-        <th colspan="4" align="left">Pendelparkering</th>
-        <th width="15"><img src="parking2.svg"></th>
-        <th colspan="4" align="left">Alternativa parkeringar</th>
+            <th colspan="4" align="left">Pendelparkering</th>
+            <th width="15"></th>
+            <th colspan="4" align="left"></th>
+        </tr>
+    <tr>
+            <th width="15"></th>
+            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Staffans väg/ Norrvikenleden</td>
+            <th width="15"><img src="train.svg"></th>
+            <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Upplands%20V%C3%A4sby&ArrDep=departure" target="_blank">Upplands Väsby</a>&nbsp; Trafikverket</td>        
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_Andelsvagen">Andelsvägen</td>
-        <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_smedjevägen">Smedjevägen</td>
-    </tr>
-    <tr>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Staffans väg</td>
         <th width="15"></th>
         <td colspan="4"></td>
-        <th width="15"></th>
-        <td colspan="4" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_hammarbacken">Hammarbacken</td>
     </tr>
-</tr>
-<tr style="height:10px">
-    <th width="15"></th>
-    <td colspan="4"></td>
-    <th width="15"></th>
-    <td colspan="4"></td>
-</tr>
     <tr>
-        <td width="15"><img src="train.svg"></td>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Upplands%20V%C3%A4sby&ArrDep=departure" target="_blank">Häggvik</a>&nbsp; Trafikverket</td>
-        <td colspan="3" align="center" style="padding: 0px; font-size: 1px;" id="start">
-            <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
-        </td>
+        <td width="15"></td>
+        <td colspan="4" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_staffan29">Staffans väg/ Rotevägen</td>
+        <th width="15"></th>
+        <td colspan="4"></td>
     </tr>
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left" id="demo4" onmouseover="mouseOver('demo4')" onmouseout="mouseOut('demo4')" class="highlight_kung_hans">Rotebrovägen/ Kung Hans väg</td>
+        <th width="15"></th>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Rotebrovägen/ Hertig Karls väg</td>
+        <td colspan="5" align="center" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>
+
+    </tr>
+
 </table>
-<!--</div>-->
 
-<!--Andelsvägen-->
-<div id="popup-container2">
-    <table width="300" border="0">
 
-        <tr>
-            <th width="15"><img src="parking.svg"></th>
+        
 
 
 
-            <th colspan=" 4" align="left">Andelsvägen</th>
 
+    <!--sollentunaholmsvagen-->
+    <div id="popup-container2">
+        <table width="300" border="0">
 
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
-        </tr>
-    </table>
-</div>
-<!--Smedjevägen-->
-<div id="popup-container2">
-    <table width="300" border="0">
-
-        <tr>
-            <th width="15"><img src="parking.svg"></th>
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
 
 
 
-            <th colspan=" 4" align="left">Andelsvägen</th>
+                <th colspan=" 4" align="left">Staffans väg/ Norrvikenleden</th>
 
 
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
-        </tr>
-    </table>
-</div>
-<!--Smedjevägen-->
-<div id="popup-container4">
-    <table width="300" border="0">
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9027 59 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
 
-        <tr>
-            <th width="15"><img src="parking2.svg"></th>
+    </div>
+    <!--ragnarLundqvistvag-->
+    <div id="popup-container2">
+        <table width="300" border="0">
 
-
-
-            <th colspan=" 4" align="left">Smedjevägen</th>
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
 
 
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9030 Parkering zon A</td></tr><tr><td>Kostnad: 10 kr per timme, helger ingen kostnad</td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
-        </tr>
-    </table>
+
+                <th colspan=" 4" align="left">Staffans väg 9028</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Staffans väg ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <!--ragnarLundqvistvag-->
+    <div id="popup-container4">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg 9028</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Staffans väg</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container7">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg/ Rotevägen 9029</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">68 platser, ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Oftast finns det platser.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container9">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+                <th colspan=" 5" align="left">Rotebrovägen/ Kung Hans väg 9025</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Rotebrovägen/ Kung Hans väg – 24 platser, ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container11">
+        <table width="300" border="0">
+
+            <tr>
+
+                <th width="15"><img src="parking.svg"></th>
+
+                <th colspan=" 5" align="left">Rotebrovägen/ Hertig Karls väg 9026</th>
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Rotebrovägen/ Hertig Karls väg – Rotebrovägen/Hertig Karls väg – 68 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            </tr>
+        </table>
 </div>
 <div id="popup-container7">
     <table width="300" border="0">
