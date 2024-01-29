@@ -485,6 +485,10 @@ map.addLayer(vectorLayer4);
 
 <!--<div id="popup-container3"></div>-->
 
+<div id="popup-container">
+
+</div>
+
 <div id="popup-container2">
 
 </div>
@@ -492,6 +496,7 @@ map.addLayer(vectorLayer4);
 <div id="popup-container3">
 
 </div>
+
 
 <div id="popup-container4">
 
@@ -501,141 +506,239 @@ map.addLayer(vectorLayer4);
 
 </div>
 
-
 <div id="popup-container6">
+
 </div>
 
+
 <div id="popup-container7">
+
+</div>
+
+<div id="popup-container8">
+
+</div>
+
+
+<div id="popup-container9">
+
+</div>
+
+<div id="popup-container10">
+
+</div>
+
+
+<div id="popup-container11">
+
 </div>
 
 <script>
     const demoElement = document.getElementById("demo");
 
-        // Add click event listener to the map view
+// Add click event listener to the map view
 map.on('click', function (event) {
-    //alert("zoom")
-    // F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
-    // Get the clicked coordinate
-   // if (flag == 10) {
-   //     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
-        document.getElementById('reloadButton').addEventListener('click', function () {
-            location.reload();
-        });
-        //Nedan rensa vid zoom
-        document.getElementById("reloadButton").hidden = "";
-        //document.getElementById("marker7Layer").style.visibility = "none"; 
-        //document.getElementById("popup-container4").style.display = "none";
-        document.getElementById("popup-container5").style.display = "none";
-        document.getElementById("popup-container2").style.display = "none";
-        document.getElementById("popup-container3").style.display = "none";
-        document.getElementById("popup-container6").style.display = "none";
-        document.getElementById("popup-container7").style.display = "none";
-        const clickedCoord = event.coordinate;
+//alert("zoom")
+// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
+// Get the clicked coordinate
+// if (flag == 10) {
+//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+document.getElementById('reloadButton').addEventListener('click', function () {
+location.reload();
+});
+//Nedan rensa vid zoom
+document.getElementById("reloadButton").hidden = "";
+//document.getElementById("marker7Layer").style.visibility = "none"; 
+//document.getElementById("popup-container4").style.display = "none";
+document.getElementById("popup-container2").style.display = "none";
+document.getElementById("popup-container3").style.display = "none";
+document.getElementById("popup-container4").style.display = "none";
+document.getElementById("popup-container5").style.display = "none";
+document.getElementById("popup-container6").style.display = "none";
+document.getElementById("popup-container7").style.display = "none";
+document.getElementById("popup-container8").style.display = "none";
+document.getElementById("popup-container9").style.display = "none";
+document.getElementById("popup-container10").style.display = "none";
+document.getElementById("popup-container").style.display = "none";
+const clickedCoord = event.coordinate;
 
-        // Adjust the clicked coordinate (move slightly to the left and up)
-        const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+// Adjust the clicked coordinate (move slightly to the left and up)
+const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
 
-        // Get the current zoom level
-        const currentZoom = map.getView().getZoom();
+// Get the current zoom level
+const currentZoom = map.getView().getZoom();
 
-        // Set the new zoom level (you can adjust this value)
-        const newZoom = currentZoom + 1;
+// Set the new zoom level (you can adjust this value)
+const newZoom = currentZoom + 1;
 
-        // Set the new zoom level and center the map on the adjusted coordinate
-        map.getView().animate({ zoom: newZoom, center: adjustedCoord });
-    //};
+// Set the new zoom level and center the map on the adjusted coordinate
+map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+//};
 });
 
 
 
 
 
-    /*  if (id === "start") { <script>location.replace*/
+/*  if (id === "start") { <script>location.replace*/
 
 
-    const popupContainer = document.getElementById('popup-container3');
+const popupContainer = document.getElementById('popup-container3');
 
-    //const popupContainer = document.getElementById('popup-container4'); }
+//const popupContainer = document.getElementById('popup-container4'); }
 
-    // Update the position when the map is moved or zoomed
-    map.on('moveend', function () {
-        //alert("zoomad IGEN")
-        const center = map.getView().getCenter();
-        const pixel = map.getPixelFromCoordinate(center);
+// Update the position when the map is moved or zoomed
+map.on('moveend', function () {
+//alert("zoomad IGEN")
+const center = map.getView().getCenter();
+const pixel = map.getPixelFromCoordinate(center);
 
-        // Set the position of the popup container based on the pixel coordinates
-        popupContainer.style.left = pixel[0] + 'px';
-        popupContainer.style.top = pixel[1] + 'px';
-    });
+// Set the position of the popup container based on the pixel coordinates
+popupContainer.style.left = pixel[0] + 'px';
+popupContainer.style.top = pixel[1] + 'px';
+});
+
     function mouseOver(id) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
-            //alert('Kolla: ' + id);
-            document.getElementById("demo").innerHTML = "Andelsvägen";
+            //alert(document.getElementById("demo").innerHTML)
+            document.getElementById("demo").innerHTML = "Staffans väg/ Norrvikenleden";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container3").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
             document.getElementById("popup-container5").style.display = "none";
             document.getElementById("popup-container6").style.display = "none";
             document.getElementById("popup-container7").style.display = "none";
-        } else if (id === "demo2") {
-            //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Smedjevägen";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo2") {
+            //alert(document.getElementById("demo2").innerHTML)
+            document.getElementById("demo2").innerHTML = "Staffans väg";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container5").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container3").style.display = "none";
             document.getElementById("popup-container6").style.display = "none";
             document.getElementById("popup-container7").style.display = "none";
-        } else if (id === "demo3") {
-            //alert('Kolla: ' + id);
-            document.getElementById("demo3").innerHTML = "Hammarbacken";
-            //document.getElementById(marker10Layer).style.visibility = "visible";
-            //document.getElementById(marker11Layer).style.visibility = "block"; 
-            document.getElementById("popup-container7").style.display = "block";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo3") {
+            document.getElementById("demo3").innerHTML = "Staffans väg/ Rotevägen";
             document.getElementById("popup-container6").style.display = "block";
+            document.getElementById("popup-container7").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container3").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
             document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo4") {
+            document.getElementById("demo4").innerHTML = "Rotebrovägen/ Kung Hans väg";
+            document.getElementById("popup-container8").style.display = "block";
+            document.getElementById("popup-container9").style.display = "block";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo5") {
+            document.getElementById("demo5").innerHTML = "Rotebrovägen/ Hertig Karls väg";
+            document.getElementById("popup-container10").style.display = "block";
+            document.getElementById("popup-container11").style.display = "block";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
         }
     }
-    function mouseOut(id) {
-        if (id === "demo") {
-            //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Andelsvägen";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container3").style.display = "none";
-            document.getElementById("popup-container4").style.display = "none";
-            document.getElementById("popup-container5").style.display = "none";
-            document.getElementById("popup-container6").style.display = "none";
-            document.getElementById("popup-container7").style.display = "none";
-        } else if (id === "demo2") {
-            //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Smedjevägen";
-            document.getElementById("popup-container4").style.display = "none";
-            document.getElementById("popup-container5").style.display = "none";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container3").style.display = "none";
-            document.getElementById("popup-container6").style.display = "none";
-            document.getElementById("popup-container7").style.display = "none";
-        } else if (id === "demo3") {
-           // alert('Demo3out: ' + marker10Layer);
-            document.getElementById("demo3").innerHTML = "Hammarbacken";
-           // document.getElementById(marker10Layer).style.visibility = "hidden";
-           // document.getElementById(marker11Layer).style.visibility = "hidden";
-            document.getElementById("popup-container6").style.display = "none";
-            document.getElementById("popup-container7").style.display = "none";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container3").style.display = "none";
-            document.getElementById("popup-container4").style.display = "none";
-            document.getElementById("popup-container5").style.display = "none";
-        }
-    }
-    //console.log('Demo Element:', demoElement);
-</script>
 
-<!--<div id="popup-content"></div>-->
+    function mouseOut(id) {
+        // No parameter (id) is needed in this function
+        // Perform actions based on the logic you need
+        if (id === "demo") {
+            document.getElementById("demo").innerHTML = "Staffans väg/ Norrvikenleden";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo2") {
+            document.getElementById("demo2").innerHTML = "Staffans väg";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo3") {
+            document.getElementById("demo3").innerHTML = "Staffans väg/ Rotevägen";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+             document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo4") {
+                document.getElementById("demo4").innerHTML = "Rotebrovägen/ Kung Hans väg";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+        }
+        else if (id === "demo5") {
+            document.getElementById("demo5").innerHTML = "Rotebrovägen/ Hertig Karls väg";
+            document.getElementById("popup-container10").style.display = "none";
+            document.getElementById("popup-container11").style.display = "none";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container8").style.display = "none";
+            document.getElementById("popup-container9").style.display = "none";
+        }
+    }
+</script>
 </div>
 
 </body>
