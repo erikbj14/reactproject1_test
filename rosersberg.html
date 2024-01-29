@@ -218,18 +218,18 @@ map.addLayer(vectorLayer3);
     <tr>
         <th width="15"><img src="parking.svg"></th>
         <th colspan="4" align="left">Pendelparkering</th>
-        <th width="15"><img src="parking2.svg"></th>
+        <th width="15"></th>
         <th colspan="4" align="left">Alternativa parkeringar</th>
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen/ Postvägen 9024</td>
+        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Tallbackagatan</td>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Skolvägen</td>
+        <td colspan="4"></td>
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4"></td>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_stationsvagen">Rosersbergsvägen</td>
         <th width="15"></th>
         <td colspan="4"></td>
     </tr>
@@ -248,7 +248,7 @@ map.addLayer(vectorLayer3);
         </td>
     </tr>
 </table>
-<!--Andelsvägen-->
+<!--Tallbackagatan-->
 <div id="popup-container2">
     <table width="300" border="0">
 
@@ -257,31 +257,31 @@ map.addLayer(vectorLayer3);
 
 
 
-            <th colspan=" 4" align="left">Stationsvägen/ Postvägen 9024</th>
+            <th colspan=" 4" align="left">Tallbackagatan</th>
 
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9024 21 platser,ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod xxxx 165 platser. Utöver finns en yta för parkering av tvåhjuliga mopeder och motorcyklar.</td></tr><tr><td>Avgift: 20 kr/12 h vardagar. Lördag och söndag gratis.</td></tr><tr><td align="left"></td></tr></table></td>
         </tr>
     </table>
 </div>
 
-<!--Skolvägen-->
+<!--Rosersbergsvägen-->
 <div id="popup-container4">
     <table width="300" border="0">
 
         <tr>
-            <th width="15"><img src="parking2.svg"></th>
+            <th width="15"><img src="parking.svg"></th>
 
 
 
-            <th colspan=" 4" align="left">Skolvägen</th>
+            <th colspan=" 4" align="left">Rosersbergsvägen</th>
 
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Fri parkering</td></tr><tr><td>Obs, se skyltning för städdag</td></tr><tr><td align="left"> Oftast fullt på dagen</td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">95 platser varav 4 laddplatser. 2 platser för rörelsehindrade med särskilt tillstånd.</td></tr><tr><td>Avgift: 20 kr/12 h vardagar. Lördag och söndag gratis.</td></tr><tr><td align="left"> Oftast fullt på dagen</td></tr></table></td>
         </tr>
     </table>
 </div>
@@ -290,6 +290,9 @@ map.addLayer(vectorLayer3);
 </div>
 
 <div id="popup-container4">
+    
+    
+
 
 </div> <script>
     const demoElement = document.getElementById("demo");
@@ -327,9 +330,6 @@ map.on('click', function (event) {
 });
 
 
-
-
-
     /*  if (id === "start") { <script>location.replace*/
 
 
@@ -351,12 +351,12 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
+            demoElement.innerHTML = "Tallbackagatan";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
+            document.getElementById("demo2").innerHTML = "Rosersbergsvägen";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -364,12 +364,12 @@ map.on('click', function (event) {
     function mouseOut(id) {
         if (id === "demo") {
             //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
+            demoElement.innerHTML = "Tallbackagatan";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
+            document.getElementById("demo2").innerHTML = "Rosersbergsvägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
