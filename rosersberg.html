@@ -159,7 +159,7 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// Stationsvägen/ Postvägen 9024
+// Tallbackagatan
 const marker2 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8795, 59.5823])), // Adjust the longitude value
 });
@@ -185,16 +185,16 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// Skolvägen
+// Rosersbergsvägen
 const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92299, 59.45626])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8818, 59.5828])), // Adjust the longitude value
 });
 
 const markerStyle3 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking2.svg',
+        src: './parking.svg',
         scale: 2,
     }),
 });
@@ -219,7 +219,7 @@ map.addLayer(vectorLayer3);
         <th width="15"><img src="parking.svg"></th>
         <th colspan="4" align="left">Pendelparkering</th>
         <th width="15"></th>
-        <th colspan="4" align="left">Alternativa parkeringar</th>
+        <td colspan="4"></td>
     </tr>
     <tr>
         <th width="15"></th>
