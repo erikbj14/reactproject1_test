@@ -208,7 +208,7 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 industrivägen
+        // Marker 1 Anton Tamms väg/ Industrivägen
         const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
 });
@@ -322,7 +322,7 @@ map.addLayer(vectorLayer4);
         </tr>
     <tr>
             <th width="15"></th>
-            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Industrivägen</td>
+            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Anton Tamms väg/ Industrivägen</td>
             <th width="15"><img src="train.svg"></th>
             <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Upplands%20V%C3%A4sby&ArrDep=departure" target="_blank">Upplands Väsby</a>&nbsp; Trafikverket</td>        
     </tr>
@@ -336,7 +336,7 @@ map.addLayer(vectorLayer4);
         </td>
     </tr>
 </table>
-    <!--Industrivägen-->
+    <!--Anton Tamms väg/ Industrivägen-->
     <div id="popup-container2">
         <table width="300" border="0">
 
@@ -345,12 +345,12 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Industrivägen</th>
+                <th colspan=" 4" align="left">Anton Tamms väg/ Anton Tamms väg/ Industrivägen</th>
 
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9027 59 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 59000</td></tr><tr><td></td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
             </tr>
         </table>
 
@@ -364,12 +364,12 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Ladbrokevägen</th>
+                <th colspan=" 4" align="left">Ladbrovägen (öster om station)</th>
 
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Staffans väg ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 59000</td></tr><tr><td>Taxa B</td></tr><tr><td align="left"> Oftast lediga platser.</td></tr></table></td>
             </tr>
         </table>
     </div>
@@ -452,7 +452,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Industrivägen";
+            document.getElementById("demo").innerHTML = "Anton Tamms väg/ Industrivägen";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         }
@@ -469,7 +469,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Industrivägen";
+            document.getElementById("demo").innerHTML = "Anton Tamms väg/ Industrivägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
