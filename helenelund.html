@@ -205,9 +205,9 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 industrivägen
+        // Marker 1 Eriksbergsvägen
         const marker1 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9599, 59.41063])),
 });
 
 const markerStyle1 = new ol.style.Style({
@@ -229,9 +229,9 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// Västra Bangatan
+// Åkervägen
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.85978, 59.62945])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.96131, 59.41059])), // Adjust the longitude value
 });
 
 const markerStyle2 = new ol.style.Style({
@@ -255,7 +255,7 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// Västra Bangatan II
+// Eriksbergsvägen II
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
 });
@@ -319,13 +319,13 @@ map.addLayer(vectorLayer4);
         </tr>
     <tr>
             <th width="15"></th>
-            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Västra Bangatan</td>
+            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Eriksbergsvägen</td>
             <th width="15"><img src="train.svg"></th>
             <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" target="_blank">Märsta</a>&nbsp; Trafikverket</td>        
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Brobyvägen</td>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Åkervägen</td>
         <th width="15"></th>
         <td colspan="4" align="center" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
@@ -333,7 +333,7 @@ map.addLayer(vectorLayer4);
         </td>
     </tr>
 </table>
-    <!--Industrivägen-->
+    <!--Eriksbergsvägen-->
     <div id="popup-container2">
         <table width="300" border="0">
 
@@ -342,7 +342,7 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Västra Bangatan</th>
+                <th colspan=" 4" align="left">Eriksbergsvägen</th>
 
 
             </tr>
@@ -352,7 +352,7 @@ map.addLayer(vectorLayer4);
         </table>
 
     </div>
-    <!--Brobyvägen-->
+    <!--Åkervägen-->
     <div id="popup-container4">
         <table width="300" border="0">
 
@@ -361,7 +361,7 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Brobyvägen</th>
+                <th colspan=" 4" align="left">Åkervägen</th>
 
 
             </tr>
@@ -449,13 +449,13 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Eriksbergsvägen";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         }
         else if (id === "demo2") {
             //alert(document.getElementById("demo2").innerHTML)
-            document.getElementById("demo2").innerHTML = "Brobyvägen";
+            document.getElementById("demo2").innerHTML = "Åkervägen";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -466,12 +466,12 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Eriksbergsvägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
         else if (id === "demo2") {
-            document.getElementById("demo2").innerHTML = "Brobyvägen";
+            document.getElementById("demo2").innerHTML = "Åkervägen";
             document.getElementById("popup-container4").style.display = "none";
             document.getElementById("popup-container2").style.display = "none";
         }
