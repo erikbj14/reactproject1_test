@@ -183,7 +183,7 @@ var map = new ol.Map({
 
 // Marker 1 Sollentuna station
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.94899, 59.42782])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.94899, 59.42720])),
 });
 
 const markerStyle11 = new ol.style.Style({
@@ -449,7 +449,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Sollentunavallen";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         }
@@ -466,7 +466,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Sollentunavallen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
