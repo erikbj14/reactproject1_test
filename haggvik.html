@@ -406,6 +406,35 @@ const vectorLayer6 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer6);
 
+//-----------------------------------------------------------------
+// Marker 6a Hammarbacken
+const marker6a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])),
+});
+
+const markerStyle6a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        // src: './Bild1.png',
+        //src: './parking2.svg',
+        scale: 2,
+    }),
+});
+
+marker6a.setStyle(markerStyle6a);
+
+const vectorSource6a = new ol.source.Vector({
+    features: [marker6a],
+});
+
+const vectorLayer6a = new ol.layer.Vector({
+    source: vectorSource6a,
+});
+
+map.addLayer(vectorLayer6a);
+
+//-----------------------------------------------------------------
+
 // Function to handle the click event on the parking2.svg image
 function handleParkingClick(event) {
     // Your custom logic here
