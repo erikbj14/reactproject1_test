@@ -205,7 +205,7 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 Eriksbergsvägen
+        // Marker 1 Svalgången
         const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9599, 59.41063])),
 });
@@ -255,7 +255,7 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// Eriksbergsvägen II
+// Svalgången II
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
 });
@@ -319,7 +319,7 @@ map.addLayer(vectorLayer4);
         </tr>
     <tr>
             <th width="15"></th>
-            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Eriksbergsvägen</td>
+            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Svalgången</td>
             <th width="15"><img src="train.svg"></th>
             <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Helenelund&ArrDep=departure" target="_blank">Helenelund</a>&nbsp; Trafikverket</td>        
     </tr>
@@ -333,7 +333,7 @@ map.addLayer(vectorLayer4);
         </td>
     </tr>
 </table>
-    <!--Eriksbergsvägen-->
+    <!--Svalgången-->
     <div id="popup-container2">
         <table width="300" border="0">
 
@@ -449,7 +449,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Eriksbergsvägen";
+            document.getElementById("demo").innerHTML = "Svalgången";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         }
@@ -466,7 +466,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Eriksbergsvägen";
+            document.getElementById("demo").innerHTML = "Svalgången";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
