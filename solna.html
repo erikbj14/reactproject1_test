@@ -13,12 +13,12 @@ table {
         background-color:rgba(255, 99, 71, 0.5);
     }
 
-       /* Set the map height */
-       #osm-map {
+        /* Set the map height */
+        #osm-map {
             position: absolute;
             height: 700px;
             width: 500px;
-            top: 90px;
+            top: 95px;
             left: 8px;
         }
    
@@ -60,8 +60,21 @@ table {
             z-index: 1;
         }
 
-       /*Solna*/
-       #popup-container2 {
+        #popup2 {
+            position: absolute;
+            top: 225px;
+            left: 100px;
+            height: 90px;
+            width: 500px;
+            opacity: 0.4;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            z-index: 3500;
+        }
+
+        #popup-container2 {
             position: absolute;
             top: 139px;
             left: 0px;
@@ -75,50 +88,21 @@ table {
             z-index: 3000;
             display: none; /* Initially hidden */
         }
-   
-        #popup3 {
+
+        #popup-container4 {
             position: absolute;
-            top: 245px;
-            left: 150px;
-            font-size: 50px;
-            color: blue;
-            font-size: 50px;
-            z-index: 2; /* Set a higher z-index value */
+            top: 139px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
         }
-
-       /* #popup-container5 {
-            position: absolute;
-            top: 235px;
-            left: 760px;
-            height: 30px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        }*/
-
-        /*Hammarbacken*/
-        /*#popup-container6 {
-            position: absolute;
-            top: 145px;
-            left: 90px;
-            height: 200px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden  
-        }*/
-
     </style>
 </head>
 <body>
