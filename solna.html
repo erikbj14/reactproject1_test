@@ -332,7 +332,7 @@ map.addLayer(vectorLayer4);
             <button id="reloadButton" hidden="true">Visningsläge</button>
         </td>
     </tr>
-</table>
+</table>svalgången
     <!--Industrivägen-->
     <div id="popup-container2">
         <table width="300" border="0">
@@ -357,7 +357,6 @@ map.addLayer(vectorLayer4);
         </table>
 
     </div>
-    <!--Brobyvägen-->
     <div id="popup-container4">
         <table width="300" border="0">
 
@@ -366,7 +365,7 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Brobyvägen</th>
+                <th colspan=" 4" align="left"></th>
 
 
             </tr>
@@ -456,13 +455,6 @@ popupContainer.style.top = pixel[1] + 'px';
             //alert(document.getElementById("demo").innerHTML)
             document.getElementById("demo").innerHTML = "Västra Bangatan";
             document.getElementById("popup-container2").style.display = "block";
-            document.getElementById("popup-container4").style.display = "none";
-        }
-        else if (id === "demo2") {
-            //alert(document.getElementById("demo2").innerHTML)
-            document.getElementById("demo2").innerHTML = "Brobyvägen";
-            document.getElementById("popup-container4").style.display = "block";
-            document.getElementById("popup-container2").style.display = "none";
         }
         
     }
@@ -472,12 +464,6 @@ popupContainer.style.top = pixel[1] + 'px';
         // Perform actions based on the logic you need
         if (id === "demo") {
             document.getElementById("demo").innerHTML = "Västra Bangatan";
-            document.getElementById("popup-container2").style.display = "none";
-            document.getElementById("popup-container4").style.display = "none";
-        }
-        else if (id === "demo2") {
-            document.getElementById("demo2").innerHTML = "Brobyvägen";
-            document.getElementById("popup-container4").style.display = "none";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
