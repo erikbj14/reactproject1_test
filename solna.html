@@ -325,7 +325,7 @@ map.addLayer(vectorLayer4);
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Brobyvägen</td>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28"></td>
         <th width="15"></th>
         <td colspan="4" align="center" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
@@ -347,7 +347,7 @@ map.addLayer(vectorLayer4);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Solna har inga infartsparkeringar för pendlare. Taxor som gäller för parkering i Solna:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
+                <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Solna har inga infartsparkeringar för pendlare. Taxor som gäller för parkering i Solna:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
                     (max 120 kronor per dygn)
                     <br>Taxa B (Områdeskod 8020): 25 kronor per timme
                     <br>Taxa C (Områdeskod 8030): 25 kronor per timme
@@ -356,23 +356,6 @@ map.addLayer(vectorLayer4);
             </tr>
         </table>
 
-    </div>
-    <div id="popup-container4">
-        <table width="300" border="0">
-
-            <tr>
-                <th width="15"><img src="parking.svg"></th>
-
-
-
-                <th colspan=" 4" align="left"></th>
-
-
-            </tr>
-            <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 86112, 86113 (Obs!)</td></tr><tr><td>Kostnad: 20 kr á 24 timmar</td></tr><tr><td align="left"></td></tr></table></td>
-            </tr>
-        </table>
     </div>
 
 
@@ -453,7 +436,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Om parkeing i Solna";
             document.getElementById("popup-container2").style.display = "block";
         }
         
@@ -463,7 +446,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("demo").innerHTML = "Om parkeing i Solna";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
