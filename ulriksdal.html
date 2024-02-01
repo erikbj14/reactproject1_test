@@ -13,8 +13,8 @@ table {
         background-color:rgba(255, 99, 71, 0.5);
     }
 
-       /* Set the map height */
-       #osm-map {
+        /* Set the map height */
+        #osm-map {
             position: absolute;
             height: 700px;
             width: 500px;
@@ -60,8 +60,36 @@ table {
             z-index: 1;
         }
 
-       /*Andelsvägen*/
-       #popup-container2 {
+        #popup2 {
+            position: absolute;
+            top: 225px;
+            left: 100px;
+            height: 90px;
+            width: 500px;
+            opacity: 0.4;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            z-index: 3500;
+        }
+
+        #popup-container2 {
+            position: absolute;
+            top: 139px;
+            left: 0px;
+            height: 250px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        #popup-container4 {
             position: absolute;
             top: 139px;
             left: 0px;
@@ -75,80 +103,7 @@ table {
             z-index: 3000;
             display: none; /* Initially hidden */
         }
-   
-        #popup3 {
-            position: absolute;
-            top: 245px;
-            left: 150px;
-            font-size: 50px;
-            color: blue;
-            font-size: 50px;
-            z-index: 2; /* Set a higher z-index value */
-        }
 
-         /*Smedjevägen*/
-         #popup-container4 {
-            position: absolute;
-            top: 139px;
-            left: 0px;
-            height: 120px;
-            width: 450px;
-            background-color: white;
-            padding: 10px;
-            border: 2px solid blue; /* Change the border color to blue */
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            display: none; /* Initially hidden */
-        }
-
-       /* #popup-container5 {
-            position: absolute;
-            top: 235px;
-            left: 760px;
-            height: 30px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        }*/
-
-        /*Hammarbacken*/
-        /*#popup-container6 {
-            position: absolute;
-            top: 145px;
-            left: 90px;
-            height: 200px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden  
-        }*/
-
-        #popup-container7 {
-    position: absolute;
-    top: 139px;
-    left: 0px;
-    height: 120px;
-    width: 450px;
-    background-color: white;
-    padding: 10px;
-    border: 2px solid blue;
-    border-radius: 5px;
-    max-width: 300px;
-    z-index: 3000;
-    display: none;
-}
     </style>
 </head>
 <body>
@@ -319,9 +274,9 @@ map.addLayer(vectorLayer4);
         </tr>
     <tr>
             <th width="15"></th>
-            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Om parkering i Solna</td>
+            <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Om parkering i Ulriksdal</td>
             <th width="15"><img src="train.svg"></th>
-            <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Solna&ArrDep=departure" target="_blank">Solna</a>&nbsp; Trafikverket</td>        
+            <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" target="_blank">Ulriksdal</a>&nbsp; Trafikverket</td>        
     </tr>
     <tr>
         <th width="15"></th>
@@ -341,12 +296,12 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Om parkering i Solna</th>
+                <th colspan=" 4" align="left">Om parkering i Ulriksdal</th>
 
 
             </tr>
             <tr>
-                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Solna har inga infartsparkeringar för pendlare. Taxor som gäller för parkering i Solna:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
+                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Ulriksdal tillhör Solna kommun och har inga infartsparkeringar för pendlare. Taxor som gäller för parkering:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
                     (max 120 kronor per dygn)
                     <br>Taxa B (Områdeskod 8020): 25 kronor per timme
                     <br>Taxa C (Områdeskod 8030): 25 kronor per timme
@@ -431,7 +386,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Om parkering i Solna";
+            document.getElementById("demo").innerHTML = "Om parkering i Ulriksdal";
             document.getElementById("popup-container2").style.display = "block";
         }
         
@@ -441,7 +396,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Om parkering i Solna";
+            document.getElementById("demo").innerHTML = "Om parkering i Ulriksdal";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
