@@ -64,7 +64,7 @@ table {
             position: absolute;
             top: 225px;
             left: 100px;
-            height: 90px;
+            height: 120px;
             width: 500px;
             opacity: 0.4;
             background-color: blue;
@@ -346,16 +346,16 @@ document.getElementById("popup-container4").style.display = "none";
 const clickedCoord = event.coordinate;
 
 // Adjust the clicked coordinate (move slightly to the left and up)
-//const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
 
 // Get the current zoom level
-//const currentZoom = map.getView().getZoom();
+const currentZoom = map.getView().getZoom();
 
 // Set the new zoom level (you can adjust this value)
-//const newZoom = currentZoom + 1;
+const newZoom = currentZoom + 1;
 
 // Set the new zoom level and center the map on the adjusted coordinate
-//map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+map.getView().animate({ zoom: newZoom, center: adjustedCoord });
 //};
 });
 
