@@ -408,14 +408,14 @@ map.addLayer(vectorLayer6);
 
 // Marker 6a Hammarbacken
 const marker6a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9242, 59.444])),
 });
 
 const markerStyle6a = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        src: './Bild4.png',
-        //src: './namnlos.png',
+        //src: './Bild4.png',
+        src: './namnlos.png',
         scale: 2,
     }),
 });
@@ -423,7 +423,7 @@ const markerStyle6a = new ol.style.Style({
 marker6a.setStyle(markerStyle6a);
 
 const vectorSource6a = new ol.source.Vector({
-    features: [marker6],
+    features: [marker6a],
 });
 
 const vectorLayer6a = new ol.layer.Vector({
