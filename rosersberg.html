@@ -184,6 +184,31 @@ const vectorLayer2 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer2);
+// 86101
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8795, 59.5823])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './86101.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
 
 // Tallbacksgatan
 const marker3 = new ol.Feature({
@@ -210,7 +235,30 @@ const vectorLayer3 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer3);
+// 86102
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8818, 59.5828])), // Adjust the longitude value
+});
 
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86102.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
 
 </script>
 
@@ -262,7 +310,7 @@ map.addLayer(vectorLayer3);
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 86101. Ej vardagar 02.30-04.30 och lör och sön 03.00-05.00.</td></tr><tr><td>Avgift: Vardagar 20 kr a 24 h. Ofta fullt på vardagar</td></tr><tr><td align="left"></td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>86101</b>. Ej vardagar 02.30-04.30 och lör och sön 03.00-05.00.</td></tr><tr><td>Avgift: Vardagar 20 kr a 24 h. Ofta fullt på vardagar</td></tr><tr><td align="left"></td></tr></table></td>
         </tr>
     </table>
 </div>
@@ -281,7 +329,7 @@ map.addLayer(vectorLayer3);
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">86102</td></tr><tr><td>Ej vardagar 02.30-04.30 och lör och sön 03.00-05.00.</td></tr><tr><td align="left">Avgift: Vardagar 20 kr a 24 h. Finns oftast många lediga parkeringar</td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left"><b>86102</b></td></tr><tr><td>Ej vardagar 02.30-04.30 och lör och sön 03.00-05.00.</td></tr><tr><td align="left">Avgift: Vardagar 20 kr a 24 h. Finns oftast många lediga parkeringar</td></tr></table></td>
         </tr>
     </table>
 </div>
