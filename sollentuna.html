@@ -139,7 +139,7 @@ table {
     position: absolute;
     top: 139px;
     left: 0px;
-    height: 120px;
+    height: 100px;
     width: 450px;
     background-color: white;
     padding: 10px;
@@ -254,58 +254,32 @@ const vectorLayer2 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer2);
-
-// Västra Bangatan II
-const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
+//--------------------------------
+// Vallen, 9032
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9508, 59.43521])), // Adjust the longitude value
 });
 
-const markerStyle3 = new ol.style.Style({
+const markerStyle2a = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking.svg',
-        scale: 2,
-    }),
-});
-
-marker3.setStyle(markerStyle3);
-
-const vectorSource3 = new ol.source.Vector({
-    features: [marker3], // Use marker2 as the feature
-});
-
-const vectorLayer3 = new ol.layer.Vector({
-    source: vectorSource3, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer3);
-
-// Ladbrovägen 3
-const marker4 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62984])), // Adjust the longitude value
-});
-
-const markerStyle4 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking.svg',
-        scale: 2,
+        src: './9032.png',
+        scale: 0.1,
     }),
 });
  
-marker4.setStyle(markerStyle4);
+marker2a.setStyle(markerStyle2a);
 
-const vectorSource4 = new ol.source.Vector({
-    features: [marker4], // Use marker2 as the feature
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
 });
 
-const vectorLayer4 = new ol.layer.Vector({
-    source: vectorSource4, // Use vectorSource2 for the source
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
 });
 
-map.addLayer(vectorLayer4);
+map.addLayer(vectorLayer2a);
+//--------------------------------
 
 </script>
 
@@ -325,7 +299,7 @@ map.addLayer(vectorLayer4);
     </tr>
     <tr>
         <th width="15"></th>
-        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Vallen, Arenavägen</td>
+        <td colspan="4"></td>
         <th width="15"></th>
         <td colspan="4" align="center" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
