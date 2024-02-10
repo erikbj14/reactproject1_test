@@ -342,6 +342,33 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
+// 9027
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91754, 59.47354])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9027.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+//-------------------------------------------
+
 // Staffans väg, 9028
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91505, 59.47695])), // Adjust the longitude value
@@ -367,6 +394,32 @@ const vectorLayer3 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer3);
+//-----------------------------------------
+// 9028
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91505, 59.47695])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9028.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
 
 // Staffans väg/ Rotevegen 9029
 const marker4 = new ol.Feature({
@@ -393,6 +446,32 @@ const vectorLayer4 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer4); 
+//------------------------------------------
+// 9029
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91336, 59.47893])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9029.png',
+        scale: 0.1,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a); 
 
 // Staffans väg/ Rotevägen 9029
 const marker5 = new ol.Feature({
@@ -446,6 +525,32 @@ const vectorLayer6 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer6);
 
+// 9025
+const marker6a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9157, 59.4741])), // Adjust the longitude value
+}); 
+
+const markerStyle6a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9025.png',
+        scale: 0.1,
+    }),
+});
+
+marker6a.setStyle(markerStyle6);
+
+const vectorSource6a = new ol.source.Vector({
+    features: [marker6a], // Use marker2 as the feature
+});
+
+const vectorLayer6a = new ol.layer.Vector({
+    source: vectorSource6a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer6a);
+
 // Rotebrovägen/ Hertig Karls väg 9026 (laddstolpsidan)
 const marker7 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91219, 59.47778])), // Adjust the longitude value
@@ -471,6 +576,32 @@ const vectorLayer7 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer7);
+
+// 9026 (laddstolpsidan)
+const marker7a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91219, 59.47778])), // Adjust the longitude value
+}); 
+
+const markerStyle7a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9026.png',
+        scale: 0.1,
+    }),
+});
+
+marker7a.setStyle(markerStyle7a);
+
+const vectorSource7a = new ol.source.Vector({
+    features: [marker7a], // Use marker2 as the feature
+});
+
+const vectorLayer7a = new ol.layer.Vector({
+    source: vectorSource7a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7a);
 
 </script>
 
