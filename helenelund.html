@@ -102,40 +102,9 @@ table {
             display: none; /* Initially hidden */
         }
 
-       /* #popup-container5 {
-            position: absolute;
-            top: 235px;
-            left: 760px;
-            height: 30px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        }*/
+       
 
-        /*Hammarbacken*/
-        /*#popup-container6 {
-            position: absolute;
-            top: 145px;
-            left: 90px;
-            height: 200px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden  
-        }*/
-
-        #popup-container7 {
+    #popup-container7 {
     position: absolute;
     top: 139px;
     left: 0px;
@@ -162,14 +131,9 @@ table {
         </a>
         </div>
     </div>
-
-<!-- Second Map 
-<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
-    <!-- First Map Script -->
-    <!-- Map Script -->
     <script>
 
-var map = new ol.Map({
+    var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -284,32 +248,8 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// Svalgången II
-const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
-});
-
-const markerStyle3 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking.svg',
-        scale: 2,
-    }),
-});
-
-marker3.setStyle(markerStyle3);
-
-const vectorSource3 = new ol.source.Vector({
-    features: [marker3], // Use marker2 as the feature
-});
-
-const vectorLayer3 = new ol.layer.Vector({
-    source: vectorSource3, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer3);
 //------------------------------------------------
+
 // Åkervägen 9022
 const marker3a = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.96131, 59.41059])), // Adjust the longitude value
@@ -403,7 +343,7 @@ map.addLayer(vectorLayer4);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9021, 61 platser ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9021</b>, 61 platser ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
             </tr>
         </table>
 
@@ -422,7 +362,7 @@ map.addLayer(vectorLayer4);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9022, 25 platser ej ons kl 08.00–12.00</td></tr><tr><td>Kostnad: 20 kr á 24 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9022</b>, 25 platser ej ons kl 08.00–12.00</td></tr><tr><td>Kostnad: 20 kr á 24 timmar</td></tr><tr><td align="left"></td></tr></table></td>
             </tr>
         </table>
     </div>
