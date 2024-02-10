@@ -404,6 +404,35 @@ const vectorLayer5 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer5);
 
+//--------------------------------
+//--------------------
+// Marker 5a Smedjevägen
+const marker5a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93346, 59.44437])), // Adjust the longitude value
+});
+
+const markerStyle5a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9030.png',
+        scale: 2,
+    }),
+});
+
+marker5a.setStyle(markerStyle5a);
+
+const vectorSource5a = new ol.source.Vector({
+    features: [marker5a], // Use marker2 as the feature
+});
+
+const vectorLayer5a = new ol.layer.Vector({
+    source: vectorSource5a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer5a);
+//--------------------------------
+
 // Marker 6 Hammarbacken
 const marker6 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])),
@@ -432,7 +461,7 @@ map.addLayer(vectorLayer6);
 
 // Marker 6a Hammarbacken
 const marker6a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9232, 59.445])), //add to the east, add to the north
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9233, 59.445])), //add to the east, add to the north
 });
 
 const markerStyle6a = new ol.style.Style({
