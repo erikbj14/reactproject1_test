@@ -77,7 +77,7 @@
             position: absolute;
             top: 139px;
             left: 0px;
-            height: 120px;
+            height: 100px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -92,7 +92,7 @@
             position: absolute;
             top: 139px;
             left: 0px;
-            height: 120px;
+            height: 100px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -185,6 +185,33 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
+// 9024
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92488, 59.45849])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9024.png',
+        scale: 0.2,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+
+
 // Skolvägen
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92299, 59.45626])), // Adjust the longitude value
@@ -262,7 +289,7 @@ map.addLayer(vectorLayer3);
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9024 21 platser,ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9024</b> 21 platser,ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
         </tr>
     </table>
 </div>
