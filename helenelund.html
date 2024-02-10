@@ -205,8 +205,8 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 Svalgången
-        const marker1 = new ol.Feature({
+// Svalgången
+    const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9599, 59.41063])),
 });
 
@@ -228,6 +228,35 @@ const vectorLayer1 = new ol.layer.Vector({
     source: vectorSource1,
 });
 map.addLayer(vectorLayer1);
+
+//---------------------------
+
+// Svalgången 9021
+const marker1a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9599, 59.41063])),
+});
+
+const markerStyle1a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './9021.png',
+        scale: 0.1,
+    }),
+});
+
+marker1a.setStyle(markerStyle1a);
+
+const vectorSource1a = new ol.source.Vector({
+    features: [marker1a],
+});
+
+const vectorLayer1a = new ol.layer.Vector({
+    source: vectorSource1a,
+});
+map.addLayer(vectorLayer1a);
+
+//---------------------------
+
 
 // Åkervägen
 const marker2 = new ol.Feature({
@@ -280,6 +309,33 @@ const vectorLayer3 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer3);
+//------------------------------------------------
+// Svalgången 9022
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './9022.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
+//------------------------------------------------
+
 
 // Ladbrovägen 3
 const marker4 = new ol.Feature({
