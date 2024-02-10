@@ -352,8 +352,32 @@ const vectorSource4 = new ol.source.Vector({
 const vectorLayer4 = new ol.layer.Vector({
     source: vectorSource4, // Use vectorSource2 for the source
 });
-
 map.addLayer(vectorLayer4);
+// Andelsvägen etikett
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93057, 59.44463])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9023.png',
+        scale: 0.5,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+map.addLayer(vectorLayer4a);
+//--------------------
 // Marker 5 Smedjevägen
 const marker5 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93344, 59.44437])), // Adjust the longitude value
