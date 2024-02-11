@@ -255,6 +255,31 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
+// 86111
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.85978, 59.62945])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86111.png',
+        scale: 0.1,
+    }),
+});
+ 
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+
 // Västra Bangatan II
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
@@ -280,8 +305,32 @@ const vectorLayer3 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer3);
+// 86111 II
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
+});
 
-// Ladbrovägen 3
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86111.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
+
+// Brobyvägen
 const marker4 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62984])), // Adjust the longitude value
 });
@@ -306,6 +355,31 @@ const vectorLayer4 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer4);
+
+// 86112
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62984])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86112.png',
+        scale: 0.1,
+    }),
+});
+ 
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a);
 
 </script>
 
