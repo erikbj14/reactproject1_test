@@ -277,7 +277,7 @@ map.addLayer(vectorLayer3);
 
 // 59000
 const marker3a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8976, 59.5210])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8975, 59.5209])), // Adjust the longitude value
 });
 
 const markerStyle3a = new ol.style.Style({
@@ -326,6 +326,31 @@ const vectorLayer4 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer4);
+
+// 59000 (Högst upp NV)
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.897, 59.5221])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './59000.png',
+        scale: 0.1,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a);
 
 </script>
 
