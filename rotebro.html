@@ -536,15 +536,23 @@ map.addLayer(vectorLayer7a);
     </tr>
     <tr>
             <th width="15"></th>
-            <td width="225" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Staffans väg/ Norrvikenleden</td>
+            <td width="225" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Staffans väg/ </td>
             <th width="15"></th>
             <td width="225" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Rotebrovägen/</td>        
     </tr>
+
+    <tr>
+        <th width="15"></th>
+        <td width="225" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Norrvikenleden</td>
+        <th width="15"></th>
+        <td width="225" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Hertig Karls väg</td>        
+    </tr>
+
     <tr>
         <th width="15"></th>
         <td width="225" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Staffans väg</td>
         <th width="15"></th>
-        <td width="225" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Hertig Karls väg</td>
+        <td></td>
     </tr>
     <tr>
         <td width="15"></td>
@@ -799,7 +807,7 @@ popupContainer.style.top = pixel[1] + 'px';
             // Check the ID and perform actions accordingly
             if (id === "demo") {
                 //alert(document.getElementById("demo").innerHTML)
-                document.getElementById("demo").innerHTML = "Staffans väg/ Norrvikenleden";
+                document.getElementById("demo").innerHTML = "Staffans väg/";//Norrvikenleden
                 document.getElementById("popup-container2").style.display = "block";
                 document.getElementById("popup-container3").style.display = "block";
                 document.getElementById("popup-container4").style.display = "none";
@@ -870,7 +878,7 @@ popupContainer.style.top = pixel[1] + 'px';
             // No parameter (id) is needed in this function
             // Perform actions based on the logic you need
             if (id === "demo") {
-                document.getElementById("demo").innerHTML = "Staffans väg/ Norrvikenleden";
+                document.getElementById("demo").innerHTML = "Staffans väg/";//Norrvikenleden
                 document.getElementById("popup-container2").style.display = "none";
                 document.getElementById("popup-container3").style.display = "none";
                 document.getElementById("popup-container4").style.display = "none";
