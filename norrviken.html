@@ -17,7 +17,7 @@
             position: absolute;
             height: 700px;
             width: 440px;
-            top: 120px;
+            top: 110px;
             left: 8px;
         }
    
@@ -273,7 +273,7 @@ map.addLayer(vectorLayer3);
         <td width="15"><img src="train.svg"></td>
         <td width="300" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Norrviken&ArrDep=departure" target="_blank">Norrviken</a>&nbspTrafikverket</td>
         <th width="15"></th>
-        <td width="110" align="left" style="padding: 0px; font-size: 1px;" id="start">
+        <td width="110" align="center" style="padding: 0px; font-size: 1px;" id="start">
             <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
         </td>
     </tr>
@@ -382,7 +382,7 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
+            demoElement.innerHTML = "Stationsvägen/";//Pga av 2 rader så är det endast stationsvägen här
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
@@ -395,7 +395,7 @@ map.on('click', function (event) {
     function mouseOut(id) {
         if (id === "demo") {
             //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Stationsvägen/ Postvägen 9024";
+            demoElement.innerHTML = "Stationsvägen/";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
