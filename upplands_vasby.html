@@ -60,10 +60,9 @@ table {
             z-index: 1;
         }
 
-       /*Andelsvägen*/
        #popup-container2 {
             position: absolute;
-            top: 139px;
+            top: 119px;
             left: 0px;
             height: 90px;
             width: 450px;
@@ -86,10 +85,9 @@ table {
             z-index: 2; /* Set a higher z-index value */
         }
 
-         /*Smedjevägen*/
          #popup-container4 {
             position: absolute;
-            top: 139px;
+            top: 119px;
             left: 0px;
             height: 90px;
             width: 450px;
@@ -102,21 +100,20 @@ table {
             display: none; /* Initially hidden */
         }
 
-
-    #popup-container7 {
-    position: absolute;
-    top: 139px;
-    left: 0px;
-    height: 120px;
-    width: 450px;
-    background-color: white;
-    padding: 10px;
-    border: 2px solid blue;
-    border-radius: 5px;
-    max-width: 300px;
-    z-index: 3000;
-    display: none;
-}
+            #popup-container7 {
+            position: absolute;
+            top: 119px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -131,13 +128,9 @@ table {
         </div>
     </div>
 
-<!-- Second Map 
-<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
-    <!-- First Map Script -->
-    <!-- Map Script -->
-    <script>
+<script>
 
-var map = new ol.Map({
+    var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -145,12 +138,9 @@ var map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.9010, 59.5200]),//0,0045 är ca 500 m
+        center: ol.proj.fromLonLat([17.89896, 59.52042]),//0,0045 är ca 500 m
     zoom: 15 // You can adjust the zoom level as needed
     })})
-
-
-
 
 // Marker 1 Upplands Väsby station
 const marker11 = new ol.Feature({
@@ -430,18 +420,12 @@ map.addLayer(vectorLayer4a);
 
 </div>
 
-
-
 <script>
     const demoElement = document.getElementById("demo");
 
 // Add click event listener to the map view
 map.on('click', function (event) {
-//alert("zoom")
-// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
-// Get the clicked coordinate
-// if (flag == 10) {
-//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+
 document.getElementById('reloadButton').addEventListener('click', function () {
 location.reload();
 });
@@ -468,15 +452,10 @@ map.getView().animate({ zoom: newZoom, center: adjustedCoord });
 });
 
 
-
-
-
 /*  if (id === "start") { <script>location.replace*/
 
 
 const popupContainer = document.getElementById('popup-container3');
-
-//const popupContainer = document.getElementById('popup-container4'); }
 
 // Update the position when the map is moved or zoomed
 map.on('moveend', function () {
