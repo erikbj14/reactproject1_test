@@ -242,7 +242,7 @@ map.addLayer(vectorLayer2);
 
 // Ladbrovägen 2
 const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8977, 59.5211])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89839, 59.51859])), // Adjust the longitude value
 });
 
 const markerStyle3 = new ol.style.Style({
@@ -348,20 +348,20 @@ map.addLayer(vectorLayer4a);
     <tr>
         <th width="15"><img src="parking.svg"></th>
         <th width="125" align="left">Pendelparkering</th>
-        <th width="15"></th>
+        <th width="15"><img src="train.svg"></th>
         <td width="285" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Upplands%20V%C3%A4sby&ArrDep=departure" target="_blank">Upplands Väsby</a>&nbsp; Trafikverket</td>
         </tr>
     <tr>
             <th width="15"></th>
             <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Anton Tamms väg/ Industrivägen</td>
-            <th width="15"><img src="train.svg"></th>
+            <th width="15"></th>
             <td width="285"></td>        
     </tr>
     <tr>
         <th width="15"></th>
         <td width="125" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Ladbrovägen</td>
         <th width="15"></th>
-        <td width="285" align="center" style="padding: 0px; font-size: 1px;" id="start">
+        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
             <button id="reloadButton" hidden="true">Visningsläge</button>
         </td>
