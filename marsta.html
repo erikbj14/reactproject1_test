@@ -63,7 +63,7 @@ table {
        /*Västra Bangatan*/
        #popup-container2 {
             position: absolute;
-            top: 119px;
+            top: 99px;
             left: 0px;
             height: 100px;
             width: 450px;
@@ -89,9 +89,9 @@ table {
          /*Brobyvägen*/
          #popup-container4 {
             position: absolute;
-            top: 119px;
+            top: 99px;
             left: 0px;
-            height: 100px;
+            height: 90px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -104,7 +104,7 @@ table {
 
         #popup-container7 {
         position: absolute;
-        top: 119px;
+        top: 99px;
         left: 0px;
         height: 120px;
         width: 450px;
@@ -129,11 +129,9 @@ table {
         </a>
         </div>
     </div>
-
-
     <script>
 
-var map = new ol.Map({
+    var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -169,8 +167,8 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 industrivägen
-        const marker1 = new ol.Feature({
+    // Marker 1 industrivägen
+    const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
 });
 
@@ -377,19 +375,19 @@ map.addLayer(vectorLayer4b);
         <th width="15"><img src="parking.svg"></th>
         <th width="125" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="285" align="left">Tåg-tider</td>
+        <td width="285" align="left">Tåg-tider<a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" target="_blank">Märsta</a></td>
     </tr>
     <tr>
         <th width="15"></th>
         <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Västra Bangatan</td>
         <th width="15"><img src="train.svg"></th>
-        <td width="285"><a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" target="_blank">Märsta</a></td>        
+        <td width="285">Trafikverket</td>        
     </tr>
     <tr>
         <th width="15"></th>
         <td width="125" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan27">Brobyvägen</td>
         <th width="15"></th>
-        <td width="285">Trafikverket</td>         
+        <td width="285"></td>         
     </tr>
     <tr>
         <th width="15"></th>
