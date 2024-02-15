@@ -65,7 +65,7 @@
             position: absolute;
             height: 700px;
             width: 440px;
-            top: 114px;
+            top: 124px;
             left: 8px;
         }
     </style>
@@ -109,7 +109,7 @@
         /*Andelsvägen*/
         #popup-container2 {
             position: absolute;
-            top: 139px;
+            top: 124px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -121,32 +121,11 @@
             z-index: 3000;
             display: none; /* Initially hidden */
         }
-
-        /*   table2, tr2, td2 {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }*/
-
-       /* #popup-container3 {
-            position: absolute;
-            top: 185px;
-            left: 645px;
-            height: 100px;
-            width: 60px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        } */
 
         /*Smedjevägen*/
         #popup-container4 {
             position: absolute;
-            top: 139px;
+            top: 124px;
             left: 0px;
             height: 120px;
             width: 450px;
@@ -159,66 +138,21 @@
             display: none; /* Initially hidden */
         }
 
-       /* #popup-container5 {
+            /*Hammarbacken*/    
+            #popup-container7 {
             position: absolute;
-            top: 235px;
-            left: 760px;
-            height: 30px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
+            top: 124px;
+            left: 0px;
+            height: 80px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue;
             border-radius: 5px;
             max-width: 300px;
             z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        }*/
-
-        /*Hammarbacken*/
-        /*#popup-container6 {
-            position: absolute;
-            top: 145px;
-            left: 90px;
-            height: 200px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden  
-        }*/
-    /*Hammarbacken*/    
-    #popup-container7 {
-    position: absolute;
-    top: 139px;
-    left: 0px;
-    height: 80px;
-    width: 450px;
-    background-color: white;
-    padding: 10px;
-    border: 2px solid blue;
-    border-radius: 5px;
-    max-width: 300px;
-    z-index: 3000;
-    display: none;
-}
-
-
-
-
-        /*#popup8 {
-            position: absolute; 
-            top: 245px;
-            left: 150px;
-            font-size: 50px;
-            color: blue;
-            font-size: 50px;
-            z-index: 3000; /* Set a higher z-index value 
-        }*/
+            display: none;
+        }
 
     </style>
 
@@ -248,10 +182,10 @@
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.91164 + 0.0200, 59.4442]),//0,0045 är ca 500 m
+        center: ol.proj.fromLonLat([17.9355, 59.4410]),//0,0045 är ca 500 m
     zoom: 15 // You can adjust the zoom level as needed
     })})
-    
+
     // Marker 1 Häggvik
 const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424])),
