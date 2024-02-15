@@ -60,12 +60,12 @@ table {
             z-index: 1;
         }
 
-       /*Andelsvägen*/
+       /*Vallen, Arenavägen*/
        #popup-container2 {
             position: absolute;
-            top: 139px;
+            top: 100px;
             left: 0px;
-            height: 120px;
+            height: 110px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -86,69 +86,6 @@ table {
             z-index: 2; /* Set a higher z-index value */
         }
 
-         /*Smedjevägen*/
-         #popup-container4 {
-            position: absolute;
-            top: 139px;
-            left: 0px;
-            height: 120px;
-            width: 450px;
-            background-color: white;
-            padding: 10px;
-            border: 2px solid blue; /* Change the border color to blue */
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            display: none; /* Initially hidden */
-        }
-
-       /* #popup-container5 {
-            position: absolute;
-            top: 235px;
-            left: 760px;
-            height: 30px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden 
-        }*/
-
-        /*Hammarbacken*/
-        /*#popup-container6 {
-            position: absolute;
-            top: 145px;
-            left: 90px;
-            height: 200px;
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-            background-color: blue;
-            opacity: 0.5;
-            display: none; // Initially hidden  
-        }*/
-
-        #popup-container7 {
-    position: absolute;
-    top: 139px;
-    left: 0px;
-    height: 100px;
-    width: 450px;
-    background-color: white;
-    padding: 10px;
-    border: 2px solid blue;
-    border-radius: 5px;
-    max-width: 300px;
-    z-index: 3000;
-    display: none;
-}
     </style>
 </head>
 <body>
@@ -177,7 +114,7 @@ var map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.94899, 59.42842]),//0,0045 är ca 500 m
+        center: ol.proj.fromLonLat([17.9538, 59.4230]),//0,0045 är ca 500 m
     zoom: 15 // You can adjust the zoom level as needed
     })})
 
