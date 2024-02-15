@@ -259,23 +259,22 @@ map.addLayer(vectorLayer3);
         <th width="15"></th>
         <td width="265"></td>
     </tr>
-
-</table>
-<!--<tr style="height:10px">
-    <th width="15"></th>
-    <td width="125"></td>
-    <th width="15"></th>
-    <td width="285"></td>
-</tr>-->
-    
-        <table border="0" width="440"><tr><!--Blev annan bakgrundsfärg med "tabell i tabellen"-->
-        <td width="15"><img src="train.svg"></td>
-        <td width="300" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Norrviken&ArrDep=departure" target="_blank">Norrviken</a>&nbspTrafikverket</td>
-        <th width="15"></th>
-        <td width="110" align="center" style="padding: 0px; font-size: 1px;" id="start">
-            <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
-        </td>
-    </tr>
+    </table>
+    <table border="0" width="440"><!--Blev annan bakgrundsfärg med "tabell i tabellen" därför  blev det en fristående tabell-->
+        <tr>
+            <td width="15"><img src="train.svg"></td>
+            <td width="160" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Norrviken&ArrDep=departure" target="_blank">Norrviken</a></td>
+            <th width="15"></th>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <td width="15"></td>
+            <td width="160" align="left">Trafikverket</td>
+            <th width="15"></th>
+            <td width="150" align="left" style="padding: 0px; font-size: 1px;" id="start">
+                <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
+            </td>
+        </tr>
     </table>
     
 <!--Andelsvägen-->
