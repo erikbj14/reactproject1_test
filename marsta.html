@@ -13,10 +13,16 @@ table {
         background-color:rgba(255, 99, 71, 0.5);
     }
 
+    /*openstreetmap contributors*/    
+    .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+    }
+
        /* Set the map height */
        #osm-map {
             position: absolute;
-            height: 700px;
+            height: 665px;
             width: 440px;
             top: 75px;
             left: 8px;
@@ -360,7 +366,7 @@ map.addLayer(vectorLayer4b);
         <th width="15"><img src="parking.svg"></th>
         <th width="125" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="285" align="left">Tåg-tider<a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" target="_blank">&nbsp;Märsta</a></td>
+        <td width="285" align="left">Tåg-tider<a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">&nbsp;Märsta</a></td>
     </tr>
     <tr>
         <th width="15"></th>
@@ -434,6 +440,12 @@ map.addLayer(vectorLayer4b);
 
 
 <script>
+
+     /*openstreetmap contributors*/
+     document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
     const demoElement = document.getElementById("demo");
 
 // Add click event listener to the map view
