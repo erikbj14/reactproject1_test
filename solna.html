@@ -9,14 +9,15 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <style>
 
-.ol-control.ol-attribution {
-    left: 200px;
-    padding-right: 80px; /* Adjust the padding on the right side */
-  }
-
-table {
-        background-color:rgba(255, 99, 71, 0.5);
+    /*openstreetmap contributors*/    
+    .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
     }
+
+    table {
+            background-color:rgba(255, 99, 71, 0.5);
+        }
 
         /* Set the map height */
         #osm-map {
@@ -331,6 +332,7 @@ map.addLayer(vectorLayer4);
 
 <script>
 
+/*openstreetmap contributors*/
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.ol-control.ol-attribution').style.left = '50px';
   });
