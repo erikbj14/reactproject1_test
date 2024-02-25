@@ -46,10 +46,16 @@
     
         </script>
     <style>
+        /*openstreetmap contributors*/    
+        .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+    }
+
         /* Set the map height */
         #osm-map {
             position: absolute;
-            height: 700px;
+            height: 590px;
             width: 440px;
             top: 150px;
             left: 8px;
@@ -561,7 +567,7 @@ map.addLayer(vectorLayer7a);
     </tr>
     <tr>
         <td width="15"><img src="train.svg"></td>
-        <td width="150"align="left">Tågtider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Rotebro&ArrDep=departure" target="_blank">Rotebro</a></td>
+        <td width="150"align="left">Tågtider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Rotebro&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Rotebro</a></td>
         <th width="15"></th>
         <td width="260" align="left" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
@@ -723,6 +729,12 @@ map.addLayer(vectorLayer7a);
     </div>
 
     <script>
+
+        /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
         const demoElement = document.getElementById("demo");
 
 // Add click event listener to the map view
