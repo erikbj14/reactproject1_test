@@ -10,9 +10,9 @@
     <script type="module" src="./src/main.js" defer></script>
     <style>
 
-.olControlAttribution {
-  left: 50px;
-}
+.ol-control.ol-attribution {
+    left: 50px;
+  }
 
         /* Set the map height */
         #osm-map {
@@ -114,6 +114,13 @@
     <!-- Map Script -->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script>
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
+
         document.addEventListener("DOMContentLoaded", function () {
             var map = new ol.Map({
                 target: 'osm-map',
