@@ -12,10 +12,16 @@
         background-color:rgba(255, 99, 71, 0.5);
     }
 
+        /*openstreetmap contributors*/    
+        .ol-control.ol-attribution {
+            left: 200px;
+            padding-right: 80px; /* Adjust the padding on the right side */
+        }
+
         /* Set the map height */
         #osm-map {
             position: absolute;
-            height: 700px;
+            height: 610px;
             width: 440px;
             top: 130px;
             left: 8px;
@@ -322,6 +328,12 @@ map.addLayer(vectorLayer3);
 <div id="popup-container4">
 
 </div> <script>
+
+    /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
     const demoElement = document.getElementById("demo");
 
         // Add click event listener to the map view
