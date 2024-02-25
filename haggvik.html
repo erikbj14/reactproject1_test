@@ -60,10 +60,17 @@
 
     </script>
     <style>
+
+         /*openstreetmap contributors*/    
+        .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+        }
+
         /* Set the map height */
         #osm-map {
             position: absolute;
-            height: 700px;
+            height: 616px;
             width: 440px;
             top: 124px;
             left: 8px;
@@ -732,7 +739,7 @@ const iconFeatures = [
     </tr>
     <tr style="height:10px">
         <th width="15"><img src="train.svg"></th>
-        <td width="125">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&ArrDep=departure" target="_blank">Häggvik</a></td>
+        <td width="125">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Häggvik</a></td>
         <th width="15"></th>
         <td width="285"></td>
     </tr>
@@ -878,6 +885,12 @@ map.addLayer(vectorLayer10);
 
 
     <script>
+
+        /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
         const demoElement = document.getElementById("demo");
 
             // Add click event listener to the map view
