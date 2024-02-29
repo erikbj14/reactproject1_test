@@ -1,0 +1,1025 @@
+﻿<!DOCTYPE html>
+<html>
+<style> 
+/* .highlight_Andelsvagen:hover {
+        background-color: mediumblue;
+    }
+
+    .highlight_smedjevägen:hover {
+        background-color: mediumblue;
+    }
+
+    .highlight_hammarbacken:hover {
+        background-color: mediumblue;
+    }*/
+
+    table {
+        background-color:rgba(255, 99, 71, 0.5);
+    }
+</style>
+<head>
+    <title>OpenStreetMap Example</title>
+    <!--<meta charset="utf-8" /-->
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script type="module" src="./src/haggvik.js" defer></script>
+
+   
+    <script>
+    function myFunction() {
+        location.reload();
+    }
+
+    //chrome.runtime.sendMessage({ action: 'reloadPage' });
+
+
+    var invisible = function () {
+        document.getElementById('start').style.display = "none";  // for hide button
+    }
+
+
+
+        
+
+        function myFunction() {
+            const element = document.getElementById("myP");
+            element.style.fontSize = "24px";
+        }
+
+
+
+        let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
+
+
+        function func() {
+            //var SchoolId = 0;
+            window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
+        }
+
+    </script>
+    <style>
+
+         /*openstreetmap contributors*/    
+        .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+        }
+
+        /* Set the map height */
+        #osm-map {
+            position: absolute;
+            height: 616px;
+            width: 440px;
+            top: 124px;
+            left: 8px;
+        }
+    </style>
+
+    <style>
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+        #popup-container2 table th,
+        #popup-container2 table td {
+            padding: 0;
+            margin: 0;
+        }
+
+  /*      #popup-container {
+            position: absolute;
+            top: 500px;
+            left: 0px;
+            height: 200px;
+            width: 1000;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3100;*/
+            /*background-color: rgba(255, 0, 0, 0.5);  Red with 50% opacity 
+        }*/
+        
+
+
+
+        /*Andelsvägen*/
+        #popup-container2 {
+            position: absolute;
+            top: 124px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        /*Smedjevägen*/
+        #popup-container4 {
+            position: absolute;
+            top: 124px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+            /*Hammarbacken*/    
+            #popup-container7 {
+            position: absolute;
+            top: 124px;
+            left: 0px;
+            height: 80px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="osm-map">
+        <div class="dropdown">
+
+            <a href="index.html">
+                <button>Tillbaka</button>
+            </a>
+            </div>
+        </div>
+
+        <div id="popup-container">
+            <!--Tabell över parkeringar-->
+            
+            <!-- <div id="popup-content"> -->
+            <!--</div>-->
+        </div>
+ <script>var map = new ol.Map({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
+        center: ol.proj.fromLonLat([17.9322, 59.4405]),//0,0045 är ca 500 m
+    zoom: 15 // You can adjust the zoom level as needed
+    })})
+    
+    // Marker 1 Häggvik
+const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+
+map.addLayer(vectorLayer);
+
+// Marker 2 Andelsvägen 1
+const marker2 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93118, 59.44467])), // Adjust the longitude value
+});
+
+const markerStyle2 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker2.setStyle(markerStyle2);
+
+const vectorSource2 = new ol.source.Vector({
+    features: [marker2], // Use marker2 as the feature
+});
+
+const vectorLayer2 = new ol.layer.Vector({
+    source: vectorSource2, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2);
+
+// Marker 3 Andelsvägen 2
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93138, 59.44423])), // Adjust the longitude value
+}); 
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+
+// Marker 4 Andelsvägen 3
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93058, 59.44464])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+map.addLayer(vectorLayer4);
+// Andelsvägen etikett
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93051, 59.44440])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9023.png',
+        scale: 0.1,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+map.addLayer(vectorLayer4a);
+//--------------------
+// Marker 5 Smedjevägen
+const marker5 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93344, 59.44437])), // Adjust the longitude value
+});
+
+const markerStyle5 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking2.svg',
+        scale: 2,
+    }),
+});
+
+marker5.setStyle(markerStyle5);
+
+const vectorSource5 = new ol.source.Vector({
+    features: [marker5], // Use marker2 as the feature
+});
+
+const vectorLayer5 = new ol.layer.Vector({
+    source: vectorSource5, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer5);
+
+//--------------------------------
+//--------------------
+// Marker 5a Smedjevägen
+const marker5a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93390, 59.44430])), // Adjust the longitude value
+});
+
+const markerStyle5a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9030.png',
+        scale: 0.1,
+    }),
+});
+
+marker5a.setStyle(markerStyle5a);
+
+const vectorSource5a = new ol.source.Vector({
+    features: [marker5a], // Use marker2 as the feature
+});
+
+const vectorLayer5a = new ol.layer.Vector({
+    source: vectorSource5a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer5a);
+//--------------------------------
+
+// Marker 6 Hammarbacken
+const marker6 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.445])),
+});
+
+const markerStyle6 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        // src: './Bild4.png',
+        src: './parking2.svg',
+        scale: 2,
+    }),
+});
+
+marker6.setStyle(markerStyle6);
+
+const vectorSource6 = new ol.source.Vector({
+    features: [marker6],
+});
+
+const vectorLayer6 = new ol.layer.Vector({
+    source: vectorSource6,
+});
+
+map.addLayer(vectorLayer6);
+
+// Marker 6a Hammarbacken
+const marker6a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9233, 59.445])), //add to the east, add to the north
+});
+
+const markerStyle6a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png',
+        src: './9003.png',
+        scale: 0.1,
+    }),
+});
+
+marker6a.setStyle(markerStyle6a);
+
+const vectorSource6a = new ol.source.Vector({
+    features: [marker6a],
+});
+
+const vectorLayer6a = new ol.layer.Vector({
+    source: vectorSource6a,
+});
+
+map.addLayer(vectorLayer6a);
+
+
+
+//-----------------------------------------------------------------
+// Marker 6a Hammarbacken
+/*const marker6a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.442])),
+});
+
+const markerStyle6a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild1.png',
+        //src: './parking2.svg',
+        scale: 2,
+    }),
+});
+
+marker6a.setStyle(markerStyle6a);
+
+const vectorSource6a = new ol.source.Vector({
+    features: [marker6a],
+});
+
+const vectorLayer6a = new ol.layer.Vector({
+    source: vectorSource6a,
+});
+
+map.addLayer(vectorLayer6a);*/
+
+//-----------------------------------------------------------------
+
+// Function to handle the click event on the parking2.svg image
+function handleParkingClick(event) {
+    // Your custom logic here
+    console.log('Parking image clicked!');
+    // You can call your JavaScript function here
+}
+
+// Attach the click event listener to the vector layer
+vectorLayer6.getSource().on('click', handleParkingClick);
+
+
+// Marker 7 Hammarbacken Kommentar marker 7 till 9. De bilderna (layers) fungerade inte riktigt som de skulle (speciellt efter zoom)
+/*const marker7 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle7 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker7.setStyle(markerStyle7);
+
+const vectorSource7 = new ol.source.Vector({
+    features: [marker7], // Use marker2 as the feature
+});
+
+const vectorLayer7 = new ol.layer.Vector({
+    source: vectorSource7, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7);
+
+// Marker 8 Andelsvägen
+const marker8 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93100, 59.44390])), // 0,0045 är ca 500 m
+});  
+
+//document.getElementById(id).style.visibility = "marker11Layer"; 
+vectorLayer7.set('id', 'marker7Layer');
+
+const markerStyle8 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild5.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker8.setStyle(markerStyle8);
+
+const vectorSource8 = new ol.source.Vector({
+    features: [marker8], // Use marker2 as the feature
+});
+
+const vectorLayer8 = new ol.layer.Vector({
+    source: vectorSource8, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer8);
+
+
+// Marker 9 Smedjevägen
+const marker9 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93344, 59.44400])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle9 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild6.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker9.setStyle(markerStyle9);
+
+const vectorSource9 = new ol.source.Vector({
+    features: [marker9], // Use marker2 as the feature
+});
+
+const vectorLayer9 = new ol.layer.Vector({
+    source: vectorSource9, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer9);*/
+
+//--------------------------------------------------------------------------
+// Function to show images by ID (Har inte fått den att fungera)
+function showImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(true); // Show the layer's source
+    }
+}
+
+// Function to hide images by ID
+function hideImagesById(id) {
+    const layer = map.getLayers().getArray().find(layer => layer.get('id') === id); // Find the layer by ID
+
+    if (layer) {
+        const source = layer.getSource();
+        source.setVisible(false); // Hide the layer's source
+    }
+}
+
+
+//------------------------------------------------------------------------------
+
+// Marker 10 Hammarbacken
+const marker10 = new ol.Feature({
+geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4439])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle10 = new ol.style.Style({
+image: new ol.style.Icon({
+anchor: [0.5, 1],
+src: './Bild10.png', 
+//src: './parking2.svg',
+scale: 1,
+//display: none, /* Initially hidden */
+}),
+
+});
+
+
+
+marker10.setStyle(markerStyle10);
+
+const vectorSource10 = new ol.source.Vector({
+features: [marker10], // Use marker2 as the feature
+});
+
+const vectorLayer10 = new ol.layer.Vector({
+source: vectorSource10, // Use vectorSource2 for the source
+});
+
+vectorLayer10.set('id', 'marker10Layer');
+
+var elem = document.getElementById('marker10Layer');
+
+//elem.style.display = 'revert'; // hide
+
+map.addLayer(vectorLayer10);
+
+vectorLayer10.setVisible(false);
+
+// Marker 11 Hammarbacken
+const marker11 = new ol.Feature({
+geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9241, 59.4449])), // 0,0045 är ca 500 m
+});  
+
+const markerStyle11 = new ol.style.Style({
+image: new ol.style.Icon({
+anchor: [0.5, 1],
+//src: './Bild10.png', 
+src: './parking2.svg',
+scale: 1,
+//display: none,
+}),
+});
+
+marker11.setStyle(markerStyle11);
+
+const vectorSource11 = new ol.source.Vector({
+features: [marker11], // Use marker2 as the feature
+});
+
+const vectorLayer11 = new ol.layer.Vector({
+source: vectorSource11, // Use vectorSource2 for the source
+});
+
+//document.getElementById(id).style.visibility = "marker11Layer"; 
+vectorLayer11.set('id', 'marker11Layer');
+
+map.addLayer(vectorLayer11);
+
+vectorLayer11.setVisible(false);
+
+
+
+
+// Etikett Andelsvägen
+/*const marker12 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93337, 59.44432])), // Adjust the longitude value
+});
+
+const markerStyle12 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild26.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 2,
+    }),
+});
+
+marker5.setStyle(markerStyle12);
+
+const vectorSource12 = new ol.source.Vector({
+    features: [marker12], // Use marker2 as the feature
+});
+
+const vectorLayer12 = new ol.layer.Vector({
+    source: vectorSource12, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer12);*/
+
+
+// Andelsvägen
+// Create a new Polygon feature
+/*const newPolygonFeatureII = new Feature({
+    geometry: new Polygon([
+        [
+            17.93065, 59.44481,
+            17.93038, 59.44478,
+            17.93049, 59.44448,
+            17.93078, 59.44451,
+            17.93065, 59.44481,
+        ],
+    ]),
+});
+
+// Create a new Vector Layer with the new polygon
+const newVectorLayerII = new VectorLayer({
+    source: new VectorSource({
+        features: [newPolygonFeatureII],
+    }),
+});
+
+// Add the new Vector Layer to the map
+map.addLayer(newVectorLayerII);
+
+// Configure the same vector layer with a style
+newVectorLayerII.setStyle(new Style({
+    fill: new Fill({
+        color: 'rgba(0, 0, 255, 0.5)', // Blue fill with 50% opacity
+    }),
+}));
+
+// Create a new Feature for the icon
+const iconFeatures = [
+    new Feature({
+        geometry: new Point(fromLonLat([17.93139, 59.44423])),
+    }), 
+];*/
+</script>
+
+<!--Testkommentar-->
+
+
+<!--<div id="popup-container"> Den vita bakgrundem-->
+    <table width="440" border="0">
+        <tr>
+            <th width="15"><img src="parking.svg"></th>
+            <th width="125" align="left">Pendelparkering</th>
+            <th width="15"><img src="parking2.svg"></th>
+            <td width="285" align="left">Alternativ parkering</td>
+        </tr>
+        <tr>
+            <th width="15"></th>
+            <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_Andelsvagen">Andelsvägen</td>
+            <th width="15"></th>
+            <td width="285" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_smedjevägen">Smedjevägen</td>
+        </tr>
+        <tr>
+            <th width="15"></th>
+            <td width="125"></td>
+            <th width="15"></th>
+            <td width="285" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_hammarbacken">Hammarbacken</td>
+        </tr>
+    </tr>
+    <tr style="height:10px">
+        <th width="15"><img src="train.svg"></th>
+        <td width="125">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Häggvik</a></td>
+        <th width="15"></th>
+        <td width="285"></td>
+    </tr>
+        <tr>
+            <td width="15"></td>
+            <td width="125" align="left">Trafikverket</td>
+            <th width="15"></th>
+            <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
+                <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
+            </td>
+        </tr>
+    </table>
+<!--</div>-->
+
+    <!--Andelsvägen-->
+    <div id="popup-container2">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Andelsvägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9023</b> 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <!--Smedjevägen-->
+    <div id="popup-container2">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Andelsvägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 9023 125 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar Laddplatser: Inga</td></tr><tr><td align="left"> Ofta fullt på vardagar</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <!--Smedjevägen-->
+    <div id="popup-container4">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking2.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Smedjevägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9030</b> Parkering zon A</td></tr><tr><td>Kostnad: 10 kr per timme, helger ingen kostnad</td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container7">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking2.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Hammarbacken</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9003</b> Parkering Zon C: 5 kr/tim</td></tr><tr><td></td></tr><tr><td align="left"> Ofta finns det platser</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!--<div id="popup-container3"></div>-->
+
+
+    <div id="popup-container3">
+
+    </div>
+
+    <div id="popup-container4">
+
+    </div>
+
+    <div id="popup-container5">
+
+    </div>
+
+
+    <div id="popup-container6">
+</div>
+
+<div id="popup-container7">
+</div>
+      
+
+
+
+
+    <!--<div id="popup-container6">
+  <script>      // Marker 6 Hammarbacken
+const marker10 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.444])), // Adjust the longitude value
+}); 
+
+const markerStyle10 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './Bild10.png', //Gjorde en bild som liknade en polygon
+        //src: './parking2.svg',
+        scale: 1,
+    }),
+});
+
+marker10.setStyle(markerStyle10);
+
+const vectorSource10 = new ol.source.Vector({
+    features: [marker10], // Use marker2 as the feature
+});
+
+const vectorLayer10 = new ol.layer.Vector({
+    source: vectorSource10, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer10);
+</script>
+    </div>-->
+
+
+
+    <script>
+
+        /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
+        const demoElement = document.getElementById("demo");
+
+            // Add click event listener to the map view
+    map.on('click', function (event) {
+        //alert("zoom")
+        // F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
+        // Get the clicked coordinate
+       // if (flag == 10) {
+       //     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+            document.getElementById('reloadButton').addEventListener('click', function () {
+                location.reload();
+            });
+            //Nedan rensa vid zoom
+            document.getElementById("reloadButton").hidden = "";
+            //document.getElementById("marker7Layer").style.visibility = "none"; 
+            //document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container5").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
+            document.getElementById("popup-container6").style.display = "none";
+            document.getElementById("popup-container7").style.display = "none";
+            const clickedCoord = event.coordinate;
+
+            // Adjust the clicked coordinate (move slightly to the left and up)
+            const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+
+            // Get the current zoom level
+            const currentZoom = map.getView().getZoom();
+
+            // Set the new zoom level (you can adjust this value)
+            const newZoom = currentZoom + 1;
+
+            // Set the new zoom level and center the map on the adjusted coordinate
+            map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+        //};
+    });
+
+
+ 
+
+
+        /*  if (id === "start") { <script>location.replace*/
+
+
+        const popupContainer = document.getElementById('popup-container3');
+
+        //const popupContainer = document.getElementById('popup-container4'); }
+
+        // Update the position when the map is moved or zoomed
+        map.on('moveend', function () {
+            //alert("zoomad IGEN")
+            const center = map.getView().getCenter();
+            const pixel = map.getPixelFromCoordinate(center);
+
+            // Set the position of the popup container based on the pixel coordinates
+            popupContainer.style.left = pixel[0] + 'px';
+            popupContainer.style.top = pixel[1] + 'px';
+        });
+        function mouseOver(id) {
+            // Check the ID and perform actions accordingly
+            if (id === "demo") {
+                //alert('Kolla: ' + id);
+                demoElement.innerHTML = "Andelsvägen";
+                document.getElementById("popup-container2").style.display = "block";
+                document.getElementById("popup-container3").style.display = "block";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+            } else if (id === "demo2") {
+                //alert('Kolla: ' + id);
+                document.getElementById("demo2").innerHTML = "Smedjevägen";
+                document.getElementById("popup-container4").style.display = "block";
+                document.getElementById("popup-container5").style.display = "block";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+            } else if (id === "demo3") {
+                //alert('Kolla: ' + id);
+                document.getElementById("demo3").innerHTML = "Hammarbacken";
+                //document.getElementById(marker10Layer).style.visibility = "visible";
+                //document.getElementById(marker11Layer).style.visibility = "block"; 
+                document.getElementById("popup-container7").style.display = "block";
+                document.getElementById("popup-container6").style.display = "block";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+            }
+        }
+        function mouseOut(id) {
+            if (id === "demo") {
+                //alert('Kolla2: ' + id);
+                demoElement.innerHTML = "Andelsvägen";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+            } else if (id === "demo2") {
+                //alert('Kolla2: ' + id);
+                document.getElementById("demo2").innerHTML = "Smedjevägen";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+            } else if (id === "demo3") {
+               // alert('Demo3out: ' + marker10Layer);
+                document.getElementById("demo3").innerHTML = "Hammarbacken";
+               // document.getElementById(marker10Layer).style.visibility = "hidden";
+               // document.getElementById(marker11Layer).style.visibility = "hidden";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+            }
+        }
+        //console.log('Demo Element:', demoElement);
+    </script>
+
+    <!--<div id="popup-content"></div>-->
+</div>
+   
+<!--<div id="popup8"><i><b>Parkeringen</b></i></div>-->
+</body>
+</html>

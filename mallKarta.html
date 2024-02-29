@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenStreetMap</title>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <style>
+        /* Set the map height */
+        #osm-map {
+            position: absolute;
+            height: 700px;
+            width: 500px;
+            top: 0px;
+            left: 0px;
+        }
+   
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+   
+            .dropdown:hover .dropdown-content {
+                display: block;
+                bottom: 100%;
+            }
+   
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+   
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+   
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        #popup2 {
+            position: absolute;
+            top: 225px;
+            left: 100px;
+            height: 90px;
+            width: 500px;
+            opacity: 0.4;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            z-index: 3500;
+        }
+   
+        #popup3 {
+            position: absolute;
+            top: 245px;
+            left: 150px;
+            font-size: 50px;
+            color: blue;
+            font-size: 50px;
+            z-index: 2; /* Set a higher z-index value */
+        }
+    </style>
+</head>
+<body>
+    
+<!-- First Map -->
+<div id="osm-map" style="width: 100%; height: 500px;"></div>
+
+<!-- Second Map 
+<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
+    <!-- First Map Script -->
+    <!-- Map Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = new ol.Map({
+                target: 'osm-map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([17.91465, 59.47587]),
+                    zoom: 15
+                })
+            });
+        });
+        </script>
+
+</body>
+</html>

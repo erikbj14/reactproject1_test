@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenStreetMap</title>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <style>
+
+table {
+        background-color:rgba(255, 99, 71, 0.5);
+    }
+
+    /*openstreetmap contributors*/    
+    .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+    }
+
+       /* Set the map height */
+       #osm-map {
+            position: absolute;
+            height: 665px;
+            width: 440px;
+            top: 75px;
+            left: 8px;
+        }
+   
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+   
+            .dropdown:hover .dropdown-content {
+                display: block;
+                bottom: 100%;
+            }
+   
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+   
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+   
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+       /*Västra Bangatan*/
+       #popup-container2 {
+            position: absolute;
+            top: 80px;
+            left: 0px;
+            height: 110px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+   
+        #popup3 {
+            position: absolute;
+            top: 245px;
+            left: 150px;
+            font-size: 50px;
+            color: blue;
+            font-size: 50px;
+            z-index: 2; /* Set a higher z-index value */
+        }
+
+         /*Brobyvägen*/
+         #popup-container4 {
+            position: absolute;
+            top: 80px;
+            left: 0px;
+            height: 80px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    
+<!-- First Map -->
+<div id="osm-map">
+    <div class="dropdown">
+
+        <a href="index.html">
+            <button>Tillbaka</button>
+        </a>
+        </div>
+    </div>
+    <script>
+
+    var map = new ol.Map({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
+        center: ol.proj.fromLonLat([17.8621, 59.6268]),//0,0045 är ca 500 m
+    zoom: 15 // You can adjust the zoom level as needed
+    })})
+
+// Marker 1 Märsta station
+const marker11 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8615, 59.62775])),
+});
+
+const markerStyle11 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker11.setStyle(markerStyle11);
+
+const vectorSource11 = new ol.source.Vector({
+    features: [marker11],
+});
+
+const vectorLayer11 = new ol.layer.Vector({
+    source: vectorSource11,
+});
+map.addLayer(vectorLayer11);
+
+    // Marker 1 industrivägen
+    const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource1 = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer1 = new ol.layer.Vector({
+    source: vectorSource1,
+});
+map.addLayer(vectorLayer1);
+
+// Västra Bangatan
+const marker2 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.85978, 59.62945])), // Adjust the longitude value
+});
+
+const markerStyle2 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+ 
+marker2.setStyle(markerStyle2);
+
+const vectorSource2 = new ol.source.Vector({
+    features: [marker2], // Use marker2 as the feature
+});
+
+const vectorLayer2 = new ol.layer.Vector({
+    source: vectorSource2, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2);
+
+// 86111
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.85978, 59.62935])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86111.png',
+        scale: 0.1,
+    }),
+});
+ 
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+
+// Västra Bangatan II
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63088])), // Adjust the longitude value
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+// 86111 II
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86086, 59.63078])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86111.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
+
+// Brobyvägen
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62984])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+ 
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4);
+
+// 86112
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62976])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86112.png',
+        scale: 0.1,
+    }),
+});
+ 
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a);
+
+// 86113
+const marker4b = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86364, 59.62947])), // Adjust the longitude value
+});
+
+const markerStyle4b = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './86113.png',
+        scale: 0.1,
+    }),
+});
+ 
+marker4b.setStyle(markerStyle4b);
+
+const vectorSource4b = new ol.source.Vector({
+    features: [marker4b], // Use marker2 as the feature
+});
+
+const vectorLayer4b = new ol.layer.Vector({
+    source: vectorSource4b, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4b);
+
+</script>
+
+<table width="440" border="0">
+    <tr>
+        <th width="15"><img src="parking.svg"></th>
+        <th width="125" align="left">Pendelparkering</th>
+        <th width="15"><img src="train.svg"></th>
+        <td width="285" align="left">Tåg-tider<a href="https://www.trafikverket.se/trafikinformation/tag/?Station=M%C3%A4rsta&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">&nbsp;Märsta</a></td>
+    </tr>
+    <tr>
+        <th width="15"></th>
+        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Västra Bangatan</td>
+        <th width="15"></th>
+        <td width="285">Trafikverket</td>        
+    </tr>
+    <tr>
+        <th width="15"></th>
+        <td width="125" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan27">Brobyvägen</td>
+        <th width="15"></th>
+        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>         
+    </tr>
+</table>
+    <!--Industrivägen-->
+    <div id="popup-container2">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Västra Bangatan</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 86111, ej vardagar kl 02.30–04.30</td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+
+    </div>
+    <!--Brobyvägen-->
+    <div id="popup-container4">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Brobyvägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod 86112, 86113 (Obs!)</td></tr><tr><td>Kostnad: 20 kr á 24 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+
+
+<!--<div id="popup-container3"></div>-->
+
+<div id="popup-container">
+
+</div>
+
+<div id="popup-container2">
+
+</div>
+
+<div id="popup-container4">
+
+</div>
+
+
+
+<script>
+
+     /*openstreetmap contributors*/
+     document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
+    const demoElement = document.getElementById("demo");
+
+// Add click event listener to the map view
+map.on('click', function (event) {
+//alert("zoom")
+// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
+// Get the clicked coordinate
+// if (flag == 10) {
+//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+document.getElementById('reloadButton').addEventListener('click', function () {
+location.reload();
+});
+//Nedan rensa vid zoom
+document.getElementById("reloadButton").hidden = "";
+//document.getElementById("marker7Layer").style.visibility = "none"; 
+//document.getElementById("popup-container4").style.display = "none";
+document.getElementById("popup-container2").style.display = "none";
+document.getElementById("popup-container4").style.display = "none";
+const clickedCoord = event.coordinate;
+
+// Adjust the clicked coordinate (move slightly to the left and up)
+const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+
+// Get the current zoom level
+const currentZoom = map.getView().getZoom();
+
+// Set the new zoom level (you can adjust this value)
+const newZoom = currentZoom + 1;
+
+// Set the new zoom level and center the map on the adjusted coordinate
+map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+//};
+});
+
+
+
+
+
+/*  if (id === "start") { <script>location.replace*/
+
+
+const popupContainer = document.getElementById('popup-container3');
+
+//const popupContainer = document.getElementById('popup-container4'); }
+
+// Update the position when the map is moved or zoomed
+map.on('moveend', function () {
+//alert("zoomad IGEN")
+const center = map.getView().getCenter();
+const pixel = map.getPixelFromCoordinate(center);
+
+// Set the position of the popup container based on the pixel coordinates
+popupContainer.style.left = pixel[0] + 'px';
+popupContainer.style.top = pixel[1] + 'px';
+});
+
+    function mouseOver(id) {
+        // Check the ID and perform actions accordingly
+        if (id === "demo") {
+            //alert(document.getElementById("demo").innerHTML)
+            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("popup-container2").style.display = "block";
+            document.getElementById("popup-container4").style.display = "none";
+        }
+        else if (id === "demo2") {
+            //alert(document.getElementById("demo2").innerHTML)
+            document.getElementById("demo2").innerHTML = "Brobyvägen";
+            document.getElementById("popup-container4").style.display = "block";
+            document.getElementById("popup-container2").style.display = "none";
+        }
+        
+    }
+
+    function mouseOut(id) {
+        // No parameter (id) is needed in this function
+        // Perform actions based on the logic you need
+        if (id === "demo") {
+            document.getElementById("demo").innerHTML = "Västra Bangatan";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+        }
+        else if (id === "demo2") {
+            document.getElementById("demo2").innerHTML = "Brobyvägen";
+            document.getElementById("popup-container4").style.display = "none";
+            document.getElementById("popup-container2").style.display = "none";
+        }
+    }
+</script>
+</div>
+
+</body>
+</html>

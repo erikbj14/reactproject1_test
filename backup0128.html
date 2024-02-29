@@ -1,0 +1,125 @@
+// Marker 1 Upplands Väsby station
+ const marker11 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5208])),
+});
+
+const markerStyle11 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker11.setStyle(markerStyle11);
+
+const vectorSource11 = new ol.source.Vector({
+    features: [marker11],
+});
+
+const vectorLayer11 = new ol.layer.Vector({
+    source: vectorSource11,
+});
+map.addLayer(vectorLayer11);
+
+        // Marker 1 industrivägen
+        const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource1 = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer1 = new ol.layer.Vector({
+    source: vectorSource1,
+});
+map.addLayer(vectorLayer1);
+
+// Ladbrovägen 1
+const marker2 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8984, 59.5208])), // Adjust the longitude value
+});
+
+const markerStyle2 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+ 
+marker2.setStyle(markerStyle2);
+
+const vectorSource2 = new ol.source.Vector({
+    features: [marker2], // Use marker2 as the feature
+});
+
+const vectorLayer2 = new ol.layer.Vector({
+    source: vectorSource2, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2);
+
+// Ladbrovägen 2
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.898, 59.5211])), // Adjust the longitude value
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+
+// Ladbrovägen 3
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5223])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4);

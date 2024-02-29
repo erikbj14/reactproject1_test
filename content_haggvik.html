@@ -1,0 +1,86 @@
+﻿<style>
+    .highlight_Andelsvagen:hover {
+        background-color: mediumblue;
+    }
+
+    .highlight_smedjevägen:hover {
+        background-color: mediumblue;
+    }
+
+    .highlight_hammarbacken:hover {
+        background-color: mediumblue;
+    }
+</style>
+<script>
+
+
+    function myFunction() {
+        location.reload();
+    }
+
+    chrome.runtime.sendMessage({ action: 'reloadPage' });
+
+
+    var invisible = function () {
+        document.getElementById('start').style.display = "none";  // for hide button
+    }
+
+
+</script>
+
+<table width="200" border="0">
+    <tr>
+        <th width="15"><img src="parking.svg"></th>
+        <th colspan="4" align="left">Pendelparkering</th>
+    </tr>
+    <tr>
+        <td width="15"></td>
+
+        <td colspan="4" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_Andelsvagen">Andelsvägen</td>
+    </tr>
+    <tr>
+        <td width="15"></td>
+
+        <td colspan="4" height="5"></td>
+    </tr>
+    <tr>
+        <th width="15"><img src="parking2.svg"></th>
+        <th colspan="4" align="left">Alternativa parkeringar</th>
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_smedjevägen">Smedjevägen</td>
+
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_hammarbacken">Hammarbacken</td>
+    </tr>
+    <tr>
+        <td width="15"></td>
+
+        <td colspan="4" height="5"></td>
+    </tr>
+    <tr>
+        <td width="15"><img src="train.svg"></td>
+        <td colspan="4" align="left">Tågtider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&ArrDep=departure" target="_blank">Häggvik</a></td>
+
+    </tr>
+
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left"></td>
+
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td colspan="4" align="left"></td>
+    </tr>
+
+    <tr>
+
+        <td colspan="5" align="center" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>
+</table>

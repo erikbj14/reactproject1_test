@@ -1,0 +1,949 @@
+﻿<!DOCTYPE html>
+<html>
+<style> 
+            table {
+                background-color:rgba(255, 99, 71, 0.5);
+            }
+</style>
+<head>
+    <title>OpenStreetMap Example</title>
+    <!--<meta charset="utf-8" /-->
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script type="module" src="./src/rotebro.js" defer></script>
+    <script>
+        function myFunction() {
+            location.reload();
+        }
+    
+        //chrome.runtime.sendMessage({ action: 'reloadPage' });
+    
+    
+        var invisible = function () {
+            document.getElementById('start').style.display = "none";  // for hide button
+        }
+    
+    
+    
+            
+    
+            function myFunction() {
+                const element = document.getElementById("myP");
+                element.style.fontSize = "24px";
+            }
+    
+    
+    
+            let flag = 10; // Flagga för att hålla reda på highlight- andelsvägen.Tror inte den används nu
+    
+    
+            function func() {
+                //var SchoolId = 0;
+                window.location.href = "www.trafikverket.se/trafikinformation/tag/?Station=H%C3%A4ggvik&aumlggvik&ArrDep=target_blank";
+            }
+    
+        </script>
+    <style>
+        /*openstreetmap contributors*/    
+        .ol-control.ol-attribution {
+        left: 200px;
+        padding-right: 80px; /* Adjust the padding on the right side */
+    }
+
+        /* Set the map height */
+        #osm-map {
+            position: absolute;
+            height: 590px;
+            width: 440px;
+            top: 150px;
+            left: 8px;
+        }
+    </style>
+    <style>
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 450px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+        #popup-container2 table th,
+        #popup-container2 table td {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        /*Staffans väg/ Norrvikenleden*/
+        #popup-container2 {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 110px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        /*Staffans väg, 9028*/
+        #popup-container4 {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 100px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+
+        #popup-container7 {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 100px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        #popup-container9 {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+        #popup-container11 {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 130px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+   
+
+    </style>
+</head>
+<body>
+
+    <div id="osm-map">
+        <div class="dropdown">
+
+            <a href="index.html">
+                <button>Tillbaka</button>
+            </a>
+            </div>
+        </div>
+
+        <div id="popup-container">
+            <!--Tabell över parkeringar-->
+            
+            <!-- <div id="popup-content"> -->
+            <!--</div>-->
+        </div>
+
+        <script>
+            var map = new ol.Map({
+    target: 'osm-map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    view: new ol.View({
+                    center: ol.proj.fromLonLat([17.9157, 59.4749]), 
+                    zoom: 15 // You can adjust the zoom level as needed
+    })})
+
+        // Marker 1 Häggvik
+const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91465, 59.47587])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './location-dot-solid.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+map.addLayer(vectorLayer);
+
+// Staffans väg/ Norrvikenleden 9027
+const marker2 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91754, 59.47354])), // Adjust the longitude value
+});
+
+const markerStyle2 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker2.setStyle(markerStyle2);
+
+const vectorSource2 = new ol.source.Vector({
+    features: [marker2], // Use marker2 as the feature
+});
+
+const vectorLayer2 = new ol.layer.Vector({
+    source: vectorSource2, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2);
+
+// 9027
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91754, 59.47354])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9027.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+//-------------------------------------------
+
+// Staffans väg, 9028
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91505, 59.47695])), // Adjust the longitude value
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+//-----------------------------------------
+// 9028
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91505, 59.47695])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9028.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
+
+// Staffans väg/ Rotevegen 9029
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91336, 59.47893])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4); 
+//------------------------------------------
+// 9029
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91336, 59.47893])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9029.png',
+        scale: 0.1,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a); 
+
+// Staffans väg/ Rotevägen 9029
+const marker5 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91543, 59.47929])), // Adjust the longitude value
+});
+
+const markerStyle5 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker5.setStyle(markerStyle5);
+
+const vectorSource5 = new ol.source.Vector({
+    features: [marker5], // Use marker2 as the feature
+});
+
+const vectorLayer5 = new ol.layer.Vector({
+    source: vectorSource5, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer5);
+
+// 9029 (andra delen)
+const marker5a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91543, 59.47929])), // Adjust the longitude value
+});
+
+const markerStyle5a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9029.png',
+        scale: 0.1,
+    }),
+});
+
+marker5a.setStyle(markerStyle5a);
+
+const vectorSource5a = new ol.source.Vector({
+    features: [marker5a], // Use marker2 as the feature
+});
+
+const vectorLayer5a = new ol.layer.Vector({
+    source: vectorSource5a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer5a);
+
+// Rotebrovägen/ Kung Hans väg 9025
+const marker6 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9157, 59.4741])), // Adjust the longitude value
+}); 
+
+const markerStyle6 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker6.setStyle(markerStyle6);
+
+const vectorSource6 = new ol.source.Vector({
+    features: [marker6], // Use marker2 as the feature
+});
+
+const vectorLayer6 = new ol.layer.Vector({
+    source: vectorSource6, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer6);
+
+// 9025
+const marker6a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9157, 59.4741])), // Adjust the longitude value
+}); 
+
+const markerStyle6a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9025.png',
+        scale: 0.1,
+    }),
+});
+
+marker6a.setStyle(markerStyle6a);
+
+const vectorSource6a = new ol.source.Vector({
+    features: [marker6a], // Use marker2 as the feature
+});
+
+const vectorLayer6a = new ol.layer.Vector({
+    source: vectorSource6a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer6a);
+
+// Rotebrovägen/ Hertig Karls väg 9026 (laddstolpsidan)
+const marker7 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91219, 59.47778])), // Adjust the longitude value
+}); 
+
+const markerStyle7 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker7.setStyle(markerStyle7);
+
+const vectorSource7 = new ol.source.Vector({
+    features: [marker7], // Use marker2 as the feature
+});
+
+const vectorLayer7 = new ol.layer.Vector({
+    source: vectorSource7, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7);
+
+// 9026 (laddstolpsidan)
+const marker7a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91219, 59.47778])), // Adjust the longitude value
+}); 
+
+const markerStyle7a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './9026.png',
+        scale: 0.1,
+    }),
+});
+
+marker7a.setStyle(markerStyle7a);
+
+const vectorSource7a = new ol.source.Vector({
+    features: [marker7a], // Use marker2 as the feature
+});
+
+const vectorLayer7a = new ol.layer.Vector({
+    source: vectorSource7a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer7a);
+
+</script>
+
+
+<table width="440" border="0">
+    <tr>
+            <th width="15"><img src="parking.svg"></th>
+            <th width="150" align="left">Pendelparkering</th>
+            <th width="15"></th>
+            <td width="260" align="left" id="demo4" onmouseover="mouseOver('demo4')" onmouseout="mouseOut('demo4')" class="highlight_kung_hans">Rotebrovägen/</td>
+    </tr>
+    <tr>
+            <th width="15"></th>
+            <td width="150" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Staffans väg/ </td>
+            <th width="15"></th>
+            <td width="260" align="left" id="demo4" onmouseover="mouseOver('demo4')" onmouseout="mouseOut('demo4')" class="highlight_kung_hans">Kung Hans väg</td>        
+    </tr>
+
+    <tr>
+        <th width="15"></th>
+        <td width="150" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Norrvikenleden</td>
+        <th width="15"></th>
+        <td width="260" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Rotebrovägen/</td>         
+    </tr>
+
+    <tr>
+        <th width="15"></th>
+        <td width="150" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Staffans väg</td>
+        <th width="15"></th>
+        <td width="260" align="left" id="demo5" onmouseover="mouseOver('demo5')" onmouseout="mouseOut('demo5')" class="highlight_hertig_karl">Hertig Karls väg</td>
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td width="150"></td>
+        <th width="15"></th>
+        <td width="260" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_staffan29">Staffans väg/ Rotev.</td>
+    </tr>
+    <tr>
+        <td width="15"><img src="train.svg"></td>
+        <td width="150"align="left">Tågtider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Rotebro&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Rotebro</a></td>
+        <th width="15"></th>
+        <td width="260" align="left" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>
+    </tr>
+    </table>
+
+    <div id="popup-container2">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg/ Norrvikenleden</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9027</b> 59 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+
+    </div>
+    <!--ragnarLundqvistvag-->
+    <div id="popup-container2">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg <b>9028</b></th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Staffans väg ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <!--ragnarLundqvistvag-->
+    <div id="popup-container4">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg <b>9028</b></th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Staffans väg</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container7">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Staffans väg/ Rotevägen <b>9029</b></th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">68 platser, ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"> Oftast finns det platser.</td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container9">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+                <th colspan=" 5" align="left">Rotebrovägen/ Kung Hans väg <b>9025</b></th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Rotebrovägen/ Kung Hans väg – 24 platser, ej tis kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+    <div id="popup-container11">
+        <table width="300" border="0">
+
+            <tr>
+
+                <th width="15"><img src="parking.svg"></th>
+
+                <th colspan=" 5" align="left">Rotebrovägen/ Hertig Karls väg <b>9026</b></th>
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Rotebrovägen/ Hertig Karls väg – Rotebrovägen/Hertig Karls väg – 68 platser, ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr á 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            </tr>
+        </table>
+    </div>
+
+    <!--<div id="popup-container3"></div>-->
+
+    <div id="popup-container">
+
+    </div>
+
+    <div id="popup-container2">
+
+    </div>
+
+    <div id="popup-container3">
+
+    </div>
+
+
+    <div id="popup-container4">
+
+    </div>
+
+    <div id="popup-container5">
+
+    </div>
+
+    <div id="popup-container6">
+
+    </div>
+
+
+    <div id="popup-container7">
+
+    </div>
+
+    <div id="popup-container8">
+
+    </div>
+
+
+    <div id="popup-container9">
+
+    </div>
+
+    <div id="popup-container10">
+
+    </div>
+
+
+    <div id="popup-container11">
+
+    </div>
+
+    <script>
+
+        /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.ol-control.ol-attribution').style.left = '50px';
+  });
+
+        const demoElement = document.getElementById("demo");
+
+// Add click event listener to the map view
+map.on('click', function (event) {
+//alert("zoom")
+// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
+// Get the clicked coordinate
+// if (flag == 10) {
+//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+document.getElementById('reloadButton').addEventListener('click', function () {
+    location.reload();
+});
+//Nedan rensa vid zoom
+document.getElementById("reloadButton").hidden = "";
+//document.getElementById("marker7Layer").style.visibility = "none"; 
+//document.getElementById("popup-container4").style.display = "none";
+document.getElementById("popup-container2").style.display = "none";
+document.getElementById("popup-container3").style.display = "none";
+document.getElementById("popup-container4").style.display = "none";
+document.getElementById("popup-container5").style.display = "none";
+document.getElementById("popup-container6").style.display = "none";
+document.getElementById("popup-container7").style.display = "none";
+document.getElementById("popup-container8").style.display = "none";
+document.getElementById("popup-container9").style.display = "none";
+document.getElementById("popup-container10").style.display = "none";
+document.getElementById("popup-container").style.display = "none";
+const clickedCoord = event.coordinate;
+
+// Adjust the clicked coordinate (move slightly to the left and up)
+const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+
+// Get the current zoom level
+const currentZoom = map.getView().getZoom();
+
+// Set the new zoom level (you can adjust this value)
+const newZoom = currentZoom + 1;
+
+// Set the new zoom level and center the map on the adjusted coordinate
+map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+//};
+});
+
+
+
+
+
+/*  if (id === "start") { <script>location.replace*/
+
+
+const popupContainer = document.getElementById('popup-container3');
+
+//const popupContainer = document.getElementById('popup-container4'); }
+
+// Update the position when the map is moved or zoomed
+map.on('moveend', function () {
+//alert("zoomad IGEN")
+const center = map.getView().getCenter();
+const pixel = map.getPixelFromCoordinate(center);
+
+// Set the position of the popup container based on the pixel coordinates
+popupContainer.style.left = pixel[0] + 'px';
+popupContainer.style.top = pixel[1] + 'px';
+});
+
+        function mouseOver(id) {
+            // Check the ID and perform actions accordingly
+            if (id === "demo") {
+                //alert(document.getElementById("demo").innerHTML)
+                document.getElementById("demo").innerHTML = "Staffans väg/";//Norrvikenleden
+                document.getElementById("popup-container2").style.display = "block";
+                document.getElementById("popup-container3").style.display = "block";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo2") {
+                //alert(document.getElementById("demo2").innerHTML)
+                document.getElementById("demo2").innerHTML = "Staffans väg";
+                document.getElementById("popup-container4").style.display = "block";
+                document.getElementById("popup-container5").style.display = "block";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo3") {
+                document.getElementById("demo3").innerHTML = "Staffans väg/ Rotev.";//Rotevägen
+                document.getElementById("popup-container6").style.display = "block";
+                document.getElementById("popup-container7").style.display = "block";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo4") {
+                document.getElementById("demo4").innerHTML = "Rotebrovägen/";// Kung Hans väg
+                document.getElementById("popup-container8").style.display = "block";
+                document.getElementById("popup-container9").style.display = "block";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo5") {
+                document.getElementById("demo5").innerHTML = "Rotebrovägen/";//Hertig Karls väg
+                document.getElementById("popup-container10").style.display = "block";
+                document.getElementById("popup-container11").style.display = "block";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+            }
+        }
+
+        function mouseOut(id) {
+            // No parameter (id) is needed in this function
+            // Perform actions based on the logic you need
+            if (id === "demo") {
+                document.getElementById("demo").innerHTML = "Staffans väg/";//Norrvikenleden
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo2") {
+                document.getElementById("demo2").innerHTML = "Staffans väg";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo3") {
+                document.getElementById("demo3").innerHTML = "Staffans väg/ Rotev.";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                 document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo4") {
+                    document.getElementById("demo4").innerHTML = "Rotebrovägen/";// Kung Hans väg
+                    document.getElementById("popup-container6").style.display = "none";
+                    document.getElementById("popup-container7").style.display = "none";
+                    document.getElementById("popup-container2").style.display = "none";
+                    document.getElementById("popup-container3").style.display = "none";
+                    document.getElementById("popup-container4").style.display = "none";
+                    document.getElementById("popup-container5").style.display = "none";
+                    document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+            }
+            else if (id === "demo5") {
+                document.getElementById("demo5").innerHTML = "Rotebrovägen/";//Hertig Karls väg
+                document.getElementById("popup-container10").style.display = "none";
+                document.getElementById("popup-container11").style.display = "none";
+                document.getElementById("popup-container6").style.display = "none";
+                document.getElementById("popup-container7").style.display = "none";
+                document.getElementById("popup-container2").style.display = "none";
+                document.getElementById("popup-container3").style.display = "none";
+                document.getElementById("popup-container4").style.display = "none";
+                document.getElementById("popup-container5").style.display = "none";
+                document.getElementById("popup-container8").style.display = "none";
+                document.getElementById("popup-container9").style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+    <!--<div id="popup-content"></div>-->
+</body>
+</html>
