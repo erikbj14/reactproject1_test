@@ -274,7 +274,7 @@ map.addLayer(vectorLayer4);
         <th width="15"><img src="parking2.svg"></th>
         <th width="160" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Ulriksdal</a></td>
+        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="openInMapContainer(event)">Ulriksdal</a></td>
     </tr>
     <tr>
             <th width="15"></th>
@@ -340,7 +340,30 @@ map.addLayer(vectorLayer4);
 
 </div>
 
+<div id="map-container">
 
+
+    <script>
+        function openInMapContainer(event) {
+          event.preventDefault(); // Prevent the default link behavior
+      
+          // Get the map container element
+          var mapContainer = document.getElementById('map-container');
+      
+          // Create an iframe to load the link
+          var iframe = document.createElement('iframe');
+          iframe.src = event.target.href;
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+      
+          // Clear the map container and append the iframe
+          mapContainer.innerHTML = '';
+          mapContainer.appendChild(iframe);
+        }
+      </script>
+
+
+</div>
 
 <script>
 
