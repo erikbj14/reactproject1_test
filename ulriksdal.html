@@ -130,6 +130,22 @@
     <!-- Map Script -->
     <script>
 
+// För att sidan från trafikverket ska vara lite scrollad i öppnningsposition
+function openWindowWithScroll(url, name, specs) {
+    var newWindow = window.open(url, name, specs);
+    if (newWindow) {
+        newWindow.onload = function () {
+            // Set the scroll position to move the content down
+            newWindow.scrollTo(20, 100); // Adjust the vertical scroll position as needed
+        };
+    }
+}
+
+
+
+
+
+
 var map = new ol.Map({
     target: 'osm-map',
     layers: [
@@ -275,7 +291,7 @@ map.addLayer(vectorLayer4);
         <th width="15"><img src="parking2.svg"></th>
         <th width="160" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=-10, left=100, width=300, height=400'); return false;">Ulriksdal</a></td>
+        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="openWindowWithScroll(this.href, 'targetWindow', 'top=10, left=100, width=300, height=400'); return false;">Ulriksdal</a></td>
     </tr>
     <tr>
             <th width="15"></th>
