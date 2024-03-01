@@ -131,7 +131,7 @@
     <script>
 
 // För att sidan från trafikverket ska vara lite scrollad i öppnningsposition
-function scrollWin() {
+openWindowWithScroll(url, name, specs){
   window.scrollTo(0, 200);
 }
 
@@ -285,7 +285,7 @@ map.addLayer(vectorLayer4);
         <th width="15"><img src="parking2.svg"></th>
         <th width="160" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="scrollWin(this.href, 'targetWindow', 'top=10, left=100, width=300, height=400'); return false;">Ulriksdal</a></td>
+        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="openWindowWithScroll(this.href, 'targetWindow', 'top=10, left=100, width=300, height=400'); return false;">Ulriksdal</a></td>
     </tr>
     <tr>
             <th width="15"></th>
