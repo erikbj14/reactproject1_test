@@ -20,6 +20,11 @@ table {
         background-color:rgba(255, 99, 71, 0.5);
     }
 
+    #display-info {
+        top: 100px;
+        z-index: 3000;
+    }
+
        /* Set the map height */
        #osm-map {
             position: absolute;
@@ -112,6 +117,34 @@ table {
     <!-- First Map Script -->
     <!-- Map Script -->
     <script>
+
+function updateInformation() {
+    // Get the current date and time
+    const currentDate = new Date();
+    
+    // Define the start and end dates for the range
+    const startDate = new Date('2023-01-20T18:12:00'); // January 20 at 6:00 PM
+    const endDate = new Date('2024-01-20T19:13:00');   // January 20 at 7:00 PM
+
+    // Check if the current date and time are within the specified range
+    if (currentDate >= startDate && currentDate <= endDate) {
+        // If within the range, display the information
+        document.getElementById('display-info').textContent = "Show this information between 6:00 PM and 7:00 PM on January 20th.";
+    } else {
+        // If outside the range, display a different message or leave it blank
+        document.getElementById('display-info').textContent = "No information available.";
+    }
+}
+
+// Call the updateInformation function when the page loads
+updateInformation();
+
+// Update the information every second (1000 milliseconds)
+setInterval(updateInformation, 1000);
+
+
+
+
 
 var map = new ol.Map({
     target: 'osm-map',
@@ -291,7 +324,7 @@ map.addLayer(vectorLayer2a);
 
 </div>
 
-
+<h1 id="display-info"></h1>
 
 <script>
 
