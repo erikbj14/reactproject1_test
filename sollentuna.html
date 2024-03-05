@@ -318,9 +318,11 @@ map.addLayer(vectorLayer2a);
         // Define the start and end dates for the range
         const startDate = new Date('2023-01-20T18:00:00'); // January 20 at 6:00 PM
         const endDate = new Date('2024-03-20T19:00:00');   // January 20 at 7:00 PM
+    </script>
     <table width="300" border="1">
         <tr>
             <td>
+                <script>
         // Check if the current date and time are within the specified range
         if (currentDate >= startDate && currentDate <= endDate) {
             // If within the range, display the information
@@ -329,11 +331,12 @@ map.addLayer(vectorLayer2a);
             // If outside the range, display a different message or leave it blank
             document.getElementById('display-info').textContent = "No information available.";
         }
+    </script>
         </td>
         <tr>
     </table>
     }
-    
+<script>
     // Call the updateInformation function when the page loads
     updateInformation();
     
