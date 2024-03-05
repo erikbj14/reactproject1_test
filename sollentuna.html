@@ -307,7 +307,6 @@ map.addLayer(vectorLayer2a);
 
 <div id="display-info">
     <script>
-
         function updateInformation() {
             // Get the current date and time
             const currentDate = new Date();
@@ -317,13 +316,12 @@ map.addLayer(vectorLayer2a);
             const endDate = new Date('2024-03-20T19:00:00');   // Mars 20 at 7:00 PM
 
             // Check if the current date and time are within the specified range
-            if (currentDate >= startDate && currentDate <= endDate) {
-                // If within the range, display the information
-                document.getElementById('display-info').textContent = "Show this information between 6:00 PM and 7:00 PM on January 20th.";
-            } else {
-                // If outside the range, display a different message or leave it blank
-                document.getElementById('display-info').textContent = "No information available.";
-            }
+            const displayText = (currentDate >= startDate && currentDate <= endDate) ?
+                "Show this information between 6:00 PM and 7:00 PM on January 20th." :
+                "No information available.";
+
+            // Set the information as text content
+            document.getElementById('display-info-text').textContent = displayText;
         }
 
         // Call the updateInformation function when the page loads
@@ -337,6 +335,7 @@ map.addLayer(vectorLayer2a);
         <tr>
             <td>
                 Vallen, ArenavägenIII
+                <div id="display-info-text"></div>
             </td>
         </tr>
     </table>
