@@ -308,16 +308,24 @@ function updateInformation() {
     const currentDate = new Date();
     
     // Define the start and end dates for the range
-    const startDate = new Date('2023-01-20T18:00:00'); // January 20 at 6:00 PM
-    const endDate = new Date('2024-03-20T19:00:00');   // Mars 20 at 7:00 PM
+    const startDate = new Date('2023-01-20T18:12:00'); // January 20 at 6:00 PM
+    const endDate = new Date('2024-01-20T19:13:00');   // January 20 at 7:00 PM
 
     // Check if the current date and time are within the specified range
     if (currentDate >= startDate && currentDate <= endDate) {
         // If within the range, display the information
         document.getElementById('display-info').textContent = "Show this information between 6:00 PM and 7:00 PM on January 20th.";
     } else {
-        // If outside the range, display a different message or leave it blank
-        document.getElementById('display-info').textContent = "No information available.";
+        // If outside the range, display a different message based on the day of the week
+        const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            // Display a message for Saturday and Sunday
+            document.getElementById('display-info').textContent = "Weekend message: Your message here.";
+        } else {
+            // Display a message for other weekdays
+            document.getElementById('display-info').textContent = "Weekday message: Your message here.";
+        }
     }
 }
 
