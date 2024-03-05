@@ -108,6 +108,23 @@ table {
         /*display: none;  Initially hidden*/
     }
 
+    #display-info-table {
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+        }
+
+        #display-info-table th, #display-info-table td {
+            padding: 5px;
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -305,7 +322,12 @@ map.addLayer(vectorLayer2a);
 
 </div>
 
-<div id="display-info">
+<table id="display-info-table">
+    <tr>
+        <th>Time Range</th>
+        <td id="display-info"></td>
+    </tr>
+</table>
 
 <script>
 function updateInformation() {
@@ -355,8 +377,7 @@ updateInformation();
 
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
-</script>
-</div>    
+</script>    
 
 
 <script>
