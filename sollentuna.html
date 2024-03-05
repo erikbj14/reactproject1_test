@@ -313,15 +313,15 @@ map.addLayer(vectorLayer2a);
 
             // Define the start and end dates for the range
             const startDate = new Date('2023-01-20T18:00:00'); // January 20 at 6:00 PM
-            const endDate = new Date('2024-03-20T19:00:00');   // Mars 20 at 7:00 PM
+            const endDate = new Date('2024-03-20T19:00:00');   // March 20 at 7:00 PM
 
             // Check if the current date and time are within the specified range
-            const displayText = (currentDate >= startDate && currentDate <= endDate) ?
-                "Show this information between 6:00 PM and 7:00 PM on January 20th." :
-                "No information available.";
+            const isWithinRange = currentDate.getTime() >= startDate.getTime() && currentDate.getTime() <= endDate.getTime();
 
             // Set the information as text content
-            document.getElementById('display-info-text').textContent = displayText;
+            document.getElementById('display-info-text').textContent = isWithinRange ?
+                "Show this information between 6:00 PM and 7:00 PM on January 20th." :
+                "No information available.";
         }
 
         // Call the updateInformation function when the page loads
@@ -340,6 +340,7 @@ map.addLayer(vectorLayer2a);
         </tr>
     </table>
 </div>
+
 <script>
 
 /*openstreetmap contributors*/
