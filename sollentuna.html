@@ -305,47 +305,47 @@ map.addLayer(vectorLayer2a);
 
 </div>
 
-<!--<div id="display-info">-->
+<div id="display-info">
+    <script>
+        alert("script");
 
-<script>
-    alert("script");
-    function updateInformation() {
-        // Get the current date and time
-        const currentDate = new Date();
-        
-        // Define the start and end dates for the range
-        const startDate = new Date('2023-01-20T18:00:00'); // January 20 at 6:00 PM
-        const endDate = new Date('2024-03-20T19:00:00');   // Mars 20 at 7:00 PM
+        function updateInformation() {
+            // Get the current date and time
+            const currentDate = new Date();
+
+            // Define the start and end dates for the range
+            const startDate = new Date('2023-01-20T18:00:00'); // January 20 at 6:00 PM
+            const endDate = new Date('2024-03-20T19:00:00');   // Mars 20 at 7:00 PM
+
+            // Check if the current date and time are within the specified range
+            if (currentDate >= startDate && currentDate <= endDate) {
+                alert("här");
+                // If within the range, display the information
+                document.getElementById('display-info').textContent = "Show this information between 6:00 PM and 7:00 PM on January 20th.";
+            } else {
+                // If outside the range, display a different message or leave it blank
+                document.getElementById('display-info').textContent = "No information available.";
+            }
+        }
+
+        // Call the updateInformation function when the page loads
+        updateInformation();
+
+        // Update the information every second (1000 milliseconds)
+        setInterval(updateInformation, 1000);
     </script>
+
     <table width="300" border="1">
         <tr>
             <td>
                 <script>
                     alert("innan");
-        // Check if the current date and time are within the specified range
-        if (currentDate >= startDate && currentDate <= endDate) {
-            alert("här");
-            // If within the range, display the information
-            document.getElementById('display-info').textContent = "Show this information between 6:00 PM and 7:00 PM on January 20th.";
-        } else {
-            // If outside the range, display a different message or leave it blank
-            document.getElementById('display-info').textContent = "No information available.";
-        }
-    }
-    </script>
-        
-    
-</td>
-        <tr>
+                    // Your table-related JavaScript code here
+                </script>
+            </td>
+        </tr>
     </table>
-<script>
-    // Call the updateInformation function when the page loads
-    updateInformation();
-    
-    // Update the information every second (1000 milliseconds)
-    setInterval(updateInformation, 1000);
-</script>
-<!--</div>-->
+</div>
 <script>
 
 /*openstreetmap contributors*/
