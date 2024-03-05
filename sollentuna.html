@@ -325,7 +325,7 @@ map.addLayer(vectorLayer2a);
 <table id="display-info-table">
     <tr>
         <th>Time Range</th>
-        <td id="display-info"></td>
+        <th>Message</th>
     </tr>
 </table>
 
@@ -333,43 +333,65 @@ map.addLayer(vectorLayer2a);
 function updateInformation() {
     // Get the current date and time
     const currentDate = new Date();
-    
-    // Define the start and end dates for the range
-    const startDateMorning = new Date('2023-01-20T00:00:00');
-    const endDateMorning = new Date('2024-01-20T08:30:00');
-    
-    const startDateWorkday = new Date('2023-01-20T08:30:00');
-    const endDateWorkday = new Date('2024-01-20T16:00:00');
-
-    const startDateEvening = new Date('2023-01-20T16:00:00');
-    const endDateEvening = new Date('2024-01-20T18:00:00');
-
-    const startDateNight = new Date('2023-01-20T18:00:00');
-    const endDateNight = new Date('2024-01-20T24:00:00');
-
     const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
     const currentHour = currentDate.getHours();
 
     let displayText = "";
 
-    if ((dayOfWeek === 0 || dayOfWeek === 6) && currentHour >= 0 && currentHour < 24) {
-        // Display a message for the entire weekend
+    // Define time ranges and messages
+    const timeRanges = [
+        { start: 0, end: 8.5, message: "Your message for 00:00-08:30" },
+        { start: 8.5, end: 16, message: "Your message for 08:30-16:00" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00" },
+        { start: 18, end: 24, message: "Your message for 18:00-24:00" },
+    ];
+
+    // Check if it's the weekend
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
         displayText = "Weekend message: Your message here.";
     } else {
-        // Display messages for different time ranges on weekdays
-        if (currentHour >= 0 && currentHour < 8.5) {
-            displayText = "Weekdays 00:00-08:30: Your message here.";
-        } else if (currentHour >= 8.5 && currentHour < 16) {
-            displayText = "Weekdays 08:30-16:00: Your message here.";
-        } else if (currentHour >= 16 && currentHour < 18) {
-            displayText = "Weekdays 16:00-18:00: Your message here.";
-        } else if (currentHour >= 18 && currentHour < 24) {
-            displayText = "Weekdays 18:00-24:00: Your message here.";
+        // Check the current time range
+        for (const range of timeRanges) {
+            if (currentHour >= range.start && currentHour < range.end) {
+                displayText = range.message;
+                break;
+            }
         }
     }
 
-    // Set the text content based on the conditions
-    document.getElementById('display-info').textContent = displayText;
+    // Add or update rows in the table
+    const table = document.getElementById('display-info-table');
+
+    // Clear existing rows
+    while (table.rows.length > 1) {
+        table.deleteRow(1);
+    }
+
+    // Add new row
+    const newRow = table.insertRow(1);
+    const cell1 = newRow.insertCell(0);
+    const cell2 = newRow.insertCell(1);
+
+    // Set cell values
+    cell1.textContent = getTimeRangeString();
+    cell2.textContent = displayText;
+}
+
+function getTimeRangeString() {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+
+    if (currentHour >= 0 && currentHour < 8.5) {
+        return "00:00-08:30";
+    } else if (currentHour >= 8.5 && currentHour < 16) {
+        return "08:30-16:00";
+    } else if (currentHour >= 16 && currentHour < 18) {
+        return "16:00-18:00";
+    } else if (currentHour >= 18 && currentHour < 24) {
+        return "18:00-24:00";
+    } else {
+        return "Unknown";
+    }
 }
 
 // Call the updateInformation function when the page loads
