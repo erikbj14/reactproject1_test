@@ -111,7 +111,6 @@ table {
     </style>
 </head>
 <body>
-    <script>alert("Innan");</script>
 <!-- First Map -->
 <div id="osm-map">
     <div class="dropdown">
@@ -307,7 +306,9 @@ map.addLayer(vectorLayer2a);
 </div>
 
 <div id="display-info">
+
 <script>
+    alert("script");
     function updateInformation() {
         // Get the current date and time
         const currentDate = new Date();
