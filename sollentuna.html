@@ -325,8 +325,15 @@ map.addLayer(vectorLayer2a);
 <table id="display-info-table">
     <tr>
         <th>Time Range</th>
-        <th>Indicator</th>
+    </tr>
+    <tr>
+        <td id="time-indicator-cell"></td>
+    </tr>
+    <tr>
         <th>Message</th>
+    </tr>
+    <tr>
+        <td id="message-cell"></td>
     </tr>
 </table>
 
@@ -351,7 +358,7 @@ function updateInformation() {
     // Check if it's the weekend
     if (dayOfWeek === 0 || dayOfWeek === 6) {
         displayText = "Weekend message: Your message here.";
-        indicatorColor = "blue"; // Change this to the desired color for weekends
+        indicatorColor = "green"; // Change this to the desired color for weekends
     } else {
         // Check the current time range
         for (const range of timeRanges) {
@@ -363,24 +370,10 @@ function updateInformation() {
         }
     }
 
-    // Add or update rows in the table
-    const table = document.getElementById('display-info-table');
-
-    // Clear existing rows
-    while (table.rows.length > 1) {
-        table.deleteRow(1);
-    }
-
-    // Add new row
-    const newRow = table.insertRow(1);
-    const cell1 = newRow.insertCell(0);
-    const cell2 = newRow.insertCell(1);
-    const cell3 = newRow.insertCell(2);
-
-    // Set cell values
-    cell1.textContent = getTimeRangeString();
-    cell2.style.backgroundColor = indicatorColor;
-    cell3.textContent = displayText;
+    // Set values for time indicator and message cells
+    document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
+    document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
+    document.getElementById('message-cell').textContent = displayText;
 }
 
 function getTimeRangeString() {
@@ -406,8 +399,6 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
-    
-
 
 <script>
 
