@@ -417,13 +417,12 @@ function toggleTableVisibility(show) {
     setInterval(updateInformation, 1000);
 
     document.addEventListener('click', function (event) {
-        const table = document.getElementById('display-info-table');
-        const target = event.target;
+    const table = document.getElementById('display-info-table');
+    const target = event.target;
 
-        if (!table.contains(target)) {
-            toggleTableVisibility(false);
-        }
-    });
+    if (!table.contains(target) && table.style.display !== 'none') {
+        toggleTableVisibility(false);
+    }
 
 </script>
 
