@@ -108,22 +108,22 @@ table {
         /*display: none;  Initially hidden*/
     }
 
+    /* Nedan tabell för prognos */
     #display-info-table {
-            position: absolute;
-            top: 100px;
-            left: 0px;
-            background-color: white;
-            padding: 10px;
-            border: 2px solid blue;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 3000;
-        }
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        #display-info-table th, #display-info-table td {
-            padding: 5px;
-            border: 1px solid black;
-        }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    /* Style for the second row with a longer cell */
+    tr.long-row td {
+        background-color: #f2f2f2; /* Set the desired background color */
+    }
 
     </style>
 </head>
@@ -333,7 +333,7 @@ map.addLayer(vectorLayer2a);
         <th>ID</th>
         <th>Color Indicator</th>
     </tr>-->
-    <tr>
+    <tr class="long-row"> <!-- Add the class to the second row -->
         <td id="id-cell"></td>
         <td id="color-indicator-cell"></td>
     </tr>
