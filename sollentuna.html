@@ -341,20 +341,20 @@ map.addLayer(vectorLayer2a);
     
         let displayText = "";
         let indicatorColor = "";
-        let id = "12345"; // You can replace this with a dynamic value
+        let id = "9032"; // You can replace this with a dynamic value
     
         // Define time ranges and messages
         const timeRanges = [
             { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "red" },
             { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "green" },
-            { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "green" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
+            { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
         ];
     
         // Check if it's the weekend
         if (dayOfWeek === 0 || dayOfWeek === 6) {
             displayText = "Weekend message: Your message here.";
-            indicatorColor = "blue"; // Change this to the desired color for weekends
+            indicatorColor = "lightgreen"; // Change this to the desired color for weekends
         } else {
             // Check the current time range
             for (const range of timeRanges) {
