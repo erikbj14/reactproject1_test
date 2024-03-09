@@ -324,8 +324,11 @@ map.addLayer(vectorLayer2a);
 
 <table id="display-info-table">
     <tr>
-        <th>Time Range</th>
-        <th>Message</th>
+        <th colspan="2">Prognos</th>
+    </tr>
+    <tr>
+        <td id="id-cell"></td>
+        <td id="color-indicator-cell"></td>
     </tr>
 </table>
 
@@ -337,44 +340,38 @@ function updateInformation() {
     const currentHour = currentDate.getHours();
 
     let displayText = "";
+    let indicatorColor = "";
+    let id = "12345"; // You can replace this with a dynamic value
 
     // Define time ranges and messages
     const timeRanges = [
-        { start: 0, end: 8.5, message: "Your message for 00:00-08:30" },
-        { start: 8.5, end: 16, message: "Your message for 08:30-16:00" },
-        { start: 16, end: 18, message: "Your message for 16:00-18:00" },
-        { start: 18, end: 24, message: "Your message for 18:00-24:00" },
+        { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "red" },
+        { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "green" },
+        { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "green" },
     ];
 
     // Check if it's the weekend
     if (dayOfWeek === 0 || dayOfWeek === 6) {
         displayText = "Weekend message: Your message here.";
+        indicatorColor = "lightgreen"; // Change this to the desired color for weekends
     } else {
         // Check the current time range
         for (const range of timeRanges) {
             if (currentHour >= range.start && currentHour < range.end) {
                 displayText = range.message;
+                indicatorColor = range.color;
                 break;
             }
         }
     }
 
-    // Add or update rows in the table
-    const table = document.getElementById('display-info-table');
-
-    // Clear existing rows
-    while (table.rows.length > 1) {
-        table.deleteRow(1);
-    }
-
-    // Add new row
-    const newRow = table.insertRow(1);
-    const cell1 = newRow.insertCell(0);
-    const cell2 = newRow.insertCell(1);
-
-    // Set cell values
-    cell1.textContent = getTimeRangeString();
-    cell2.textContent = displayText;
+    // Set values for ID and color indicator cells
+    document.getElementById('id-cell').textContent = id;
+    document.getElementById('color-indicator-cell').style.backgroundColor = indicatorColor;
+    document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
+    document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
+    document.getElementById('message-cell').textContent = displayText;
 }
 
 function getTimeRangeString() {
@@ -399,10 +396,7 @@ updateInformation();
 
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
-</script>    
-
-
-<script>
+</script>
 
 /*openstreetmap contributors*/
 document.addEventListener("DOMContentLoaded", function () {
