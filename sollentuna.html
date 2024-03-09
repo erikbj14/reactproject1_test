@@ -324,10 +324,7 @@ map.addLayer(vectorLayer2a);
 
 <table id="display-info-table">
     <tr>
-        <th colspan="2">Time Range</th>
-    </tr>
-    <tr>
-        <td id="time-indicator-cell" colspan="2"></td>
+        <th colspan="2">Prognos</th>
     </tr>
     <tr>
         <th>ID</th>
@@ -346,22 +343,30 @@ function updateInformation() {
     const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
     const currentHour = currentDate.getHours();
 
+    let displayText = "";
     let indicatorColor = "";
     let id = "12345"; // You can replace this with a dynamic value
 
-    // Define time ranges and colors
+    // Define time ranges and messages
     const timeRanges = [
-        { start: 0, end: 8.5, color: "red" },
-        { start: 8.5, end: 16, color: "yellow" },
-        { start: 16, end: 18, color: "green" },
-        { start: 18, end: 24, color: "green" },
+        { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "red" },
+        { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "green" },
+        { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "green" },
     ];
 
-    // Check the current time range
-    for (const range of timeRanges) {
-        if (currentHour >= range.start && currentHour < range.end) {
-            indicatorColor = range.color;
-            break;
+    // Check if it's the weekend
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        displayText = "Weekend message: Your message here.";
+        indicatorColor = "lightgreen"; // Change this to the desired color for weekends
+    } else {
+        // Check the current time range
+        for (const range of timeRanges) {
+            if (currentHour >= range.start && currentHour < range.end) {
+                displayText = range.message;
+                indicatorColor = range.color;
+                break;
+            }
         }
     }
 
@@ -370,6 +375,7 @@ function updateInformation() {
     document.getElementById('color-indicator-cell').style.backgroundColor = indicatorColor;
     document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
     document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
+    document.getElementById('message-cell').textContent = displayText;
 }
 
 function getTimeRangeString() {
@@ -395,8 +401,6 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
-
-<script>
 
 /*openstreetmap contributors*/
 document.addEventListener("DOMContentLoaded", function () {
