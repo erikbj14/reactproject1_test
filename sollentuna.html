@@ -109,6 +109,8 @@ table {
     }
 
     #display-info-table {
+            width: 100%;
+            border-collapse: collapse;
             position: absolute;
             top: 100px;
             left: 0px;
@@ -120,9 +122,16 @@ table {
             z-index: 3000;
         }
 
+    /* Style for the second row with a longer cell */
+    tr.long-row td {
+        background-color: #f2f2f2; /* Set the desired background color */
+        vertical-align: bottom; /* Adjust the vertical alignment as needed */
+    }
         #display-info-table th, #display-info-table td {
             padding: 5px;
-            border: 1px solid black;
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
         }
 
     </style>
