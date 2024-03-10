@@ -367,6 +367,7 @@ map.addLayer(vectorLayer3);
 function updateInformation() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
+    const dayOfWeek = currentDate.getDay();
 
     const timeRangesRow1 = [
         { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
@@ -380,25 +381,30 @@ function updateInformation() {
         { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
     ];
 
-    updateRowInformation(1, currentHour, timeRangesRow1);
-    updateRowInformation(2, currentHour, timeRangesRow2);
+    updateRowInformation(1, dayOfWeek, currentHour, timeRangesRow1);
+    updateRowInformation(2, dayOfWeek, currentHour, timeRangesRow2);
 }
 
-function updateRowInformation(rowNumber, currentHour, timeRanges) {
+function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
     let displayText = "";
     let indicatorColor = "";
     let id;
 
-    for (const range of timeRanges) {
-        if (currentHour >= range.start && currentHour < range.end) {
-            displayText = range.message;
-            indicatorColor = range.color;
-            break;
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        // Set the color to "lightgreen" for weekends
+        indicatorColor = "lightgreen";
+    } else {
+        for (const range of timeRanges) {
+            if (currentHour >= range.start && currentHour < range.end) {
+                displayText = range.message;
+                indicatorColor = range.color;
+                break;
+            }
         }
     }
 
     // Assign dynamic ID based on rowNumber and currentHour
-    id = (rowNumber === 1) ? "9024" : (rowNumber === 2) ? "9003" : "";
+    id = (rowNumber === 1) ? "9024" : (rowNumber === 2) ? "Skolvägen" : "";
 
     document.getElementById(`id-cell-${rowNumber}`).textContent = id;
     document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
@@ -410,6 +416,7 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
+
 
 <script>
 
