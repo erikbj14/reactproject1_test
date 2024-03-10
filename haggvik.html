@@ -906,7 +906,7 @@ function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id)
         }
     }
 
-    // Add condition for red color (assuming IDs "9023" and "9030" should be red during 08:30-16:00 on weekdays)
+    // Add conditions for red color
     if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
         indicatorColor = "red";
     }
@@ -921,6 +921,7 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
+
 
 
 <!--<div id="popup-container6">
