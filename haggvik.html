@@ -889,23 +889,14 @@ function updateInformation() {
         { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
     ];
 
-    updateRowInformation(1, dayOfWeek, currentHour, timeRanges);
-    updateRowInformation(2, dayOfWeek, currentHour, timeRanges);
-    updateRowInformation(3, dayOfWeek, currentHour, timeRanges);
+    updateRowInformation(1, dayOfWeek, currentHour, timeRanges, "9023");
+    updateRowInformation(2, dayOfWeek, currentHour, timeRanges, "9003");
+    updateRowInformation(3, dayOfWeek, currentHour, timeRanges, "9030");
 }
 
-function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
+function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
     let displayText = "";
     let indicatorColor = "";
-    let id;
-
-    if (rowNumber === 1) {
-        id = (currentHour >= 9 && currentHour < 16) ? "9023" : (currentHour >= 16 && currentHour < 18) ? "9001" : "9001";
-    } else if (rowNumber === 2) {
-        id = "9003";
-    } else if (rowNumber === 3) {
-        id = (currentHour >= 9 && currentHour < 16) ? "9030" : (currentHour >= 16 && currentHour < 18) ? "9003" : "9003";
-    }
 
     for (const range of timeRanges) {
         if (currentHour >= range.start && currentHour < range.end) {
@@ -913,6 +904,11 @@ function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
             indicatorColor = range.color;
             break;
         }
+    }
+
+    // Add condition for red color (assuming IDs "9023" and "9030" should be red during 08:30-16:00 on weekdays)
+    if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
+        indicatorColor = "red";
     }
 
     document.getElementById(`id-cell-${rowNumber}`).textContent = id;
@@ -927,9 +923,7 @@ setInterval(updateInformation, 1000);
 </script>
 
 
-
-
-    <!--<div id="popup-container6">
+<!--<div id="popup-container6">
   <script>      // Marker 6 Hammarbacken
 const marker10 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.444])), // Adjust the longitude value
