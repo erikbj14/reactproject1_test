@@ -889,9 +889,12 @@ function updateInformation() {
         { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
     ];
 
-    updateRowInformation(1, dayOfWeek, currentHour, timeRanges, "9023");
-    updateRowInformation(2, dayOfWeek, currentHour, timeRanges, "9003");
-    updateRowInformation(3, dayOfWeek, currentHour, timeRanges, "9030");
+    // Sort the IDs numerically
+    const sortedIds = ["9003", "9023", "9030"].sort();
+
+    updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
+    updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
+    updateRowInformation(3, dayOfWeek, currentHour, timeRanges, sortedIds[2]);
 }
 
 function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
@@ -925,9 +928,6 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
-
-
-
 
 <!--<div id="popup-container6">
   <script>      // Marker 6 Hammarbacken
