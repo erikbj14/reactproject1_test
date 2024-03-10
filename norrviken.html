@@ -109,6 +109,25 @@
             z-index: 3000;
             display: none; /* Initially hidden */
         }
+
+        #display-info-table {
+            position: absolute;
+            top: 350px;
+            left: 0px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+        }
+
+        #display-info-table th, #display-info-table td {
+            padding: 5px;
+            padding-top: 2px;
+            /*border: 1px solid black;*/
+        }
+
     </style>
 </head>
 <body>
@@ -328,7 +347,71 @@ map.addLayer(vectorLayer3);
 
 <div id="popup-container4">
 
-</div> <script>
+</div> 
+
+<table id="display-info-table">
+    <tr>
+        <th colspan="2" align="left">Prognos</th>
+    </tr>
+    <tr id="row-1">
+        <td id="id-cell-1"></td>
+        <td id="color-indicator-cell-1" style="width: 80%;"></td>
+    </tr>
+    <tr id="row-2">
+        <td id="id-cell-2"></td>
+        <td id="color-indicator-cell-2" style="width: 80%;"></td>
+    </tr>
+</table>
+
+<script>
+function updateInformation() {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+
+    const timeRangesRow1 = [
+        { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
+        { start: 16, end: 24, message: "Your message for 16:00-24:00", color: "lightgreen" },
+    ];
+
+    const timeRangesRow2 = [
+        { start: 7, end: 8, message: "Your message for 07:00-08:00", color: "yellow" },
+        { start: 8, end: 16, message: "Your message for 08:00-16:00", color: "red" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+        { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
+    ];
+
+    updateRowInformation(1, currentHour, timeRangesRow1);
+    updateRowInformation(2, currentHour, timeRangesRow2);
+}
+
+function updateRowInformation(rowNumber, currentHour, timeRanges) {
+    let displayText = "";
+    let indicatorColor = "";
+    let id;
+
+    for (const range of timeRanges) {
+        if (currentHour >= range.start && currentHour < range.end) {
+            displayText = range.message;
+            indicatorColor = range.color;
+            break;
+        }
+    }
+
+    // Assign dynamic ID based on rowNumber and currentHour
+    id = (rowNumber === 1) ? "9024" : (rowNumber === 2) ? "9003" : "";
+
+    document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+    document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
+}
+
+// Call the updateInformation function when the page loads
+updateInformation();
+
+// Update the information every second (1000 milliseconds)
+setInterval(updateInformation, 1000);
+</script>
+
+<script>
 
     /*openstreetmap contributors*/
     document.addEventListener("DOMContentLoaded", function () {
