@@ -103,9 +103,49 @@
         p {
   font-size: 35px;
 }
+
+#display-info-table {
+            position: absolute;
+            top: 350px;
+            left: 250px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+        }
+
+        #display-info-table th, #display-info-table td {
+            padding: 5px;
+            padding-top: 2px;
+            /*border: 1px solid black;*/
+        }
+
     </style>
 </head>
 <body>
+
+    <table id="display-info-table">
+        <tr>
+            <th colspan="2" align="left">Parkeringsindikator</th>
+        </tr>
+        <tr>
+            <th colspan="2" align="left">(välj i menyn för att se prognostiserad parkeringssituation)</th>
+        </tr>
+        <tr id="row-1">
+            <td id="id-cell-1">Lediga platser</td>
+            <td id="color-indicator-cell-1" style="width: 80%; background-color: lightgreen;"></td>
+        </tr>
+        <tr id="row-2">
+            <td id="id-cell-2">Finns enstaka lediga platser</td>
+            <td id="color-indicator-cell-2" style="width: 80%; background-color: yellow;"></td>
+        </tr>
+        <tr id="row-3">
+            <td id="id-cell-3">Fullt</td>
+            <td id="color-indicator-cell-3" style="width: 80%; background-color: red;"></td>
+        </tr>
+    </table>
 
 <!-- First Map -->
 <div id="osm-map"></div>
