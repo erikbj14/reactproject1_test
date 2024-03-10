@@ -121,6 +121,25 @@ table {
             z-index: 3000;
             display: none;
         }
+
+        #display-info-table {
+            position: absolute;
+            top: 250px;
+            left: 0px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+        }
+
+        #display-info-table th, #display-info-table td {
+            padding: 5px;
+            padding-top: 2px;
+            /*border: 1px solid black;*/
+        }
+
     </style>
 </head>
 <body>
@@ -438,6 +457,83 @@ map.addLayer(vectorLayer4a);
 <div id="popup-container4">
 
 </div>
+
+<table id="display-info-table" width="200" border="1">
+    <tr>
+        <th colspan="2" align="left">Prognos</th>
+    </tr>
+    <tr>
+        <td id="id-cell" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;"></td>
+        <td id="color-indicator-cell" style="height: 5px; margin: 0; width: 80px;"></td>
+    </tr>
+</table>
+
+<script>
+    function updateInformation() {
+        // Get the current date and time
+        const currentDate = new Date();
+        const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        const currentHour = currentDate.getHours();
+    
+        let displayText = "";
+        let indicatorColor = "";
+        let id = "59000"; // You can replace this with a dynamic value
+    
+        // Define time ranges and messages
+        const timeRanges = [
+            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "lightgreen" },
+            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "lightgreen" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
+            { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
+        ];
+    
+        // Check if it's the weekend
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            displayText = "Weekend message: Your message here.";
+            indicatorColor = "lightgreen"; // Change this to the desired color for weekends
+        } else {
+            // Check the current time range
+            for (const range of timeRanges) {
+                if (currentHour >= range.start && currentHour < range.end) {
+                    displayText = range.message;
+                    indicatorColor = range.color;
+                    break;
+                }
+            }
+        }
+    
+        // Set values for ID and color indicator cells
+        document.getElementById('id-cell').textContent = id;
+        document.getElementById('color-indicator-cell').style.backgroundColor = indicatorColor;
+        document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
+        document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
+        document.getElementById('message-cell').textContent = displayText;
+    }
+    
+    function getTimeRangeString() {
+        const currentDate = new Date();
+        const currentHour = currentDate.getHours();
+    
+        if (currentHour >= 0 && currentHour < 8.5) {
+            return "00:00-08:30";
+        } else if (currentHour >= 8.5 && currentHour < 16) {
+            return "08:30-16:00";
+        } else if (currentHour >= 16 && currentHour < 18) {
+            return "16:00-18:00";
+        } else if (currentHour >= 18 && currentHour < 24) {
+            return "18:00-24:00";
+        } else {
+            return "Unknown";
+        }
+    }
+    
+    // Call the updateInformation function when the page loads
+    updateInformation();
+    
+    // Update the information every second (1000 milliseconds)
+    setInterval(updateInformation, 1000);
+    </script>
+
 
 <script>
 
