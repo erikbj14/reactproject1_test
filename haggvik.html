@@ -906,9 +906,13 @@ function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id)
         }
     }
 
-    // Add conditions for red color
+    // Add conditions for red and lightgreen colors
     if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
         indicatorColor = "red";
+    } else if (dayOfWeek === 0 || dayOfWeek === 6) {
+        indicatorColor = "lightgreen";
+    } else if (range.color === "lightgreen") {
+        indicatorColor = "lightgreen";
     }
 
     document.getElementById(`id-cell-${rowNumber}`).textContent = id;
