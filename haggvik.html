@@ -887,12 +887,20 @@ function updateInformation() {
         { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "lightgreen" },
         { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
         { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
+        { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" }
     ];
+
+    const timeRanges2 = [
+        { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "red" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+        { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
+        { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
+        ];
 
     // Sort the IDs numerically
     const sortedIds = ["9003", "9023", "9030"].sort();
 
-    updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
+    updateRowInformation(1, dayOfWeek, currentHour, timeRanges2, sortedIds[0]);
     updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
     updateRowInformation(3, dayOfWeek, currentHour, timeRanges, sortedIds[2]);
 }
