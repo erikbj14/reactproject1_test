@@ -878,64 +878,65 @@ const iconFeatures = [
 </table>
 
 <script>
-function updateInformation() {
-    const currentDate = new Date();
-    const dayOfWeek = currentDate.getDay();
-    const currentHour = currentDate.getHours();
+    function updateInformation() {
+        const currentDate = new Date();
+        const dayOfWeek = currentDate.getDay();
+        const currentHour = currentDate.getHours();
 
-    const timeRanges = [
-        { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "lightgreen" },
-        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-        { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
-        { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" }
-    ];
+        const timeRanges = [
+            { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "lightgreen" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+            { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
+            { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" }
+        ];
 
-    const timeRanges2 = [
-        { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "red" },
-        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-        { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
-        { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
-    ];
+        const timeRanges2 = [
+            { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "red" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+            { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
+            { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
+        ];
 
-    // Sort the IDs numerically
-    const sortedIds = ["9003", "9023", "9030"].sort();
+        // Sort the IDs numerically
+        const sortedIds = ["9003", "9023", "9030"].sort();
 
-    updateRowInformation(1, dayOfWeek, currentHour, timeRanges2, sortedIds[0]);
-    updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
-    updateRowInformation(3, dayOfWeek, currentHour, timeRanges, sortedIds[2]);
-}
+        updateRowInformation(1, dayOfWeek, currentHour, timeRanges2, sortedIds[0]);
+        updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
+        updateRowInformation(3, dayOfWeek, currentHour, timeRanges, sortedIds[2]);
+    }
 
-function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
-    let displayText = "";
-    let indicatorColor = "";
+    function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
+        let displayText = "";
+        let indicatorColor = "";
 
-    for (const range of timeRanges) {
-        if (currentHour >= range.start && currentHour < range.end) {
-            displayText = range.message;
-            indicatorColor = range.color;
-            break;
+        for (const range of timeRanges) {
+            if (currentHour >= range.start && currentHour < range.end) {
+                displayText = range.message;
+                indicatorColor = range.color;
+                break;
+            }
         }
+
+        // Add conditions for red and lightgreen colors
+        if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
+            indicatorColor = "red";
+        } else if (dayOfWeek === 0 || dayOfWeek === 6) {
+            indicatorColor = "lightgreen";
+        } else if (id === "9003" && currentHour >= 9 && currentHour < 16) {
+            indicatorColor = "yellow";
+        }
+
+        document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+        document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
     }
 
-    // Add conditions for red and lightgreen colors
-    if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
-        indicatorColor = "red";
-    } else if (dayOfWeek === 0 || dayOfWeek === 6) {
-        indicatorColor = "lightgreen";
-    } else if (displayText === "lightgreen") {
-        indicatorColor = "lightgreen";
-    }
+    // Call the updateInformation function when the page loads
+    updateInformation();
 
-    document.getElementById(`id-cell-${rowNumber}`).textContent = id;
-    document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
-}
-
-// Call the updateInformation function when the page loads
-updateInformation();
-
-// Update the information every second (1000 milliseconds)
-setInterval(updateInformation, 1000);
+    // Update the information every second (1000 milliseconds)
+    setInterval(updateInformation, 1000);
 </script>
+
 
 
 <!--<div id="popup-container6">
