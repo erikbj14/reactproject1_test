@@ -774,74 +774,65 @@ map.addLayer(vectorLayer7a);
     </table>
     
     <script>
-    function updateInformation() {
-        const currentDate = new Date();
-        const currentHour = currentDate.getHours();
-        const dayOfWeek = currentDate.getDay();
-    
-        const timeRangesCommon = [
-            { start: 7, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
-            { start: 0, end: 24, message: "Your message for the rest of the time", color: "lightgreen" },
-        ];
-
-        const timeRangesCommon2 = [
-            { start: 7, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
-            { start: 0, end: 24, message: "Your message for the rest of the time", color: "lightgreen" },
-        ];
-    
-        updateRowInformation(1, dayOfWeek, currentHour, timeRangesCommon);
-        updateRowInformation(2, dayOfWeek, currentHour, timeRangesCommon);
-        updateRowInformation(3, dayOfWeek, currentHour, timeRangesCommon);
-        updateRowInformation(4, dayOfWeek, currentHour, timeRangesCommon);
-        updateRowInformation(5, dayOfWeek, currentHour, timeRangesCommon);
-    }
-    
-    function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRangesCommon) {
-        let displayText = "";
-        let indicatorColor = "";
-        let id;
-    
-        // Assign dynamic ID based on rowNumber
-        id = (rowNumber === 1) ? "9025" : (rowNumber === 2) ? "9026" : (rowNumber === 3) ? "9027" : (rowNumber === 4) ? "9028" : (rowNumber === 5) ? "9029" : "";
-    
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
-    // Set the color to "lightgreen" for weekends
-    indicatorColor = "lightgreen";
-} else if (rowNumber === 2) {
-    // Check timeRangesCommon2 first
-    for (const range of timeRangesCommon2) {
-        if (currentHour >= range.start && currentHour < range.end) {
-            displayText = range.message;
-            indicatorColor = range.color;
-            break;
+        function updateInformation() {
+            const currentDate = new Date();
+            const currentHour = currentDate.getHours();
+            const dayOfWeek = currentDate.getDay();
+        
+            const timeRangesCommon = [
+                { start: 7, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
+                { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+                { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
+                { start: 0, end: 24, message: "Your message for the rest of the time", color: "lightgreen" },
+            ];
+        
+            const timeRangesCommon2 = [
+                { start: 7, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
+                { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+                { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
+                { start: 0, end: 24, message: "Your message for the rest of the time", color: "lightgreen" },
+            ];
+        
+            updateRowInformation(1, dayOfWeek, currentHour, timeRangesCommon);
+            updateRowInformation(2, dayOfWeek, currentHour, timeRangesCommon2);
+            updateRowInformation(3, dayOfWeek, currentHour, timeRangesCommon);
+            updateRowInformation(4, dayOfWeek, currentHour, timeRangesCommon);
+            updateRowInformation(5, dayOfWeek, currentHour, timeRangesCommon);
         }
-    }
-
-    // If not found in timeRangesCommon2, check timeRangesCommon
-    if (!indicatorColor) {
-        for (const range of timeRangesCommon) {
-            if (currentHour >= range.start && currentHour < range.end) {
-                displayText = range.message;
-                indicatorColor = range.color;
-                break;
+        
+        function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRangesCommon) {
+            let displayText = "";
+            let indicatorColor = "";
+            let id;
+        
+            // Assign dynamic ID based on rowNumber
+            id = (rowNumber === 1) ? "9025" : (rowNumber === 2) ? "9026" : (rowNumber === 3) ? "9027" : (rowNumber === 4) ? "9028" : (rowNumber === 5) ? "9029" : "";
+        
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                // Set the color to "lightgreen" for weekends
+                indicatorColor = "lightgreen";
+            } else {
+                // Check timeRangesCommon
+                for (const range of timeRangesCommon) {
+                    if (currentHour >= range.start && currentHour < range.end) {
+                        displayText = range.message;
+                        indicatorColor = range.color;
+                        break;
+                    }
+                }
             }
+        
+            document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+            document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
         }
-    }
-}
-        document.getElementById(`id-cell-${rowNumber}`).textContent = id;
-        document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
-    }
-    
-    // Call the updateInformation function when the page loads
-    updateInformation();
-    
-    // Update the information every second (1000 milliseconds)
-    setInterval(updateInformation, 1000);
-    </script>
+        
+        // Call the updateInformation function when the page loads
+        updateInformation();
+        
+        // Update the information every second (1000 milliseconds)
+        setInterval(updateInformation, 1000);
+        </script>
+        
     
     <script>
 
