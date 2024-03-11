@@ -895,7 +895,7 @@ function updateInformation() {
         { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
         { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
         { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
-        ];
+    ];
 
     // Sort the IDs numerically
     const sortedIds = ["9003", "9023", "9030"].sort();
@@ -922,7 +922,7 @@ function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id)
         indicatorColor = "red";
     } else if (dayOfWeek === 0 || dayOfWeek === 6) {
         indicatorColor = "lightgreen";
-    } else if (range.color === "lightgreen") {
+    } else if (displayText === "lightgreen") {
         indicatorColor = "lightgreen";
     }
 
@@ -936,6 +936,7 @@ updateInformation();
 // Update the information every second (1000 milliseconds)
 setInterval(updateInformation, 1000);
 </script>
+
 
 <!--<div id="popup-container6">
   <script>      // Marker 6 Hammarbacken
