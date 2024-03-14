@@ -884,17 +884,16 @@ const iconFeatures = [
         const currentHour = currentDate.getHours();
 
         const timeRanges = [
-            { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "lightgreen" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-            { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
-            { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" }
+            { start: 0, end: 8, message: "Your message for 00:00-08:00", color: "lightgreen" },
+            { start: 8, end: 16, message: "Your message for 08:00-16:00", color: "yellow" },
+            { start: 16, end: 8, message: "Your message for 08:00-08:30", color: "lightgreen" },
         ];
 
         const timeRanges2 = [
-            { start: 9, end: 16, message: "Your message for 09:00-16:00", color: "red" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-            { start: 8, end: 8.5, message: "Your message for 08:00-08:30", color: "yellow" },
-            { start: 18, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
+            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
+            { start: 16, end: 17, message: "Your message for 16:00-17:00", color: "yellow" },
+            { start: 17, end: 24, message: "Your message for 17:00-24:00", color: "lightgreen" },
+            { start: 24, end: 8.5, message: "Your message for 18:00-08:30", color: "lightgreen" },
         ];
 
         // Sort the IDs numerically
