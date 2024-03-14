@@ -385,17 +385,17 @@ function updateInformation() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const dayOfWeek = currentDate.getDay();
-
+ 
     const timeRangesRow1 = [
-
-    { start: 7, end: 8, message: "Your message for 07:00-08:00", color: "yellow" },
+        { start: 0, end: 7, message: "Your message for 00:00-07:00", color: "lightgreen" },
+        { start: 7, end: 8, message: "Your message for 07:00-08:00", color: "yellow" },
         { start: 8, end: 16, message: "Your message for 08:00-16:00", color: "red" },
         { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
         { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
     ];
 
     const timeRangesRow2 = [
-    { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "lightgreen" },
+        { start: 0, end: 16, message: "Your message for 08:30-16:00", color: "lightgreen" },
         { start: 16, end: 24, message: "Your message for 16:00-24:00", color: "lightgreen" },
     ];
 
