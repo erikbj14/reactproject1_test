@@ -901,9 +901,9 @@ const iconFeatures = [
         // Sort the IDs numerically
         const sortedIds = ["9003", "9023", "9030"].sort();
 
-        updateRowInformation(1, dayOfWeek, currentHour, timeRanges2, sortedIds[0]);
-        updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
-        updateRowInformation(3, dayOfWeek, currentHour, timeRanges, sortedIds[2]);
+        updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
+        updateRowInformation(2, dayOfWeek, currentHour, timeRanges2, sortedIds[1]);
+        updateRowInformation(3, dayOfWeek, currentHour, timeRanges2, sortedIds[2]);
     }
 
     function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
