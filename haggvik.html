@@ -882,7 +882,6 @@ const iconFeatures = [
         const currentDate = new Date();
         const dayOfWeek = currentDate.getDay();
         const currentHour = currentDate.getHours();
-        const isHoliday = checkIfHoliday(currentDate); // Function to check if it's a holiday
 
         const timeRanges = [
             { start: 0, end: 8, message: "Your message for 00:00-08:00", color: "lightgreen" },
@@ -923,7 +922,7 @@ const iconFeatures = [
         // Add conditions for red and lightgreen colors
         if ((id === "9023" || id === "9030") && dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 8.5 && currentHour < 16) {
             indicatorColor = "red";
-        } else if  (isHoliday || dayOfWeek === 0 || dayOfWeek === 6) {
+        } else if (dayOfWeek === 0 || dayOfWeek === 6) {
             indicatorColor = "lightgreen";
         } else if (id === "9003" && currentHour >= 9 && currentHour < 16) {
             indicatorColor = "yellow";
