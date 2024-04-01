@@ -80,7 +80,7 @@
             max-width: 500px;
             z-index: 3500;
         }
-        /*om Solna parkering*/
+        /*om Arlanda parkering*/
         #popup-container2 {
             position: absolute;
             top: 139px;
@@ -142,10 +142,11 @@ var map = new ol.Map({
     zoom: 15 // You can adjust the zoom level as needed
     })})
 
-// Marker 1 solna station
+// Marker 1 Arlanda station
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0097, 59.3663])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9364, 59.6461])),
 });
+ 
 
 const markerStyle11 = new ol.style.Style({
     image: new ol.style.Icon({
@@ -307,8 +308,7 @@ map.addLayer(vectorLayer4);
 
             </tr>
             <tr>
-                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Arlanda har inga infartsparkeringar för pendlare<br>Taxa A (Områdeskod 8010): 15 kronor per timme
-                    (max 120 kronor per dygn)
+                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Arlanda har inga infartsparkeringar för pendlare<br>
                     </td></tr><tr><td align="left"></td></tr></table></td>
             </tr>
         </table>
@@ -395,7 +395,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Om parkering i Solna";
+            document.getElementById("demo").innerHTML = "Om parkering Arlanda";
             document.getElementById("popup-container2").style.display = "block";
         }
         
@@ -405,7 +405,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Om parkering i Solna";
+            document.getElementById("demo").innerHTML = "Om parkering Arlanda";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
