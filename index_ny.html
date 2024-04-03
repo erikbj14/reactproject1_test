@@ -104,48 +104,9 @@
   font-size: 35px;
 }
 
-#display-info-table {
-            position: absolute;
-            top: 220px;
-            left: 190px;
-            background-color: white;
-            padding: 10px;
-            border: 2px solid black;
-            border-radius: 5px;
-            max-width: 250px;
-            z-index: 3000;
-        }
-
-        #display-info-table th, #display-info-table td {
-            padding: 5px;
-            padding-top: 2px;
-            /*border: 1px solid black;*/
-        }
-
     </style>
 </head>
 <body>
-
-    <table id="display-info-table">
-        <tr>
-            <th colspan="2" align="left">Parkeringsindikator</th>
-        </tr>
-        <tr>
-            <th colspan="2" align="left">(Välj station i menyn)</th>
-        </tr>
-        <tr id="row-1">
-            <td id="id-cell-1">Ledigt</td>
-            <td id="color-indicator-cell-1" style="width: 60%; background-color: lightgreen;"></td>
-        </tr>
-        <tr id="row-2">
-            <td id="id-cell-2">Fåtal</td>
-            <td id="color-indicator-cell-2" style="width: 60%; background-color: yellow;"></td>
-        </tr>
-        <tr id="row-3">
-            <td id="id-cell-3">Fullt</td>
-            <td id="color-indicator-cell-3" style="width: 60%; background-color: red;"></td>
-        </tr>
-    </table>
 
 <!-- First Map -->
 <div id="osm-map"></div>
@@ -477,23 +438,6 @@
         });
     </script>
 
-    <!-- Link to Page 2 (index1.html) -->
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Märstalinjen 41/42<br><font size="2">& Arlanda</font></button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="arlanda.html">Arlanda</a>
-            <a href="marsta.html">Märsta</a>
-            <a href="rosersberg.html">Rosersberg</a>
-            <a href="upplands_vasby.html">Upplands Väsby</a>
-            <a href="rotebro.html" target="_self">Rotebro</a>
-            <a href="norrviken.html">Norrviken</a>
-            <a href="haggvik.html" target="_self">Häggvik</a>
-            <a href="sollentuna.html">Sollentuna</a>
-            <a href="helenelund.html">Helenelund</a>
-            <a href="ulriksdal.html">Ulriksdal</a>
-            <a href="solna.html">Solna</a>
-        </div>
-    </div>
 
     <div id="popup2">
         <!-- Content for popup2 goes here -->
