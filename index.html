@@ -83,6 +83,16 @@
         .dropdown a:hover {
             background-color: #ddd;
         }
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 550px; /* Adjust the top position as needed */
+            left: 150px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
    
         /*popup för transparant blå bakgrund till text
        /* #popup2 {
@@ -457,9 +467,22 @@
    
     <div id="popup3"><i><b><p>Pendelparkering</p></b></i></div>
 
-    <div id="marstalinjen"><a href="marstalinjen.html">
-        <button onclick="myFunction()" class="dropbtn">Märsta 41/42<br><font size="2">& Arlanda</font></button></a></div>
-
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Märstalinjen 41/42<br><font size="2">& Arlanda</font></button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="arlanda.html">Arlanda</a>
+            <a href="marsta.html">Märsta</a>
+            <a href="rosersberg.html">Rosersberg</a>
+            <a href="upplands_vasby.html">Upplands Väsby</a>
+            <a href="rotebro.html" target="_self">Rotebro</a>
+            <a href="norrviken.html">Norrviken</a>
+            <a href="haggvik.html" target="_self">Häggvik</a>
+            <a href="sollentuna.html">Sollentuna</a>
+            <a href="helenelund.html">Helenelund</a>
+            <a href="ulriksdal.html">Ulriksdal</a>
+            <a href="solna.html">Solna</a>
+        </div>
+    </div>
     <div id="balstalinjen"><a href="">
             <button onclick="myFunction()" class="dropbtn">Bålsta 43<br><font size="2">& Kungsängen</font></button></a></div>
 
