@@ -275,7 +275,7 @@ map.addLayer(vectorLayer4);
         <th width="15"><img src="parking2.svg"></th>
         <th width="160" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Ulriksdal&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Ulriksdal</a></td>
+        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=sundbyberg&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">sundbyberg</a></td>
     </tr>
     <tr>
             <th width="15"></th>
@@ -285,7 +285,7 @@ map.addLayer(vectorLayer4);
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="160" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Ulriksdal</td>
+        <td width="160" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">sundbyberg</td>
         <th width="15"></th>
         <td width="255" align="left"></td>        
 </tr>
@@ -314,12 +314,12 @@ map.addLayer(vectorLayer4);
 
 
 
-                <th colspan=" 4" align="left">Om parkering i Ulriksdal</th>
+                <th colspan=" 4" align="left">Om parkering i sundbyberg</th>
 
 
             </tr>
             <tr>
-                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">Ulriksdal tillhör Solna kommun och har inga infartsparkeringar för pendlare. Taxor som gäller för parkering:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
+                    <td colspan="5" rowspan="5"><table border="0"><tr><td align="left">sundbyberg tillhör Solna kommun och har inga infartsparkeringar för pendlare. Taxor som gäller för parkering:<br>Taxa A (Områdeskod 8010): 15 kronor per timme
                     (max 120 kronor per dygn)
                     <br>Taxa B (Områdeskod 8020): 25 kronor per timme
                     <br>Taxa C (Områdeskod 8030): 25 kronor per timme
@@ -410,7 +410,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Om parkering i Ulriksdal";
+            document.getElementById("demo").innerHTML = "Om parkering i sundbyberg";
             document.getElementById("popup-container2").style.display = "block";
         }
         
@@ -420,7 +420,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Om parkering i Ulriksdal";
+            document.getElementById("demo").innerHTML = "Om parkering i sundbyberg";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
