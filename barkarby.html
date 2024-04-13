@@ -9,22 +9,23 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <style>
 
-        /*openstreetmap contributors*/    
-    .ol-control.ol-attribution {
-        left: 200px;
-        padding-right: 80px; /* Adjust the padding on the right side */
-    }
-
 table {
         background-color:rgba(255, 99, 71, 0.5);
+    }
+
+    /*openstreetmap contributors*/
+    .ol-control.ol-attribution {
+        left: 160px;
+        padding-right: 120px; /* Adjust the padding on the right side */
+        bottom: 20px; /* Adjust the bottom position */
     }
 
        /* Set the map height */
        #osm-map {
             position: absolute;
-            height: 640px;
+            height: 618px;
             width: 440px;
-            top: 65px;
+            top: 122px;
             left: 8px;
         }
    
@@ -66,12 +67,11 @@ table {
             z-index: 1;
         }
 
-       /*Vallen, Arenavägen*/
        #popup-container2 {
             position: absolute;
-            top: 100px;
+            top: 122px;
             left: 0px;
-            height: 180px;
+            height: 90px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -84,7 +84,7 @@ table {
    
         #popup3 {
             position: absolute;
-            top: 745px;
+            top: 245px;
             left: 150px;
             font-size: 50px;
             color: blue;
@@ -92,25 +92,39 @@ table {
             z-index: 2; /* Set a higher z-index value */
         }
 
-        
-        #display-info {
-        position: absolute;
-        top: 100px;
-        left: 0px;
-        height: 95px;
-        width: 450px;
-        background-color: white;
-        padding: 10px;
-        border: 2px solid blue; /* Change the border color to blue */
-        border-radius: 5px;
-        max-width: 300px;
-        z-index: 3000;
-        /*display: none;  Initially hidden*/
-    }
-
-    #display-info-table {
+         #popup-container4 {
             position: absolute;
-            top: 420px;
+            top: 122px;
+            left: 0px;
+            height: 90px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
+
+            #popup-container7 {
+            position: absolute;
+            top: 122px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none;
+        }
+
+        #display-info-table {
+            position: absolute;
+            top: 400px;
             left: 0px;
             background-color: white;
             padding: 10px;
@@ -129,6 +143,7 @@ table {
     </style>
 </head>
 <body>
+    
 <!-- First Map -->
 <div id="osm-map">
     <div class="dropdown">
@@ -139,13 +154,9 @@ table {
         </div>
     </div>
 
-<!-- Second Map 
-<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
-    <!-- First Map Script -->
-    <!-- Map Script -->
-    <script>
+<script>
 
-var map = new ol.Map({
+    var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -153,13 +164,13 @@ var map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.89818, 59.38362]),//0,0045 är ca 500 m
+        center: ol.proj.fromLonLat([17.8644, 59.4050]),//0,0045 är ca 500 m
     zoom: 15 // You can adjust the zoom level as needed
     })})
- 
-// Marker 1, Spånga station
+    
+// Marker 1 Barkarby station
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89818, 59.38362])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8644, 59.4050])),
 });
 
 const markerStyle11 = new ol.style.Style({
@@ -181,9 +192,57 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-// Marker 1 Spånga Stationsväg 65
+// Marker 1 Anton Tamms väg/ Industrivägen
+        const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
+});
+
+const markerStyle1 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker1.setStyle(markerStyle1);
+
+const vectorSource1 = new ol.source.Vector({
+    features: [marker1],
+});
+
+const vectorLayer1 = new ol.layer.Vector({
+    source: vectorSource1,
+});
+map.addLayer(vectorLayer1);
+
+// 59000
+const marker1a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.900, 59.5186])),
+});
+
+const markerStyle1a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './59000.png',
+        scale: 0.1,
+    }),
+});
+
+marker1a.setStyle(markerStyle1a);
+
+const vectorSource1a = new ol.source.Vector({
+    features: [marker1a],
+});
+
+const vectorLayer1a = new ol.layer.Vector({
+    source: vectorSource1a,
+});
+map.addLayer(vectorLayer1a);
+
+// Ladbrovägen 1 (Närmast spåret)
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89542, 59.38399])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8982, 59.5204])), // Adjust the longitude value
 });
 
 const markerStyle2 = new ol.style.Style({
@@ -191,7 +250,6 @@ const markerStyle2 = new ol.style.Style({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
         src: './parking.svg',
-        //src: './location-dot-solid.svg',
         scale: 2,
     }),
 });
@@ -208,39 +266,146 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-//--------------------------------
+// Ladbrovägen 2
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8977, 59.5211])), // Adjust the longitude value
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+
+// 59000
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8974, 59.5209])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './59000.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
+
+// Ladbrovägen 3
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5223])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4);
+
+// 59000 (Högst upp NV)
+const marker4a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5221])), // Adjust the longitude value
+});
+
+const markerStyle4a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './59000.png',
+        scale: 0.1,
+    }),
+});
+
+marker4a.setStyle(markerStyle4a);
+
+const vectorSource4a = new ol.source.Vector({
+    features: [marker4a], // Use marker2 as the feature
+});
+
+const vectorLayer4a = new ol.layer.Vector({
+    source: vectorSource4a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4a);
+
 </script>
 
 <table width="440" border="0">
     <tr>
         <th width="15"><img src="parking.svg"></th>
-        <th width="175" align="left">Pendelparkering</th>
+        <th width="125" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sp%C3%A5nga&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Spånga</a></td>
+        <td width="285" align="left">Tåg-tider</td>
+        </tr>
+        <tr>
+            <th width="15"></th>
+            <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Anton Tamms-</td>
+            <th width="15"></th>
+            <td width="285"><a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Upplands%20V%C3%A4sby&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Upplands Väsby</a></td>        
     </tr>
     <tr>
-        <td width="15"></td>
-        <td width="175" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Spånga Stationsväg</td>
-        <td width="15"></td>
-        <td colspan="6" align="left">Trafikverket</td>
+            <th width="15"></th>
+            <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">väg/</td>
+            <th width="15"></th>
+            <td width="285">Trafikverket</td>        
     </tr>
     <tr>
         <th width="15"></th>
-        <td></td>
+        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Industrivägen</td>
         <th width="15"></th>
-        <td width="235" align="left"></td>        
+        <td width="285"></td>        
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="175"></td>
+        <td width="125" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan28">Ladbrovägen</td>
         <th width="15"></th>
-        <td width="235" align="left" style="padding: 0px; font-size: 1px;" id="start">
+        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
             <button id="reloadButton" hidden="true">Visningsläge</button>
-        </td>       
+        </td>
     </tr>
 </table>
-    <!--Spånga Stationsväg-->
+    <!--Anton Tamms väg/ Industrivägen-->
     <div id="popup-container2">
         <table width="300" border="0">
 
@@ -249,22 +414,33 @@ map.addLayer(vectorLayer2);
 
 
 
-                <th colspan=" 4" align="left">Spånga Stationsväg 65</th>
+                <th colspan=" 4" align="left">Anton Tamms väg/ Industrivägen</th>
 
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Infartsparkeringen Spånga Station<br>
-                    Parkeringsplats 50 Platser<br>
-                    </td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"><br> Varje Timme 10 kr<br>
-                    Max 05:00-09:00 / Ute Vid 24:00, 20 kr<br>
-                    Kväll
-                    00:00-07:00, 10 kr<br>
-                    Kväll
-                    18:00-24:00, 10 kr<br></td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>59000</b></td></tr><tr><td></td></tr><tr><td align="left"> Ofta fullt på vardagar.</td></tr></table></td>
             </tr>
         </table>
 
+    </div>
+    <!--Ladbrokevägen-->
+    <div id="popup-container4">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Ladbrovägen (öster om station)</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>59000</b></td></tr><tr><td>Taxa B</td></tr><tr><td align="left"> Oftast lediga platser.</td></tr></table></td>
+            </tr>
+        </table>
     </div>
 
 
@@ -301,13 +477,13 @@ map.addLayer(vectorLayer2);
     
         let displayText = "";
         let indicatorColor = "";
-        let id = "9032"; // You can replace this with a dynamic value
+        let id = "59000"; // You can replace this with a dynamic value
     
         // Define time ranges and messages
         const timeRanges = [
-            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "red" },
-            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "lightgreen" },
+            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "lightgreen" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
             { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
         ];
     
@@ -358,10 +534,11 @@ map.addLayer(vectorLayer2);
     setInterval(updateInformation, 1000);
     </script>
 
+
 <script>
 
-/*openstreetmap contributors*/
-document.addEventListener("DOMContentLoaded", function () {
+     /*openstreetmap contributors*/
+     document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.ol-control.ol-attribution').style.left = '50px';
   });
 
@@ -369,11 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Add click event listener to the map view
 map.on('click', function (event) {
-//alert("zoom")
-// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
-// Get the clicked coordinate
-// if (flag == 10) {
-//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+
 document.getElementById('reloadButton').addEventListener('click', function () {
 location.reload();
 });
@@ -400,15 +573,10 @@ map.getView().animate({ zoom: newZoom, center: adjustedCoord });
 });
 
 
-
-
-
 /*  if (id === "start") { <script>location.replace*/
 
 
 const popupContainer = document.getElementById('popup-container3');
-
-//const popupContainer = document.getElementById('popup-container4'); }
 
 // Update the position when the map is moved or zoomed
 map.on('moveend', function () {
@@ -425,8 +593,15 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML;
+            document.getElementById("demo").innerHTML = "Anton Tamms-";//väg/ Industrivägen
             document.getElementById("popup-container2").style.display = "block";
+            document.getElementById("popup-container4").style.display = "none";
+        }
+        else if (id === "demo2") {
+            //alert(document.getElementById("demo2").innerHTML)
+            document.getElementById("demo2").innerHTML = "Ladbrovägen";
+            document.getElementById("popup-container4").style.display = "block";
+            document.getElementById("popup-container2").style.display = "none";
         }
         
     }
@@ -435,7 +610,13 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML;
+            document.getElementById("demo").innerHTML = "Anton Tamms-";//väg/ Industrivägen
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+        }
+        else if (id === "demo2") {
+            document.getElementById("demo2").innerHTML = "Ladbrovägen";
+            document.getElementById("popup-container4").style.display = "none";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
