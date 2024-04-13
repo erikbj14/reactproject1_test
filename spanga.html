@@ -181,31 +181,7 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-        // Marker 1 Spånga Stationsväg 65
-        const marker1 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])),
-});
-
-const markerStyle1 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './parking.svg',
-        scale: 2,
-    }),
-});
-
-marker1.setStyle(markerStyle1);
-
-const vectorSource1 = new ol.source.Vector({
-    features: [marker1],
-});
-
-const vectorLayer1 = new ol.layer.Vector({
-    source: vectorSource1,
-});
-map.addLayer(vectorLayer1);
-
-// Vallen, Arenavägen
+// Marker 1 Spånga Stationsväg 65
 const marker2 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5187])), // Adjust the longitude value
 });
@@ -214,7 +190,7 @@ const markerStyle2 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking2.svg',
+        src: './parking.svg',
         scale: 2,
     }),
 });
