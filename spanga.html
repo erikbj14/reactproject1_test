@@ -157,9 +157,9 @@ var map = new ol.Map({
     zoom: 15 // You can adjust the zoom level as needed
     })})
  
-// Marker 1 Spånga station
+// Marker 1 Spånga Stationsväg 65
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89818, 59.38362])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89543, 59.38398])),
 });
 
 const markerStyle11 = new ol.style.Style({
@@ -261,10 +261,10 @@ map.addLayer(vectorLayer2a);
 
 <table width="440" border="0">
     <tr>
-        <th width="15"><img src="parking2.svg"></th>
-        <th width="125" align="left">Alternativa-</th>
+        <th width="15"><img src="parking.svg"></th>
+        <th width="125" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sollentuna&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Sollentuna</a></td>
+        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sp%C3%A5nga&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Spånga</a></td>
     </tr>
     <tr>
         <td width="15"></td>
