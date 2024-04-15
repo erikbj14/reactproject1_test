@@ -87,7 +87,7 @@ table {
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 200px;
+            height: 180px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -253,14 +253,14 @@ map.addLayer(vectorLayer3);
 
 // Spånga station Infarts P områdeskod 250
 const marker3a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.90107, 59.38140])), //add to the east, add to the north
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.90107, 59.38167])), //add to the east, add to the north
 });
 
 const markerStyle3a = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png',
-        src: './9003.png',
+        src: './250.png',
         scale: 0.1,
     }),
 });
@@ -322,7 +322,7 @@ map.addLayer(vectorLayer3a);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Infartsparkeringen Spånga Station<br>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">
                     Parkeringsplats 50 Platser<br>
                     </td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"><br> Varje Timme 10 kr<br>
                     Max 05:00-09:00 / Ute Vid 24:00, 20 kr<br>
