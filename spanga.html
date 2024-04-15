@@ -420,10 +420,7 @@ map.addLayer(vectorLayer3a);
         const currentDate = new Date();
         const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
         const currentHour = currentDate.getHours();
-    
-        let displayText = "";
-        let indicatorColor = "";
-        let id = "9032"; // You can replace this with a dynamic value
+
     
         // Define time ranges and messages
         const timeRanges = [
@@ -436,7 +433,7 @@ map.addLayer(vectorLayer3a);
         ];
 
          // Sort the IDs numerically
-         const sortedIds = ["Parkering 1", "250"].sort();
+         const sortedIds = ["P1", "250"].sort();
 
         updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
         updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
