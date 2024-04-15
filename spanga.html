@@ -81,6 +81,22 @@ table {
             z-index: 3000;
             display: none; /* Initially hidden */
         }
+
+        /*Vallen, Arenavägen*/
+       #popup-container3 {
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 180px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
    
         #popup3 {
             position: absolute;
@@ -253,10 +269,10 @@ map.addLayer(vectorLayer3);
         <td colspan="6" align="left">Trafikverket</td>
     </tr>
     <tr>
-        <th width="15"></th>
-        <td></td>
-        <th width="15"></th>
-        <td width="235" align="left"></td>        
+        <td width="15"></td>
+        <td width="175" align="left" id="demo3" onmouseover="mouseOver('demo3')" onmouseout="mouseOut('demo3')" class="highlight_staffan27">Spånga infarts P</td>
+        <td width="15"></td>
+        <td colspan="6" align="left"></td>
     </tr>
     <tr>
         <th width="15"></th>
@@ -295,6 +311,34 @@ map.addLayer(vectorLayer3);
 
     </div>
 
+    <!--Spånga Stationsväg-->
+    <div id="popup-container3">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Spånga Station Infarts P</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Infartsparkeringen Spånga Station<br>
+                    Parkeringsplats 50 Platser<br>
+                    </td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"><br> Varje Timme 10 kr<br>
+                    Max 05:00-09:00 / Ute Vid 24:00, 20 kr<br>
+                    Kväll
+                    00:00-07:00, 10 kr<br>
+                    Kväll
+                    18:00-24:00, 10 kr<br></td></tr></table></td>
+            </tr>
+        </table>
+
+    </div>
+
+
 
 <!--<div id="popup-container3"></div>-->
 
@@ -303,6 +347,10 @@ map.addLayer(vectorLayer3);
 </div>
 
 <div id="popup-container2">
+
+</div>
+
+<div id="popup-container3">
 
 </div>
 
@@ -410,6 +458,7 @@ document.getElementById("reloadButton").hidden = "";
 //document.getElementById("marker7Layer").style.visibility = "none"; 
 //document.getElementById("popup-container4").style.display = "none";
 document.getElementById("popup-container2").style.display = "none";
+document.getElementById("popup-container3").style.display = "none";
 document.getElementById("popup-container4").style.display = "none";
 const clickedCoord = event.coordinate;
 
@@ -455,6 +504,10 @@ popupContainer.style.top = pixel[1] + 'px';
             //alert(document.getElementById("demo").innerHTML)
             document.getElementById("demo").innerHTML;
             document.getElementById("popup-container2").style.display = "block";
+        } else if (id === "demo3") {
+            //alert(document.getElementById("demo").innerHTML)
+            document.getElementById("demo3").innerHTML;
+            document.getElementById("popup-container3").style.display = "block";
         }
         
     }
@@ -465,6 +518,9 @@ popupContainer.style.top = pixel[1] + 'px';
         if (id === "demo") {
             document.getElementById("demo").innerHTML;
             document.getElementById("popup-container2").style.display = "none";
+        } else if (id === "demo3") {
+            document.getElementById("demo3").innerHTML;
+            document.getElementById("popup-container3").style.display = "none";
         }
     }
 </script>
