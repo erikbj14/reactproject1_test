@@ -224,6 +224,33 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
+// Spånga stationsväg 65 "P1"
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.89542, 59.38372])), //add to the east, add to the north
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png',
+        src: './P1.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a],
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a,
+});
+
+map.addLayer(vectorLayer2a);
+
+
 // Spånga station Infarts P
 const marker3 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.90107, 59.38194])), // Adjust the longitude value
@@ -317,7 +344,7 @@ map.addLayer(vectorLayer3a);
             </tr>
             <tr>
                 <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">
-                    Parkeringsplats 50 Platser<br>
+                    Parkeringsplats 50 Platser, "P1"<br>
                     </td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"><br> Varje Timme 10 kr<br>
                     Max 05:00-09:00 / Ute Vid 24:00, 20 kr<br>
                     Kväll
@@ -400,11 +427,20 @@ map.addLayer(vectorLayer3a);
     
         // Define time ranges and messages
         const timeRanges = [
-            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "red" },
-            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
-            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-            { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
+            { start: 0, end: 8, message: "Your message for 00:00-07:00", color: "lightgreen" },
+            { start: 8, end: 8.5, message: "Your message for 07:00-08:00", color: "yellow" },
+            { start: 8.5, end: 16, message: "Your message for 08:00-16:00", color: "red" },
+            { start: 16, end: 17, message: "Your message for 16:00-17:00", color: "yellow" },
+            { start: 17, end: 24, message: "Your message for 17:00-24:00", color: "lightgreen" },
+            { start: 24, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
         ];
+
+         // Sort the IDs numerically
+         const sortedIds = ["Parkering 1", "250"].sort();
+
+        updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
+        updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
+        }
     
         // Check if it's the weekend
         if (dayOfWeek === 0 || dayOfWeek === 6) {
