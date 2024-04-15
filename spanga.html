@@ -425,7 +425,6 @@ map.addLayer(vectorLayer3a);
         const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
         const currentHour = currentDate.getHours();
 
-    
         // Define time ranges and messages
         const timeRanges = [
             { start: 0, end: 8, message: "Your message for 00:00-07:00", color: "lightgreen" },
@@ -436,13 +435,17 @@ map.addLayer(vectorLayer3a);
             { start: 24, end: 8, message: "Your message for 18:00-08:30", color: "lightgreen" },
         ];
 
-         // Sort the IDs numerically
-         const sortedIds = ["P1", "250"].sort();
+        // Sort the IDs numerically
+        const sortedIds = ["P1", "250"].sort();
 
         updateRowInformation(1, dayOfWeek, currentHour, timeRanges, sortedIds[0]);
         updateRowInformation(2, dayOfWeek, currentHour, timeRanges, sortedIds[1]);
-        }
-    
+    }
+
+    function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
+        let displayText = "";
+        let indicatorColor = "";
+
         // Check if it's the weekend
         if (dayOfWeek === 0 || dayOfWeek === 6) {
             displayText = "Weekend message: Your message here.";
@@ -457,38 +460,19 @@ map.addLayer(vectorLayer3a);
                 }
             }
         }
-    
+
         // Set values for ID and color indicator cells
-        document.getElementById('id-cell').textContent = id;
-        document.getElementById('color-indicator-cell').style.backgroundColor = indicatorColor;
-        document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
-        document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
-        document.getElementById('message-cell').textContent = displayText;
+        document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+        document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
     }
-    
-    function getTimeRangeString() {
-        const currentDate = new Date();
-        const currentHour = currentDate.getHours();
-    
-        if (currentHour >= 0 && currentHour < 8.5) {
-            return "00:00-08:30";
-        } else if (currentHour >= 8.5 && currentHour < 16) {
-            return "08:30-16:00";
-        } else if (currentHour >= 16 && currentHour < 18) {
-            return "16:00-18:00";
-        } else if (currentHour >= 18 && currentHour < 24) {
-            return "18:00-24:00";
-        } else {
-            return "Unknown";
-        }
-    }
-    
+
     // Call the updateInformation function when the page loads
     updateInformation();
-    
+
     // Update the information every second (1000 milliseconds)
     setInterval(updateInformation, 1000);
-    </script>
+</script>
+
 
 <script>
 
