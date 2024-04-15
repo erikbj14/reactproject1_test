@@ -251,7 +251,31 @@ const vectorLayer3 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer3);
 
+// Spånga station Infarts P områdeskod 250
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.90107, 59.38140])), //add to the east, add to the north
+});
 
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png',
+        src: './9003.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a],
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource6a,
+});
+
+map.addLayer(vectorLayer3a);
 //--------------------------------
 </script>
 
@@ -325,14 +349,15 @@ map.addLayer(vectorLayer3);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Infartsparkeringen Spånga Station<br>
-                    Parkeringsplats 50 Platser<br>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Infartsparkering Spånga Station<br>
+                    Besöksparkering - zon 250<br>
                     </td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"><br> Varje Timme 10 kr<br>
-                    Max 05:00-09:00 / Ute Vid 24:00, 20 kr<br>
+                    00.00-24.00: 12 kr/h<br>
+                    05:00-09:00, 30 kr till 24:00<br>
                     Kväll
-                    00:00-07:00, 10 kr<br>
-                    Kväll
-                    18:00-24:00, 10 kr<br></td></tr></table></td>
+                    18:00-24:00, 10 kr<br>
+                    Natt
+                    00:00-07:00, 10 kr<br></td></tr></table></td>
             </tr>
         </table>
 
