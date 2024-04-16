@@ -237,16 +237,16 @@ const vectorLayer2a = new ol.layer.Vector({
 map.addLayer(vectorLayer2a);
 
 
-// Skolvägen
+// Parkerin 2, Järfällavägen
 const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92299, 59.45626])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8307, 59.4245])), // Adjust the longitude value
 });
 
 const markerStyle3 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './parking2.svg',
+        src: './parking.svg',
         scale: 2,
     }),
 });
@@ -263,6 +263,30 @@ const vectorLayer3 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer3);
 
+// P2
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8307, 59.4243])), // Adjust the longitude value
+});
+
+const markerStyle3a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './P2.png',
+        scale: 0.1,
+    }),
+});
+
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
+});
+
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3a);
 
 </script>
 
