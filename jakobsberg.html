@@ -84,7 +84,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 100px;
+            height: 150px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -99,7 +99,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 111px;
+            height: 150px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -346,7 +346,7 @@ map.addLayer(vectorLayer3a);
     </table>
 </div>
 
-<!--Skolvägen-->
+<!--järfällavägen-->
 <div id="popup-container4">
     <table width="300" border="0">
 
@@ -510,12 +510,12 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Stationsvägen/";//Pga av 2 rader så är det endast stationsvägen här
+            demoElement.innerHTML = "Ynglingavägen";//Pga av 2 rader så är det endast Ynglingavägen här
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
+            document.getElementById("demo2").innerHTML = "järfällavägen";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -528,7 +528,7 @@ map.on('click', function (event) {
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Skolvägen";
+            document.getElementById("demo2").innerHTML = "järfällavägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
