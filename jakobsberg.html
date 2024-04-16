@@ -294,18 +294,18 @@ map.addLayer(vectorLayer3a);
     <tr>
         <th width="15"><img src="parking.svg"></th>
         <th width="145" align="left">Pendelparkering</th>
-        <th width="15"><img src="parking2.svg"></th>
-        <td width="265" align="left">Alternativ parkering</td>
+        <th width="15"></th>
+        <td width="265" align="left"></td>
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen/</td>
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Ynglingavägen/</td>
         <th width="15"></th>
-        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Skolvägen</td>
+        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Järfällavägen</td>
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="145">Postvägen 9024</td>
+        <td width="145"></td>
         <th width="15"></th>
         <td width="265"></td>
     </tr>
@@ -313,7 +313,7 @@ map.addLayer(vectorLayer3a);
     <table border="0" width="440"><!--Blev annan bakgrundsfärg med "tabell i tabellen" därför  blev det en fristående tabell-->
         <tr>
             <td width="15"><img src="train.svg"></td>
-            <td width="125" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Norrviken&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Norrviken</a></td>
+            <td width="125" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Jakobsberg&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Jakobsberg</a></td>
             <th width="15"></th>
             <td width="185"></td>
         </tr>
@@ -336,12 +336,12 @@ map.addLayer(vectorLayer3a);
 
 
 
-            <th colspan=" 4" align="left">Stationsvägen/ Postvägen 9024</th>
+            <th colspan=" 4" align="left">Ynlingavägen P1</th>
 
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9024</b> 21 platser,ej ons kl 02.00–05.00</td></tr><tr><td>Kostnad: 20 kr per 12 timmar</td></tr><tr><td align="left"></td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">På infarts­parkeringen i Jakobsberg väster om järn­vägen finns cirka 150 parkerings­­platser. Det finns också 58 platser vid parkeringen som ligger längs Järfällavägen, intill pendeltågets södra entré. Här råder parkeringsförbud vardagar klockan 02-05.</td></tr><tr><td align="left"></td></tr></table></td>
         </tr>
     </table>
 </div>
@@ -355,12 +355,12 @@ map.addLayer(vectorLayer3a);
 
 
 
-            <th colspan=" 4" align="left">Skolvägen</th>
+            <th colspan=" 4" align="left">Järfällavägen</th>
 
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">12 tim. fri parkering</td></tr><tr><td>Parkeringsförbud måndag 8-15 (15/11-15/5)</td></tr><tr><td align="left"> Oftast fullt på dagen</td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">På infarts­parkeringen i Jakobsberg väster om järn­vägen finns cirka 150 parkerings­­platser. Det finns också 58 platser vid parkeringen som ligger längs Järfällavägen, intill pendeltågets södra entré. Här råder parkeringsförbud vardagar klockan 02-05.</td></tr><tr><td align="left"> Oftast fullt på dagen</td></tr></table></td>
         </tr>
     </table>
 </div>
@@ -393,16 +393,18 @@ function updateInformation() {
     const dayOfWeek = currentDate.getDay();
 
     const timeRangesRow1 = [
-    { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "lightgreen" },
-    { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "yellow" },
+    { start: 0, end: 8.5, message: "Your message for 00:00-07:00", color: "lightgreen" },
+    { start: 0, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
+    { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
     { start: 16, end: 24, message: "Your message for 16:00-24:00", color: "lightgreen" },
 ];
 
 const timeRangesRow2 = [
     { start: 0, end: 8, message: "Your message for 00:00-08:00", color: "lightgreen" },
-    { start: 8, end: 16, message: "Your message for 08:00-16:00", color: "red" },
-    { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
-    { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
+    { start: 8, end: 16, message: "Your message for 08:00-10:00", color: "yellow" },
+    { start: 8, end: 16, message: "Your message for 10:00-15:00", color: "red" },
+    { start: 16, end: 18, message: "Your message for 15:00-17:00", color: "yellow" },
+    { start: 18, end: 24, message: "Your message for 17:00-24:00", color: "lightgreen" },
 ];
 
     updateRowInformation(1, dayOfWeek, currentHour, timeRangesRow1);
@@ -428,7 +430,7 @@ function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
     }
 
     // Assign dynamic ID based on rowNumber and currentHour
-    id = (rowNumber === 1) ? "9024" : (rowNumber === 2) ? "Skolvägen" : "";
+    id = (rowNumber === 1) ? "P1" : (rowNumber === 2) ? "P2" : "";
 
     document.getElementById(`id-cell-${rowNumber}`).textContent = id;
     document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
