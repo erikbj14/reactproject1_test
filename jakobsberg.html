@@ -185,9 +185,9 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// Stationsvägen/ Postvägen 9024
+// Parkering 1, ynglingavägen
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92488, 59.45849])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8328, 59.4257])), // Adjust the longitude value
 });
 
 const markerStyle2 = new ol.style.Style({
@@ -211,16 +211,15 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
-// 9024
+// P1
 const marker2a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.92490, 59.45839])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8328, 59.4257])), // Adjust the longitude value
 });
 
 const markerStyle2a = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './9024.png',
+        src: './P1.png',
         scale: 0.1,
     }),
 });
