@@ -261,14 +261,14 @@ map.addLayer(vectorLayer2a);
 
 <table width="440" border="0">
     <tr>
-        <th width="15"><img src="parking2.svg"></th>
-        <th width="125" align="left">Alternativa-</th>
+        <th width="15"><img src="parking.svg"></th>
+        <th width="125" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sollentuna&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Sollentuna</a></td>
+        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Kungs%C3%A4ngen&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Kungsängen</a></td>
     </tr>
     <tr>
         <td width="15"></td>
-        <th width="125" align="left">parkeringar</th>
+        <th width="125" align="left"></th>
         <td width="15"></td>
         <td colspan="6" align="left">Trafikverket</td>
     </tr>
@@ -288,16 +288,16 @@ map.addLayer(vectorLayer2a);
         </td>       
     </tr>
 </table>
-    <!--Vallen, Arenavägen-->
+    <!--Enköpingsvägen-->
     <div id="popup-container2">
         <table width="300" border="0">
 
             <tr>
-                <th width="15"><img src="parking2.svg"></th>
+                <th width="15"><img src="parking.svg"></th>
 
 
 
-                <th colspan=" 4" align="left">Vallen, Arenavägen</th>
+                <th colspan=" 4" align="left">Enköpingsvägen</th>
 
 
             </tr>
@@ -466,7 +466,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML = "Vallen, Arenavägen";
+            document.getElementById("demo").innerHTML = "Enköpingsvägen";
             document.getElementById("popup-container2").style.display = "block";
         }
         
@@ -476,7 +476,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
-            document.getElementById("demo").innerHTML = "Vallen, Arenavägen";
+            document.getElementById("demo").innerHTML = "Enköpingsvägen";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
