@@ -270,7 +270,7 @@ map.addLayer(vectorLayer2);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Avgift för Parkering:
+                <td colspan="5" rowspan="4" id="demo2"><table border="0"><tr><td align="left">Avgift för Parkering:
                     Det kostar 5 kronor per timme att parkera på infartsparkeringen i Kungsängen.<br>
                     <b>Gratis</b> parkering erbjuds för dem som har ett SL-kort (grönt eller digitalt) med minst en 30-dagarsbiljett. Följande SL-biljetter gäller för gratis parkering:
                     30-dagarsbiljett
@@ -450,7 +450,7 @@ popupContainer.style.top = pixel[1] + 'px';
     function mouseOut(id) {
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
-        if (id === "demo") {
+        if (id === "demo2") {
             document.getElementById("demo").innerHTML;
             document.getElementById("popup-container2").style.display = "none";
         }
