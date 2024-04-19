@@ -242,7 +242,7 @@ map.addLayer(vectorLayer2);
     </tr>
     <tr>
         <td width="15"></td>
-        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" class="highlight_staffan27">Enköpingsvägen</td>
+        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Enköpingsvägen</td>
         <td width="15"></td>
         <td colspan="6" align="left">Trafikverket</td>
     </tr>
@@ -257,7 +257,7 @@ map.addLayer(vectorLayer2);
     </tr>
 </table>
     <!--Enköpingsvägen-->
-    <div id="popup-container2" id="demo2" onmouseout="mouseOut('demo')">
+    <div id="popup-container2" onmouseover="mouseOver('popup-container2')" onmouseout="mouseOut('popup-container2')">
         <table width="300" border="0">
 
             <tr>
@@ -437,21 +437,18 @@ popupContainer.style.left = pixel[0] + 'px';
 popupContainer.style.top = pixel[1] + 'px';
 });
 
-    function mouseOver(id) {
-        // Check the ID and perform actions accordingly
+function mouseOver(id) {
         if (id === "demo") {
-            //alert(document.getElementById("demo").innerHTML)
-            document.getElementById("demo").innerHTML;
+            document.getElementById("popup-container2").style.display = "block";
+        } else if (id === "popup-container2") {
+            // If mouse over the container, keep it displayed
             document.getElementById("popup-container2").style.display = "block";
         }
-        
     }
 
     function mouseOut(id) {
-        // No parameter (id) is needed in this function
-        // Perform actions based on the logic you need
-        if (id === "demo2") {
-            document.getElementById("demo").innerHTML;
+        if (id === "popup-container2") {
+            // Hide the container only when leaving it
             document.getElementById("popup-container2").style.display = "none";
         }
     }
