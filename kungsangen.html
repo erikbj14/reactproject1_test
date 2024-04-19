@@ -181,7 +181,7 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-// Marker 1 Pendelparkeing
+// Marker 1 Pendelparkeing, Enköpingsvägen, P1
     const marker1 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.7555, 59.4791])),
 });
@@ -231,32 +231,6 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 //--------------------------------
-// Vallen, 9032
-const marker2a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.95075, 59.43500])), // Adjust the longitude value
-});
-
-const markerStyle2a = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './9032.png',
-        scale: 0.1,
-    }),
-});
- 
-marker2a.setStyle(markerStyle2a);
-
-const vectorSource2a = new ol.source.Vector({
-    features: [marker2a], // Use marker2 as the feature
-});
-
-const vectorLayer2a = new ol.layer.Vector({
-    source: vectorSource2a, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer2a);
-//--------------------------------
-
 </script>
 
 <table width="440" border="0">
@@ -296,7 +270,13 @@ map.addLayer(vectorLayer2a);
 
             </tr>
             <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Omr. kod <b>9032</b></td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"> Kan vara fullt på vardagar.</td></tr></table></td>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Avgift för Parkering:
+                    Det kostar 5 kronor per timme att parkera på infartsparkeringen i Kungsängen.
+                    Gratis parkering erbjuds för dem som har ett SL-kort (grönt eller digitalt) med minst en 30-dagarsbiljett. Följande SL-biljetter gäller för gratis parkering:
+                    30-dagarsbiljett
+                    90-dagarsbiljett
+                    Årskort
+                    Om du inte har ett SL-kort, behöver du betala fem kronor per timme</td></tr></table></td>
             </tr>
         </table>
 
@@ -336,7 +316,7 @@ map.addLayer(vectorLayer2a);
     
         let displayText = "";
         let indicatorColor = "";
-        let id = "9032"; // You can replace this with a dynamic value
+        let id = "P1"; // You can replace this with a dynamic value
     
         // Define time ranges and messages
         const timeRanges = [
