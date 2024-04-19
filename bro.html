@@ -213,7 +213,7 @@ map.addLayer(vectorLayer2);
 
 // P1
 const marker2a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63803, 59.51094])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63803, 59.51092])), // Adjust the longitude value
 });
 
 const markerStyle2a = new ol.style.Style({
@@ -265,7 +265,7 @@ map.addLayer(vectorLayer3);
 
 // P2
 const marker3a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63769, 59.50979])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63769, 59.50977])), // Adjust the longitude value
 });
 
 const markerStyle3a = new ol.style.Style({
@@ -298,10 +298,10 @@ map.addLayer(vectorLayer3a);
         <td width="265" align="left"></td>
     </tr>
     <tr>
+        <th width="15"></th>Stationsvägen
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen"></td>
         <th width="15"></th>
-        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Kallhällsleden</td>
-        <th width="15"></th>
-        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Slammertorpsvägen</td>
+        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Sydvästra</td>
     </tr>
     <tr>
         <th width="15"></th>
@@ -346,7 +346,7 @@ map.addLayer(vectorLayer3a);
     </table>
 </div>
 
-<!--Slammertorpsvägen-->
+<!--Sydvästra-->
 <div id="popup-container4">
     <table width="300" border="0">
 
@@ -510,12 +510,12 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Kallhällsleden";//Pga av 2 rader så är det endast Kallhällsleden här
+            demoElement.innerHTML = "Stationsvägen";//Pga av 2 rader så är det endast Stationsvägen här
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Slammertorpsvägen";
+            document.getElementById("demo2").innerHTML = "Sydvästra";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -523,12 +523,12 @@ map.on('click', function (event) {
     function mouseOut(id) {
         if (id === "demo") {
             //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Kallhällsleden";
+            demoElement.innerHTML = "Stationsvägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Slammertorpsvägen";
+            document.getElementById("demo2").innerHTML = "Sydvästra";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
