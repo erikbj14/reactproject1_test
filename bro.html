@@ -295,13 +295,12 @@ map.addLayer(vectorLayer3a);
         <th width="15"><img src="parking.svg"></th>
         <th width="145" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="265"align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Bro&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bro</a>&nbsp;Trafikverket</td>
-    </tr>
+        <td width="265"align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Bro&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bro</a></td>
     <tr>
         <th width="15"></th>
         <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen</td>
         <th width="15"></th>
-        <td width="265" align="left"></td>
+        <td width="265" align="left">Trafikverket</td>
     
     </tr>
     <tr>
@@ -309,6 +308,15 @@ map.addLayer(vectorLayer3a);
         <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Sydvästra</td>
         <th width="15"></th>
         <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen"></td>
+    </tr>
+    <tr>
+        <th width="15"></th>
+        <td width="125"></td>
+        <th width="15"></th>
+        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>
     </tr>
     </table>
     
