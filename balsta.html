@@ -205,31 +205,6 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// P1
-const marker2a = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56835])), // Adjust the longitude value
-});
-
-const markerStyle2a = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './P1.png',
-        scale: 0.1,
-    }),
-});
-
-marker2a.setStyle(markerStyle2a);
-
-const vectorSource2a = new ol.source.Vector({
-    features: [marker2a], // Use marker2 as the feature
-});
-
-const vectorLayer2a = new ol.layer.Vector({
-    source: vectorSource2a, // Use vectorSource2 for the source
-});
-
-map.addLayer(vectorLayer2a);
-
 // Marker 2 Pendelparkeing (Samma som ovan)
 const marker2 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.5683])), // Adjust the longitude value
