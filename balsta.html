@@ -205,7 +205,7 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// Marker 2 Pendelparkeing (Samma som ovan)
+// Marker 2 Pendelparkering P1
 const marker2 = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53282, 59.56947])), // Adjust the longitude value
 });
@@ -214,7 +214,7 @@ const markerStyle2 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './p1.svg',
+        src: './p1.png',
         scale: 2,
     }),
 });
@@ -230,6 +230,57 @@ const vectorLayer2 = new ol.layer.Vector({
 });
 
 map.addLayer(vectorLayer2);
+
+
+// Marker 3 Pendelparkering, Östra sidan, P2
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53144, 59.57038])),
+});
+
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './parking.svg',
+        scale: 2,
+    }),
+});
+
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3],
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3,
+});
+map.addLayer(vectorLayer3);
+
+// Parkering P2
+const marker4 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53144, 59.57036])), // Adjust the longitude value
+});
+
+const markerStyle4 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './p1.png',
+        scale: 2,
+    }),
+});
+ 
+marker4.setStyle(markerStyle4);
+
+const vectorSource4 = new ol.source.Vector({
+    features: [marker4], // Use marker2 as the feature
+});
+
+const vectorLayer4 = new ol.layer.Vector({
+    source: vectorSource4, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer4);
 //--------------------------------
 </script>
 
