@@ -153,13 +153,13 @@ var map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.53369, 59.56837]),//0,0045 är ca 500 m
+        center: ol.proj.fromLonLat([17.7520, 59.4776]),//0,0045 är ca 500 m
     zoom: 15 // You can adjust the zoom level as needed
     })})
     
 // Marker 1 Kungsängen station
 const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56837])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.7520, 59.4776])),
 });
 
 const markerStyle11 = new ol.style.Style({
@@ -181,9 +181,9 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
-// Marker 1 Pendelparkeing, Enköpingsvägen, P1
+// Marker 1 Pendelparkeing, Östra sidan närmast, P1
     const marker1 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.7555, 59.4791])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56837])),
 });
 
 const markerStyle1 = new ol.style.Style({
@@ -205,9 +205,34 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
+// P1
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56835])), // Adjust the longitude value
+});
+
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './P1.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+
 // Marker 2 Pendelparkeing (Samma som ovan)
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.7529, 59.4783])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.5683])), // Adjust the longitude value
 });
 
 const markerStyle2 = new ol.style.Style({
