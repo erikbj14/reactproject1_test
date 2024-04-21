@@ -19,12 +19,12 @@
         bottom: 20px; /* Adjust the bottom position */
     }
 
-        /* Set the map height */
-        #osm-map {
+         /* Set the map height */
+       #osm-map {
             position: absolute;
-            height: 610px;
+            height: 640px;
             width: 440px;
-            top: 110px;
+            top: 65px;
             left: 8px;
         }
    
@@ -311,24 +311,33 @@ map.addLayer(vectorLayer4);
         </td>       
     </tr>
 </table>    
-<!--Andelsvägen-->
-<div id="popup-container2">
-    <table width="300" border="0">
+    <!--Enköpingsvägen-->
+    <div id="popup-container2" onmouseover="mouseOver('popup-container2')" onmouseout="mouseOut('popup-container2')">
+        <table width="300" border="0">
 
-        <tr>
-            <th width="15"><img src="parking.svg"></th>
-
-
-
-            <th colspan=" 4" align="left">Kallhällsleden</th>
+            <tr>
+                <th width="15"><img src="parking.svg"></th>
 
 
-        </tr>
-        <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Vid Kallhälls centrum finns cirka 185 parkeringsplatser. Här råder parkeringsförbud vardagar klockan 02-05. Ingen avgift</td></tr><tr><td align="left"></td></tr></table></td>
-        </tr>
-    </table>
-</div>
+
+                <th colspan=" 4" align="left">Enköpingsvägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Avgift för Parkering:
+                    Det kostar 5 kronor per timme att parkera på infartsparkeringen i Bålsta.<br>
+                    <b>Gratis</b> parkering erbjuds för dem som har ett SL-kort (grönt eller digitalt) med minst en 30-dagarsbiljett. Följande SL-biljetter gäller för gratis parkering:
+                    30-dagarsbiljett
+                    90-dagarsbiljett
+                    Årskort<br>
+                    länk: <a href="https://sl.parkera.nu/" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">parkera.nu</a>
+                    Om du inte har ett SL-kort, behöver du betala fem kronor per timme</td></tr></table></td>
+            </tr>
+        </table>
+
+    </div>
+
 
 <!--Slammertorpsvägen-->
 <div id="popup-container4">
