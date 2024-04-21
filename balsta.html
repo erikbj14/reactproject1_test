@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <style>
-
-        /*openstreetmap contributors*/    
-    .ol-control.ol-attribution {
-        left: 200px;
-        padding-right: 80px; /* Adjust the padding on the right side */
-    }
-
-table {
+    table {
         background-color:rgba(255, 99, 71, 0.5);
     }
 
-       /* Set the map height */
-       #osm-map {
+        /*openstreetmap contributors*/
+    .ol-control.ol-attribution {
+        left: 160px;
+        padding-right: 120px; /* Adjust the padding on the right side */
+        bottom: 20px; /* Adjust the bottom position */
+    }
+
+        /* Set the map height */
+        #osm-map {
             position: absolute;
-            height: 640px;
+            height: 610px;
             width: 440px;
-            top: 65px;
+            top: 110px;
             left: 8px;
         }
    
@@ -66,12 +66,25 @@ table {
             z-index: 1;
         }
 
-       /*Enköpingsvägen*/
-       #popup-container2 {
+        #popup2 {
             position: absolute;
-            top: 65px;
+            top: 225px;
+            left: 100px;
+            height: 90px;
+            width: 500px;
+            opacity: 0.4;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            z-index: 3500;
+        }
+
+        #popup-container2 {
+            position: absolute;
+            top: 100px;
             left: 0px;
-            height: 235px;
+            height: 120px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -81,37 +94,26 @@ table {
             z-index: 3000;
             display: none; /* Initially hidden */
         }
-   
-        #popup3 {
+
+        #popup-container4 {
             position: absolute;
-            top: 245px;
-            left: 150px;
-            font-size: 50px;
-            color: blue;
-            font-size: 50px;
-            z-index: 2; /* Set a higher z-index value */
+            top: 100px;
+            left: 0px;
+            height: 120px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
         }
 
-        
-        #display-info {
-        position: absolute;
-        top: 100px;
-        left: 0px;
-        height: 110px;
-        width: 450px;
-        background-color: white;
-        padding: 10px;
-        border: 2px solid blue; /* Change the border color to blue */
-        border-radius: 5px;
-        max-width: 300px;
-        z-index: 3000;
-        /*display: none;  Initially hidden*/
-    }
-
-    #display-info-table {
+        #display-info-table {
             position: absolute;
-            top: 450px;
-            left: 200px;
+            top: 560px;
+            left: 230px;
             background-color: white;
             padding: 10px;
             border: 2px solid black;
@@ -282,72 +284,91 @@ const vectorLayer4 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer4);
 //--------------------------------
+
+
 </script>
 
 <table width="440" border="0">
     <tr>
         <th width="15"><img src="parking.svg"></th>
-        <th width="125" align="left">Pendelparkering</th>
-        <th width="15"><img src="train.svg"></th>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=B%C3%A5lsta&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bålsta</a></td>
-    </tr>
-    <tr>
-        <td width="15"></td>
-        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Enköpingsvägen</td>
-        <td width="15"></td>
-        <td colspan="6" align="left">Trafikverket</td>
+        <th width="145" align="left">Pendelparkering</th>
+        <th width="15"></th>
+        <td width="265" align="left"></td>
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="125"></td>
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Kallhällsleden</td>
         <th width="15"></th>
-        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
-            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
-            <button id="reloadButton" hidden="true">Visningsläge</button>
-        </td>       
+        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Slammertorpsvägen</td>
     </tr>
-</table>
-    <!--Enköpingsvägen-->
-    <div id="popup-container2" onmouseover="mouseOver('popup-container2')" onmouseout="mouseOut('popup-container2')">
-        <table width="300" border="0">
+    <tr>
+        <th width="15"></th>
+        <td width="145"></td>
+        <th width="15"></th>
+        <td width="265"></td>
+    </tr>
+    </table>
+    <table border="0" width="440"><!--Blev annan bakgrundsfärg med "tabell i tabellen" därför  blev det en fristående tabell-->
+        <tr>
+            <td width="15"><img src="train.svg"></td>
+            <td width="125" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Kallh%C3%A4ll&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Kallhäll</a></td>
+            <th width="15"></th>
+            <td width="185"></td>
+        </tr>
+        <tr>
+            <td width="15"></td>
+            <td width="125" align="left">Trafikverket</td>
+            <th width="15"></th>
+            <td width="185" align="left" style="padding: 0px; font-size: 1px;" id="start">
+                <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
+            </td>
+        </tr>
+    </table>
+    
+<!--Andelsvägen-->
+<div id="popup-container2">
+    <table width="300" border="0">
 
-            <tr>
-                <th width="15"><img src="parking.svg"></th>
+        <tr>
+            <th width="15"><img src="parking.svg"></th>
 
 
 
-                <th colspan=" 4" align="left">Enköpingsvägen</th>
+            <th colspan=" 4" align="left">Kallhällsleden</th>
 
 
-            </tr>
-            <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Avgift för Parkering:
-                    Det kostar 5 kronor per timme att parkera på infartsparkeringen i Bålsta.<br>
-                    <b>Gratis</b> parkering erbjuds för dem som har ett SL-kort (grönt eller digitalt) med minst en 30-dagarsbiljett. Följande SL-biljetter gäller för gratis parkering:
-                    30-dagarsbiljett
-                    90-dagarsbiljett
-                    Årskort<br>
-                    länk: <a href="https://sl.parkera.nu/" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">parkera.nu</a>
-                    Om du inte har ett SL-kort, behöver du betala fem kronor per timme</td></tr></table></td>
-            </tr>
-        </table>
-
-    </div>
-
-
-<!--<div id="popup-container3"></div>-->
-
-<div id="popup-container">
-
+        </tr>
+        <tr>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Vid Kallhälls centrum finns cirka 185 parkeringsplatser. Här råder parkeringsförbud vardagar klockan 02-05. Ingen avgift</td></tr><tr><td align="left"></td></tr></table></td>
+        </tr>
+    </table>
 </div>
 
+<!--Slammertorpsvägen-->
+<div id="popup-container4">
+    <table width="300" border="0">
+
+        <tr>
+            <th width="15"><img src="parking.svg"></th>
+
+
+
+            <th colspan=" 4" align="left">Slammertorpsvägen</th>
+
+
+        </tr>
+        <tr>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Vid Kallhälls centrum finns cirka 185 parkeringsplatser. Här råder parkeringsförbud vardagar klockan 02-05. Ingen avgift</td></tr><tr><td align="left"></td></tr></table></td>
+        </tr>
+    </table>
+</div>
 <div id="popup-container2">
 
 </div>
 
 <div id="popup-container4">
 
-</div>
+</div> 
 
 <table id="display-info-table">
     <tr>
@@ -363,153 +384,159 @@ map.addLayer(vectorLayer4);
     </tr>
 </table>
 
-
-
 <script>
-    function updateInformation() {
-        // Get the current date and time
-        const currentDate = new Date();
-        const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-        const currentHour = currentDate.getHours();
-    
-        let displayText = "";
-        let indicatorColor = "";
-        let id = "P1"; // You can replace this with a dynamic value
-    
-        // Define time ranges and messages
-        const timeRanges = [
-            { start: 0, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
-            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
-            { start: 16, end: 18, message: "Your message for 16:00-17:00", color: "yellow" },
-            { start: 18, end: 24, message: "Your message for 17:00-07:00", color: "lightgreen" },
-        ];
-    
-        // Check if it's the weekend
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
-            displayText = "Weekend message: Your message here.";
-            indicatorColor = "lightgreen"; // Change this to the desired color for weekends
-        } else {
-            // Check the current time range
-            for (const range of timeRanges) {
-                if (currentHour >= range.start && currentHour < range.end) {
-                    displayText = range.message;
-                    indicatorColor = range.color;
-                    break;
-                }
+function updateInformation() {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+    const dayOfWeek = currentDate.getDay();
+
+    const timeRangesRow1 = [
+    { start: 0, end: 8.5, message: "Your message for 00:00-07:00", color: "lightgreen" },
+    { start: 0, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
+    { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
+    { start: 16, end: 24, message: "Your message for 16:00-24:00", color: "lightgreen" },
+];
+
+const timeRangesRow2 = [
+    { start: 0, end: 8, message: "Your message for 00:00-08:00", color: "lightgreen" },
+    { start: 8, end: 16, message: "Your message for 08:00-10:00", color: "yellow" },
+    { start: 8, end: 16, message: "Your message for 10:00-15:00", color: "red" },
+    { start: 16, end: 18, message: "Your message for 15:00-17:00", color: "yellow" },
+    { start: 18, end: 24, message: "Your message for 17:00-24:00", color: "lightgreen" },
+];
+
+    updateRowInformation(1, dayOfWeek, currentHour, timeRangesRow1);
+    updateRowInformation(2, dayOfWeek, currentHour, timeRangesRow2);
+}
+
+function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
+    let displayText = "";
+    let indicatorColor = "";
+    let id;
+
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        // Set the color to "lightgreen" for weekends
+        indicatorColor = "lightgreen";
+    } else {
+        for (const range of timeRanges) {
+            if (currentHour >= range.start && currentHour < range.end) {
+                displayText = range.message;
+                indicatorColor = range.color;
+                break;
             }
         }
-    
-        // Assign dynamic ID based on rowNumber and currentHour
+    }
+
+    // Assign dynamic ID based on rowNumber and currentHour
     id = (rowNumber === 1) ? "P1" : (rowNumber === 2) ? "P2" : "";
 
-document.getElementById(`id-cell-${rowNumber}`).textContent = id;
-document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
+    document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+    document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
 }
-    
-    function getTimeRangeString() {
-        const currentDate = new Date();
-        const currentHour = currentDate.getHours();
-    
-        if (currentHour >= 0 && currentHour < 8.5) {
-            return "00:00-08:30";
-        } else if (currentHour >= 8.5 && currentHour < 16) {
-            return "08:30-16:00";
-        } else if (currentHour >= 16 && currentHour < 18) {
-            return "16:00-18:00";
-        } else if (currentHour >= 18 && currentHour < 24) {
-            return "18:00-24:00";
-        } else {
-            return "Unknown";
-        }
-    }
-    
-    // Call the updateInformation function when the page loads
-    updateInformation();
-    
-    // Update the information every second (1000 milliseconds)
-    setInterval(updateInformation, 1000);
-    </script>
+
+// Call the updateInformation function when the page loads
+updateInformation();
+
+// Update the information every second (1000 milliseconds)
+setInterval(updateInformation, 1000);
+</script>
+
 
 <script>
 
-/*openstreetmap contributors*/
-document.addEventListener("DOMContentLoaded", function () {
+    /*openstreetmap contributors*/
+    document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.ol-control.ol-attribution').style.left = '50px';
   });
 
     const demoElement = document.getElementById("demo");
 
-// Add click event listener to the map view
+        // Add click event listener to the map view
 map.on('click', function (event) {
-//alert("zoom")
-// F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
-// Get the clicked coordinate
-// if (flag == 10) {
-//     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
-document.getElementById('reloadButton').addEventListener('click', function () {
-location.reload();
-});
-//Nedan rensa vid zoom
-document.getElementById("reloadButton").hidden = "";
-//document.getElementById("marker7Layer").style.visibility = "none"; 
-//document.getElementById("popup-container4").style.display = "none";
-document.getElementById("popup-container2").style.display = "none";
-document.getElementById("popup-container4").style.display = "none";
-const clickedCoord = event.coordinate;
+    //alert("zoom")
+    // F�r att ta bort highlight om kartan zoomas, deklarerad i index.html
+    // Get the clicked coordinate
+   // if (flag == 10) {
+   //     flag = 2; //Zoomar inte mer (om anv. ej dubbelklickar)
+        document.getElementById('reloadButton').addEventListener('click', function () {
+            location.reload();
+        });
+        //Nedan rensa vid zoom
+        document.getElementById("reloadButton").hidden = "";
+        //document.getElementById("marker7Layer").style.visibility = "none"; 
+        //document.getElementById("popup-container4").style.display = "none";
+        document.getElementById("popup-container2").style.display = "none";
+        document.getElementById("popup-container4").style.display = "none";
+        const clickedCoord = event.coordinate;
 
-// Adjust the clicked coordinate (move slightly to the left and up)
-const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
+        // Adjust the clicked coordinate (move slightly to the left and up)
+        const adjustedCoord = [clickedCoord[0] + 400, clickedCoord[1] + 250]; // You can adjust these values
 
-// Get the current zoom level
-const currentZoom = map.getView().getZoom();
+        // Get the current zoom level
+        const currentZoom = map.getView().getZoom();
 
-// Set the new zoom level (you can adjust this value)
-const newZoom = currentZoom + 1;
+        // Set the new zoom level (you can adjust this value)
+        const newZoom = currentZoom + 1;
 
-// Set the new zoom level and center the map on the adjusted coordinate
-map.getView().animate({ zoom: newZoom, center: adjustedCoord });
-//};
-});
-
-
-
-
-
-/*  if (id === "start") { <script>location.replace*/
-
-
-const popupContainer = document.getElementById('popup-container3');
-
-//const popupContainer = document.getElementById('popup-container4'); }
-
-// Update the position when the map is moved or zoomed
-map.on('moveend', function () {
-//alert("zoomad IGEN")
-const center = map.getView().getCenter();
-const pixel = map.getPixelFromCoordinate(center);
-
-// Set the position of the popup container based on the pixel coordinates
-popupContainer.style.left = pixel[0] + 'px';
-popupContainer.style.top = pixel[1] + 'px';
+        // Set the new zoom level and center the map on the adjusted coordinate
+        map.getView().animate({ zoom: newZoom, center: adjustedCoord });
+    //};
 });
 
-function mouseOver(id) {
+
+
+
+
+    /*  if (id === "start") { <script>location.replace*/
+
+
+    const popupContainer = document.getElementById('popup-container3');
+
+    //const popupContainer = document.getElementById('popup-container4'); }
+
+    // Update the position when the map is moved or zoomed
+    map.on('moveend', function () {
+        //alert("zoomad IGEN")
+        const center = map.getView().getCenter();
+        const pixel = map.getPixelFromCoordinate(center);
+
+        // Set the position of the popup container based on the pixel coordinates
+        popupContainer.style.left = pixel[0] + 'px';
+        popupContainer.style.top = pixel[1] + 'px';
+    });
+    function mouseOver(id) {
+        // Check the ID and perform actions accordingly
         if (id === "demo") {
+            //alert('Kolla: ' + id);
+            demoElement.innerHTML = "Kallhällsleden";//Pga av 2 rader så är det endast Kallhällsleden här
             document.getElementById("popup-container2").style.display = "block";
-        } else if (id === "popup-container2") {
-            // If mouse over the container, keep it displayed
-            document.getElementById("popup-container2").style.display = "block";
-        }
-    }
-
-    function mouseOut(id) {
-        if (id === "popup-container2") {
-            // Hide the container only when leaving it
+            document.getElementById("popup-container4").style.display = "none";
+        } else if (id === "demo2") {
+            //alert('Kolla: ' + id);
+            document.getElementById("demo2").innerHTML = "Slammertorpsvägen";
+            document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
+    function mouseOut(id) {
+        if (id === "demo") {
+            //alert('Kolla2: ' + id);
+            demoElement.innerHTML = "Kallhällsleden";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+        } else if (id === "demo2") {
+            //alert('Kolla2: ' + id);
+            document.getElementById("demo2").innerHTML = "Slammertorpsvägen";
+            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container4").style.display = "none";
+        }
+    }
+    //console.log('Demo Element:', demoElement);
 </script>
+
+<!--<div id="popup-content"></div>-->
 </div>
 
+<!--<div id="popup8"><i><b>Parkeringen</b></i></div>-->
 </body>
 </html>
