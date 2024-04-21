@@ -291,40 +291,26 @@ map.addLayer(vectorLayer4);
 <table width="440" border="0">
     <tr>
         <th width="15"><img src="parking.svg"></th>
-        <th width="145" align="left">Pendelparkering</th>
-        <th width="15"></th>
-        <td width="265" align="left"></td>
+        <th width="125" align="left">Pendelparkering</th>
+        <th width="15"><img src="train.svg"></th>
+        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=B%C3%A5lsta&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bålsta</a></td>
+    </tr>
+    <tr>
+        <td width="15"></td>
+        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Enköpingsvägen</td>
+        <td width="15"></td>
+        <td colspan="6" align="left">Trafikverket</td>
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Kallhällsleden</td>
+        <td width="125"></td>
         <th width="15"></th>
-        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen">Slammertorpsvägen</td>
+        <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
+            <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
+            <button id="reloadButton" hidden="true">Visningsläge</button>
+        </td>       
     </tr>
-    <tr>
-        <th width="15"></th>
-        <td width="145"></td>
-        <th width="15"></th>
-        <td width="265"></td>
-    </tr>
-    </table>
-    <table border="0" width="440"><!--Blev annan bakgrundsfärg med "tabell i tabellen" därför  blev det en fristående tabell-->
-        <tr>
-            <td width="15"><img src="train.svg"></td>
-            <td width="125" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Kallh%C3%A4ll&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Kallhäll</a></td>
-            <th width="15"></th>
-            <td width="185"></td>
-        </tr>
-        <tr>
-            <td width="15"></td>
-            <td width="125" align="left">Trafikverket</td>
-            <th width="15"></th>
-            <td width="185" align="left" style="padding: 0px; font-size: 1px;" id="start">
-                <button id="reloadButton" hidden="true">Visningsläge</button><!--Gör att knappen kommer upp vid zoom-->
-            </td>
-        </tr>
-    </table>
-    
+</table>    
 <!--Andelsvägen-->
 <div id="popup-container2">
     <table width="300" border="0">
