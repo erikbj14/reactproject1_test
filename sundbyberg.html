@@ -210,7 +210,7 @@ const vectorSource2 = new ol.source.Vector({
     features: [marker2], // Use marker2 as the feature
 });
 
-const vectorLayer2 = new ol.layer.Vector({
+const vectorLayer2 = new ol.layer.Vector({//EB 240502
     source: vectorSource2, // Use vectorSource2 for the source
 });
 
@@ -275,19 +275,19 @@ map.addLayer(vectorLayer4);
         <th width="15"><img src="parking2.svg"></th>
         <th width="160" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td width="255" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sundbyberg&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Sundbyberg</a></td>
+        <td width="255" align="left">Tåg-tider</td>
     </tr>
     <tr>
             <th width="15"></th>
             <td width="160" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Om parkering i</td>
             <th width="15"></th>
-            <td width="255" align="left">Trafikverket</td>        
+            <td width="255" align="left"><a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Sundbyberg&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Sundbyberg</a></td>        
     </tr>
     <tr>
         <th width="15"></th>
         <td width="160" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Sundbyberg</td>
         <th width="15"></th>
-        <td width="255" align="left"></td>        
+        <td width="255" align="left">Trafikverket</td>        
 </tr>
     <tr>
         <th width="15"></th>
