@@ -130,20 +130,15 @@
             z-index: 4000;
         }
    
-        /*popup för transparant blå bakgrund till text
-       /* #popup2 {
+        #popup2 {
             position: absolute;
-            top: 50px;
-            left: 0px;
-            height: 70px;
-            width: 475px;
-            opacity: 0.4;
-            background-color: blue;
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 500px;
-            z-index: 3500;
-        } */
+            top: 35px;
+            left: 200px;
+            font-size: 40px;
+            color: black;
+            font-size: 50px;
+            z-index: 2; /* Set a higher z-index value */
+        }
    
         #popup3 {
             position: absolute;
@@ -180,6 +175,10 @@
         document.querySelector('.ol-control.ol-attribution').style.left = '50px';
     });
 
+    function closeWindow() {
+    window.close(); // Stänger ner fönstret eller fliken
+}
+
 
         document.addEventListener("DOMContentLoaded", function () {
             var map = new ol.Map({
@@ -210,7 +209,7 @@
 
             marker1.setStyle(markerStyle1);
 
-            // Marker 2 Rotebro
+            // Marker 2 Rotebro//EB240502
             const marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91465, 59.47586]))
             });
@@ -499,6 +498,8 @@
 
     <div id="popup2">
         <!-- Content for popup2 goes here -->
+        <button onclick="closeWindow()">X</button>
+    
     </div>
    
     <div id="popup3"><i><b><p>Pendelparkering</p></b></i></div>
