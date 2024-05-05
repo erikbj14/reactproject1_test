@@ -19,12 +19,12 @@
         bottom: 20px; /* Adjust the bottom position */
     }
 
-         /* Set the map height */
-       #osm-map {
+        /* Set the map height */
+        #osm-map {
             position: absolute;
-            height: 640px;
+            height: 610px;
             width: 440px;
-            top: 80px;
+            top: 100px;
             left: 8px;
         }
    
@@ -84,7 +84,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 50px;
+            height: 120px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -99,7 +99,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 50px;
+            height: 120px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -112,8 +112,8 @@
 
         #display-info-table {
             position: absolute;
-            top: 100px;
-            left: 100px;
+            top: 560px;
+            left: 230px;
             background-color: white;
             padding: 10px;
             border: 2px solid black;
@@ -127,26 +127,29 @@
             padding-top: 2px;
             /*border: 1px solid black;*/
         }
+
     </style>
 </head>
 <body>
-<!-- First Map -->
-<div id="osm-map">
-    <div class="dropdown">
+    
+    <div id="osm-map">
+        <div class="dropdown">
 
-        <a href="index.html">
-            <button>Tillbaka</button>
-        </a>
+            <a href="index.html">
+                <button>Tillbaka</button>
+            </a>
+            </div>
         </div>
-    </div>
 
-<!-- Second Map 
-<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
-    <!-- First Map Script -->
-    <!-- Map Script -->
-    <script>
+        <div id="popup-container">
+            <!--Tabell över parkeringar-->
+            
+            <!-- <div id="popup-content"> -->
+            <!--</div>-->
+        </div>
 
-var map = new ol.Map({
+        <script>
+            var map = new ol.Map({
     target: 'osm-map',
     layers: [
         new ol.layer.Tile({
@@ -154,43 +157,19 @@ var map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([17.53369, 59.56836]),//0,0045 är ca 500 m
-    zoom: 15 // You can adjust the zoom level as needed
+                    center: ol.proj.fromLonLat([17.63285, 59.51226]), 
+                    zoom: 15 // You can adjust the zoom level as needed
     })})
     
-// Marker 1 Bålsta station
-const marker11 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56836])),
-});
-
-const markerStyle11 = new ol.style.Style({
-    image: new ol.style.Icon({
-        anchor: [0.5, 1],
-        src: './location-dot-solid.svg',
-        scale: 2,
-    }),
-});
-
-marker11.setStyle(markerStyle11);
-
-const vectorSource11 = new ol.source.Vector({
-    features: [marker11],
-});
-
-const vectorLayer11 = new ol.layer.Vector({
-    source: vectorSource11,
-});
-map.addLayer(vectorLayer11);
-
-// Marker 1 Pendelparkeing, Enköpingsvägen, P1
-    const marker1 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53282, 59.56949])),
+    // Marker 1 Bro station Station
+const marker1 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63285, 59.51226])),
 });
 
 const markerStyle1 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        src: './parking.svg',
+        src: './location-dot-solid.svg',
         scale: 2,
     }),
 });
@@ -206,20 +185,20 @@ const vectorLayer1 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer1);
 
-// Marker 2 Pendelparkering P1
+// Parkering P1, Stationsvägen
 const marker2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53282, 59.56947])), // Adjust the longitude value
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63803, 59.51096])), // Adjust the longitude value
 });
 
 const markerStyle2 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
         //src: './Bild4.png', //Gjorde en bild som liknade en polygon
-        src: './P1.png',
-        scale: 0.1,
+        src: './parking.svg',
+        scale: 2,
     }),
 });
- 
+
 marker2.setStyle(markerStyle2);
 
 const vectorSource2 = new ol.source.Vector({
@@ -232,15 +211,41 @@ const vectorLayer2 = new ol.layer.Vector({
 
 map.addLayer(vectorLayer2);
 
+// P1
+const marker2a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63803, 59.51092])), // Adjust the longitude value
+});
 
-// Marker 3 Pendelparkering, Östra sidan, P2
+const markerStyle2a = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        src: './P1.png',
+        scale: 0.1,
+    }),
+});
+
+marker2a.setStyle(markerStyle2a);
+
+const vectorSource2a = new ol.source.Vector({
+    features: [marker2a], // Use marker2 as the feature
+});
+
+const vectorLayer2a = new ol.layer.Vector({
+    source: vectorSource2a, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer2a);
+
+
+// Parkerin P2, Södra sidan
 const marker3 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53144, 59.57038])),
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63769, 59.50981])), // Adjust the longitude value
 });
 
 const markerStyle3 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
         src: './parking.svg',
         scale: 2,
     }),
@@ -249,91 +254,74 @@ const markerStyle3 = new ol.style.Style({
 marker3.setStyle(markerStyle3);
 
 const vectorSource3 = new ol.source.Vector({
-    features: [marker3],
+    features: [marker3], // Use marker2 as the feature
 });
 
 const vectorLayer3 = new ol.layer.Vector({
-    source: vectorSource3,
+    source: vectorSource3, // Use vectorSource2 for the source
 });
+
 map.addLayer(vectorLayer3);
 
-// Parkering P2
-const marker4 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53144, 59.57033])), // Adjust the longitude value
+// P2
+const marker3a = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63769, 59.50977])), // Adjust the longitude value
 });
 
-const markerStyle4 = new ol.style.Style({
+const markerStyle3a = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [0.5, 1],
-        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
         src: './P2.png',
         scale: 0.1,
     }),
 });
- 
-marker4.setStyle(markerStyle4);
 
-const vectorSource4 = new ol.source.Vector({
-    features: [marker4], // Use marker2 as the feature
+marker3a.setStyle(markerStyle3a);
+
+const vectorSource3a = new ol.source.Vector({
+    features: [marker3a], // Use marker2 as the feature
 });
 
-const vectorLayer4 = new ol.layer.Vector({
-    source: vectorSource4, // Use vectorSource2 for the source
+const vectorLayer3a = new ol.layer.Vector({
+    source: vectorSource3a, // Use vectorSource2 for the source
 });
 
-map.addLayer(vectorLayer4);
-//--------------------------------
-
+map.addLayer(vectorLayer3a);
 
 </script>
 
 <table width="440" border="0">
     <tr>
         <th width="15"><img src="parking.svg"></th>
-        <th width="125" align="left">Pendelparkering</th>
+        <th width="145" align="left">Pendelparkering</th>
         <th width="15"><img src="train.svg"></th>
-        <td colspan="6" align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=B%C3%A5lsta&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bålsta</a></td>
-    </tr>
+        <td width="265"align="left">Tåg-tider <a href="https://www.trafikverket.se/trafikinformation/tag/?Station=Bro&ArrDep=departure" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bro</a></td>
     <tr>
-        <td width="15"></td>
-        <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Parkering 1</td>
-        <td width="15"></td>
-        <td colspan="6" align="left">Trafikverket</td>
+        <th width="15"></th>
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen</td>
+        <th width="15"></th>
+        <td width="265" align="left">Trafikverket</td>
+    
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="125" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan27">Parkering 2</td>
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Sydvästra</td>
+        <th width="15"></th>
+        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen"></td>
+    </tr>
+    <tr>
+        <th width="15"></th>
+        <td width="125">&nbsp;</td>
         <th width="15"></th>
         <td width="285" align="left" style="padding: 0px; font-size: 1px;" id="start">
             <!--<button type="button" onload="this.style.display='none'">Hello</button>-->
             <button id="reloadButton" hidden="true">Visningsläge</button>
-        </td>       
+        </td>
     </tr>
-</table>    
-    <!--Enköpingsvägen-->
-    <div id="popup-container2" onmouseover="mouseOver('popup-container2')" onmouseout="mouseOut('popup-container2')">
-        <table width="300" border="0">
-
-            <tr>
-                <th width="15"><img src="parking.svg"></th>
-
-
-
-                <th colspan=" 4" align="left">Parkering 1</th>
-
-
-            </tr>
-            <tr>
-                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Avgift för Parkering:
-                    Ingen avgift
-            </tr>
-        </table>
-
-    </div>
-
-
-<!--Slammertorpsvägen-->
-<div id="popup-container4" onmouseover="mouseOver('popup-container4')" onmouseout="mouseOut('popup-container4')">
+    </table>
+    
+<!--Andelsvägen-->
+<div id="popup-container2">
     <table width="300" border="0">
 
         <tr>
@@ -341,12 +329,31 @@ map.addLayer(vectorLayer4);
 
 
 
-            <th colspan=" 4" align="left">Parkering 2</th>
+            <th colspan=" 4" align="left">Stationsvägen P1</th>
 
 
         </tr>
         <tr>
-            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Ingen avgift</td></tr><tr><td align="left"></td></tr></table></td>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">I Bro finns infartsparkeringarna på Stationsvägen och södra sidan av stationen. Det finns totalt 274 parkeringsplatser. Att parkera är gratis.</td></tr><tr><td align="left"></td></tr></table></td>
+        </tr>
+    </table>
+</div>
+
+<!--Sydvästra-->
+<div id="popup-container4">
+    <table width="300" border="0">
+
+        <tr>
+            <th width="15"><img src="parking.svg"></th>
+
+
+
+            <th colspan=" 4" align="left">Parkering sydväst P2</th>
+
+
+        </tr>
+        <tr>
+            <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">I Bro finns infartsparkeringarna på Stationsvägen och södra sidan av stationen. Det finns totalt 274 parkeringsplatser. Att parkera är gratis.</td></tr><tr><td align="left"></td></tr></table></td>
         </tr>
     </table>
 </div>
