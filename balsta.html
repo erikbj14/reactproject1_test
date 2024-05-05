@@ -359,7 +359,7 @@ map.addLayer(vectorLayer4);
 
 </div> 
 
-<table id="display-info-table">
+<table border="0" id="display-info-table">
     <tr>
         <th colspan="2" align="left">Prognos</th>
     </tr>
@@ -497,12 +497,12 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Parkering 1";//Pga av 2 rader så är det endast Kallhällsleden här
+            demoElement.innerHTML = "Stationsvägen";//Pga av 2 rader så är det endast Stationsvägen här
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "Parkering 2";
+            document.getElementById("demo2").innerHTML = "";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -510,12 +510,12 @@ map.on('click', function (event) {
     function mouseOut(id) {
         if (id === "demo") {
             //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Parkering 1";
+            demoElement.innerHTML = "Stationsvägen";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "Parkering 2";
+            document.getElementById("demo2").innerHTML = "";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
