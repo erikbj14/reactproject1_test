@@ -166,6 +166,50 @@ const vectorLayer11 = new ol.layer.Vector({
 });
 map.addLayer(vectorLayer11);
 
+// Trafikverket API Key
+const apiKey = 'YOUR_API_KEY'; // Ersätt med din faktiska API-nyckel
+
+const url = 'https://api.trafikinfo.trafikverket.se/v2/data.json';
+
+const payload = {
+    REQUEST: {
+        LOGIN: {
+            authenticationkey: apiKey
+        },
+        QUERY: [
+            {
+                OBJECTTYPE: "TrainStation",
+                FILTER: {
+                    name: "Stockholm City"
+                }
+            }
+        ]
+    }
+};
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+//    displayTrainDataFör att göra en förfrågan till Trafikverkets API och visa resultaten på din webbsida med JavaScript, kan du använda följande steg. Vi kommer att:
+
+//1. Hämta tågdata från Trafikverkets API.
+//2. Visa data på webbsidan.
+
+//### HTML och CSS
+//Din befintliga HTML och CSS behöver inga ändringar för att visa resultaten. Du behöver bara lägga till lite JavaScript.
+
+//### JavaScript
+//Lägg till följande JavaScript-kod i din befintliga `<script>`-tag eller skapa en ny `<script>`-tag i slutet av din HTML-fil:
+
+
 </script>
 
 <table width="440" border="0">
