@@ -64,7 +64,9 @@
                         "InformationOwner"
                     ],
                     "FILTER": {
-                        "Operator": "SL" // Assuming SL is the operator for commuter trains
+                        "Operator": "SL", // Assuming SL is the operator for commuter trains
+                        "ActivityType": "Avgang", // Filter for departures
+                        "LocationSignature": "Cst,Sci,Söc,Spå,Tåb,Udl,Sol,Skg,Bkb,Jak,Hgv,Mar,Tul,Sst,Kmy,Hel,Hnd,Mrp,Nvk,Shb,Arl,Mär,Bål"
                     },
                     "LIMIT": 50,
                     "schemaversion": "1.6"
@@ -72,11 +74,6 @@
             ]
         }
     };
-
-    const stockholmStations = [
-        "Cst", "Sci", "Söc", "Spå", "Tåb", "Udl", "Sol", "Skg", "Bkb", "Jak",
-        "Hgv", "Mar", "Tul", "Sst", "Kmy", "Hel", "Hnd", "Mrp", "Nvk", "Shb"
-    ];
 
     fetch(url, {
         method: 'POST',
@@ -99,18 +96,9 @@
                 return;
             }
 
-            const filteredAnnouncements = announcements.filter(announcement =>
-                stockholmStations.includes(announcement.LocationSignature)
-            );
-
-            if (filteredAnnouncements.length === 0) {
-                document.getElementById('error').innerText = 'No commuter train announcements found for Stockholm and the north side.';
-                return;
-            }
-
             const trainInfoTable = document.getElementById('train-info');
 
-            filteredAnnouncements.forEach(announcement => {
+            announcements.forEach(announcement => {
                 const row = document.createElement('tr');
                 
                 const stationCell = document.createElement('td');
