@@ -46,24 +46,24 @@
 <p id="error"></p>
 
 <script>
-    const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+    const apiKey = '34c3f329c6ab41699591c61dd07043f1'; // Replace with your actual API key
     const url = 'https://api.trafikinfo.trafikverket.se/v2/data.json';
 
     const payload = {
-        REQUEST: {
-            LOGIN: {
-                authenticationkey: apiKey
+        "REQUEST": {
+            "LOGIN": {
+                "authenticationkey": apiKey
             },
-            QUERY: [
+            "QUERY": [
                 {
-                    OBJECTTYPE: "TrainAnnouncement",
-                    FILTER: {
-                        AND: [
-                            { EQ: { LocationSignature: "Scs" } }, // Stockholm City
-                            { EQ: { ActivityType: "Arrival" } }
+                    "OBJECTTYPE": "TrainAnnouncement",
+                    "FILTER": {
+                        "AND": [
+                            { "EQ": { "LocationSignature": "Scs" } }, // Stockholm City
+                            { "EQ": { "ActivityType": "Arrival" } }
                         ]
                     },
-                    INCLUDE: [
+                    "INCLUDE": [
                         "AdvertisedTimeAtLocation",
                         "EstimatedTimeAtLocation",
                         "LocationSignature",
@@ -85,9 +85,10 @@
     .then(response => response.json())
     .then(data => {
         console.log('API Response:', data); // Log the entire response for debugging
-        
+
         if (data.RESPONSE && data.RESPONSE.RESULT && data.RESPONSE.RESULT.length > 0) {
             const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
+            console.log('Train Announcements:', announcements); // Log the announcements for debugging
 
             if (!announcements || announcements.length === 0) {
                 document.getElementById('error').innerText = 'No train announcements found for Stockholm City.';
