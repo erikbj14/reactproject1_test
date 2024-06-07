@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pendeltåg Train Information</title>
+    <title>All Train Announcements</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<h1>Pendeltåg Train Information</h1>
+<h1>All Train Announcements</h1>
 
 <table>
     <thead>
@@ -57,17 +57,13 @@
             "QUERY": [
                 {
                     "OBJECTTYPE": "TrainAnnouncement",
-                    "FILTER": {
-                        "AND": [
-                            { "EQ": { "ProductInformation": "Pendeltåg" } }
-                        ]
-                    },
                     "INCLUDE": [
                         "AdvertisedTimeAtLocation",
                         "EstimatedTimeAtLocation",
                         "LocationSignature",
                         "InformationOwner"
-                    ]
+                    ],
+                    "LIMIT": 10 // Limit the number of results for debugging purposes
                 }
             ]
         }
@@ -90,7 +86,7 @@
             console.log('Train Announcements:', announcements); // Log the announcements for debugging
 
             if (!announcements || announcements.length === 0) {
-                document.getElementById('error').innerText = 'No train announcements found for Pendeltåg.';
+                document.getElementById('error').innerText = 'No train announcements found.';
                 return;
             }
 
