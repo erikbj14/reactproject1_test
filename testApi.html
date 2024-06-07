@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stockholm City Train Information</title>
+    <title>Pendeltåg Train Information</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<h1>Stockholm City Train Information</h1>
+<h1>Pendeltåg Train Information</h1>
 
 <table>
     <thead>
@@ -46,7 +46,7 @@
 <p id="error"></p>
 
 <script>
-    const apiKey = '34c3f329c6ab41699591c61dd07043f1'; // Replace with your actual API key
+    const apiKey = '	34c3f329c6ab41699591c61dd07043f1'; // Replace with your actual API key
     const url = 'https://api.trafikinfo.trafikverket.se/v2/data.json';
 
     const payload = {
@@ -59,8 +59,7 @@
                     "OBJECTTYPE": "TrainAnnouncement",
                     "FILTER": {
                         "AND": [
-                            { "EQ": { "LocationSignature": "Scs" } }, // Stockholm City
-                            { "EQ": { "ActivityType": "Arrival" } }
+                            { "EQ": { "ProductInformation": "Pendeltåg" } }
                         ]
                     },
                     "INCLUDE": [
@@ -91,7 +90,7 @@
             console.log('Train Announcements:', announcements); // Log the announcements for debugging
 
             if (!announcements || announcements.length === 0) {
-                document.getElementById('error').innerText = 'No train announcements found for Stockholm City.';
+                document.getElementById('error').innerText = 'No train announcements found for Pendeltåg.';
                 return;
             }
 
