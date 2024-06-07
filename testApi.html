@@ -79,7 +79,7 @@
     })
     .then(response => response.json())
     .then(data => {
-        console.log('API Response:', data); // Log the entire response for debugging
+        console.log('API Response:', JSON.stringify(data, null, 2)); // Log the entire response for debugging
 
         if (data.RESPONSE && data.RESPONSE.RESULT && data.RESPONSE.RESULT.length > 0) {
             const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
