@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
-        table
-        {
+        table {
             border: 1px solid #000000;
             border-collapse: collapse;
             border-spacing: 0px;
         }
-        table td
-        {
+        table td {
             padding: 8px 8px;
         }
     </style>
@@ -68,8 +65,7 @@
                     if (response == null) return;
                     try {
                         var stationlist = [];
-                        $(response.RESPONSE.RESULT[0].TrainStation).each(function (iterator, item)
-                        {
+                        $(response.RESPONSE.RESULT[0].TrainStation).each(function (iterator, item) {
                             // Save a key/value list of stations
                             Stations[item.LocationSignature] = item.AdvertisedLocationName;
                             // Create an array to fill the search field autocomplete.
@@ -126,15 +122,7 @@
                                     "orderby='AdvertisedTimeAtLocation' schemaversion='1'>" +
                                     "<FILTER>" +
                                     "<AND>" +
-                                        "<OR>" +
-                                            "<AND>" +
-                                                "<GT name='AdvertisedTimeAtLocation' " +
-                                                            "value='$dateadd(-00:15:00)' />" +
-                                                "<LT name='AdvertisedTimeAtLocation' " +
-                                                            "value='$dateadd(14:00:00)' />" +
-                                            "</AND>" +
-                                            "<GT name='EstimatedTimeAtLocation' value='$now' />" +
-                                        "</OR>" +
+                                        "<GT name='AdvertisedTimeAtLocation' value='$now' />" +
                                         "<EQ name='LocationSignature' value='" + sign + "' />" +
                                         "<EQ name='ActivityType' value='Avgang' />" +
                                     "</AND>" +
@@ -195,13 +183,13 @@
     <div id="result">
         <h3>Avgående tåg</h3>
         <table border="1" id="timeTableDeparture">
-                      <tr>
-                        <th scope="col" style="width:40px;">Tid</th>
-                        <th scope="col" style="width:200px;">Till</th>
-                        <th scope="col" style="width:80px;"></th>
-                        <th scope="col"  style="width:80px;">Spår</th>
-                      </tr>
-                    </table>
-                  </div>
+            <tr>
+                <th scope="col" style="width:40px;">Tid</th>
+                <th scope="col" style="width:200px;">Till</th>
+                <th scope="col" style="width:80px;"></th>
+                <th scope="col" style="width:80px;">Spår</th>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
