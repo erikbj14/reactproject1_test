@@ -84,35 +84,43 @@
     })
     .then(response => response.json())
     .then(data => {
-        const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
-        const trainInfoTable = document.getElementById('train-info');
+        console.log('API Response:', data); // Log the entire response for debugging
         
-        if (announcements.length === 0) {
-            document.getElementById('error').innerText = 'No train announcements found for Stockholm City.';
-            return;
+        if (data.RESPONSE && data.RESPONSE.RESULT && data.RESPONSE.RESULT.length > 0) {
+            const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
+
+            if (!announcements || announcements.length === 0) {
+                document.getElementById('error').innerText = 'No train announcements found for Stockholm City.';
+                return;
+            }
+
+            const trainInfoTable = document.getElementById('train-info');
+
+            announcements.forEach(announcement => {
+                const row = document.createElement('tr');
+                
+                const stationCell = document.createElement('td');
+                stationCell.textContent = announcement.LocationSignature;
+                row.appendChild(stationCell);
+
+                const advertisedTimeCell = document.createElement('td');
+                advertisedTimeCell.textContent = new Date(announcement.AdvertisedTimeAtLocation).toLocaleString();
+                row.appendChild(advertisedTimeCell);
+
+                const estimatedTimeCell = document.createElement('td');
+                estimatedTimeCell.textContent = announcement.EstimatedTimeAtLocation ? new Date(announcement.EstimatedTimeAtLocation).toLocaleString() : 'N/A';
+                row.appendChild(estimatedTimeCell);
+
+                const ownerCell = document.createElement('td');
+                ownerCell.textContent = announcement.InformationOwner;
+                row.appendChild(ownerCell);
+
+                trainInfoTable.appendChild(row);
+            });
+        } else {
+            document.getElementById('error').innerText = 'Unexpected response structure';
+            console.error('Unexpected response structure:', data);
         }
-
-        announcements.forEach(announcement => {
-            const row = document.createElement('tr');
-            
-            const stationCell = document.createElement('td');
-            stationCell.textContent = announcement.LocationSignature;
-            row.appendChild(stationCell);
-
-            const advertisedTimeCell = document.createElement('td');
-            advertisedTimeCell.textContent = new Date(announcement.AdvertisedTimeAtLocation).toLocaleString();
-            row.appendChild(advertisedTimeCell);
-
-            const estimatedTimeCell = document.createElement('td');
-            estimatedTimeCell.textContent = announcement.EstimatedTimeAtLocation ? new Date(announcement.EstimatedTimeAtLocation).toLocaleString() : 'N/A';
-            row.appendChild(estimatedTimeCell);
-
-            const ownerCell = document.createElement('td');
-            ownerCell.textContent = announcement.InformationOwner;
-            row.appendChild(ownerCell);
-
-            trainInfoTable.appendChild(row);
-        });
     })
     .catch(error => {
         document.getElementById('error').innerText = 'Error fetching data: ' + error;
