@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stockholm Commuter Train Announcements</title>
+    <title>All Train Announcements</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<h1>Stockholm Commuter Train Announcements</h1>
+<h1>All Train Announcements</h1>
 
 <table>
     <thead>
@@ -63,13 +63,8 @@
                         "LocationSignature",
                         "InformationOwner"
                     ],
-                    "FILTER": {
-                        "Operator": "SL", // Assuming SL is the operator for commuter trains
-                        "ActivityType": "Avgang", // Filter for departures
-                        "LocationSignature": "Cst,Sci,Söc,Spå,Tåb,Udl,Sol,Skg,Bkb,Jak,Hgv,Mar,Tul,Sst,Kmy,Hel,Hnd,Mrp,Nvk,Shb,Arl,Mär,Bål"
-                    },
-                    "LIMIT": 50,
-                    "schemaversion": "1.6"
+                    "LIMIT": 10,
+                    "schemaversion": "1.6" // Added schemaversion attribute
                 }
             ]
         }
@@ -85,11 +80,11 @@
     })
     .then(response => response.json())
     .then(data => {
-        console.log('API Response:', JSON.stringify(data, null, 2));
+        console.log('API Response:', JSON.stringify(data, null, 2)); // Log the entire response for debugging
 
         if (data.RESPONSE && data.RESPONSE.RESULT && data.RESPONSE.RESULT.length > 0) {
             const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
-            console.log('Train Announcements:', announcements);
+            console.log('Train Announcements:', announcements); // Log the announcements for debugging
 
             if (!announcements || announcements.length === 0) {
                 document.getElementById('error').innerText = 'No train announcements found.';
