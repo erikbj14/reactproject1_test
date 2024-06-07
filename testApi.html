@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Train Announcements</title>
+    <title>Stockholm Commuter Train Announcements</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<h1>All Train Announcements</h1>
+<h1>Stockholm Commuter Train Announcements</h1>
 
 <table>
     <thead>
@@ -63,12 +63,20 @@
                         "LocationSignature",
                         "InformationOwner"
                     ],
-                    "LIMIT": 10,
-                    "schemaversion": "1.6" // Added schemaversion attribute
+                    "FILTER": {
+                        "Operator": "SL" // Assuming SL is the operator for commuter trains
+                    },
+                    "LIMIT": 50,
+                    "schemaversion": "1.6"
                 }
             ]
         }
     };
+
+    const stockholmStations = [
+        "Cst", "Sci", "Söc", "Spå", "Tåb", "Udl", "Sol", "Skg", "Bkb", "Jak",
+        "Hgv", "Mar", "Tul", "Sst", "Kmy", "Hel", "Hnd", "Mrp", "Nvk", "Shb"
+    ];
 
     fetch(url, {
         method: 'POST',
@@ -80,20 +88,29 @@
     })
     .then(response => response.json())
     .then(data => {
-        console.log('API Response:', JSON.stringify(data, null, 2)); // Log the entire response for debugging
+        console.log('API Response:', JSON.stringify(data, null, 2));
 
         if (data.RESPONSE && data.RESPONSE.RESULT && data.RESPONSE.RESULT.length > 0) {
             const announcements = data.RESPONSE.RESULT[0].TrainAnnouncement;
-            console.log('Train Announcements:', announcements); // Log the announcements for debugging
+            console.log('Train Announcements:', announcements);
 
             if (!announcements || announcements.length === 0) {
                 document.getElementById('error').innerText = 'No train announcements found.';
                 return;
             }
 
+            const filteredAnnouncements = announcements.filter(announcement =>
+                stockholmStations.includes(announcement.LocationSignature)
+            );
+
+            if (filteredAnnouncements.length === 0) {
+                document.getElementById('error').innerText = 'No commuter train announcements found for Stockholm and the north side.';
+                return;
+            }
+
             const trainInfoTable = document.getElementById('train-info');
 
-            announcements.forEach(announcement => {
+            filteredAnnouncements.forEach(announcement => {
                 const row = document.createElement('tr');
                 
                 const stationCell = document.createElement('td');
