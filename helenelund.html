@@ -426,24 +426,19 @@ map.addLayer(vectorLayer4);
 
 </div>
 
-<table border="1">
+<table id="display-info-table">
     <tr>
-        <th>ID</th>
-        <th>Message</th>
-        <th>Color Indicator</th>
+        <th colspan="2" align="left">Prognos</th>
     </tr>
-    <tr>
-        <td id="id-cell-1">9021</td>
-        <td id="message-cell-1"></td>
-        <td id="color-indicator-cell-1" class="color-indicator"></td>
+    <tr id="row-1">
+        <td id="id-cell-1"></td>
+        <td id="color-indicator-cell-1" style="width: 80%;"></td> <!-- Adjust the width as needed -->
     </tr>
-    <tr>
-        <td id="id-cell-2">9022</td>
-        <td id="message-cell-2"></td>
-        <td id="color-indicator-cell-2" class="color-indicator"></td>
+    <tr id="row-2">
+        <td id="id-cell-2"></td>
+        <td id="color-indicator-cell-2" style="width: 80%;"></td> <!-- Adjust the width as needed -->
     </tr>
 </table>
-
 
 <script>
 function updateInformation() {
