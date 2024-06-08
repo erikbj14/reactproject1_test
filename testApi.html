@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Avgående tåg</title>
+    <title></title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
         table {
             border: 1px solid #000000;
             border-collapse: collapse;
-            width: 100%; /* Make table take full width */
+            border-spacing: 0px;
         }
-        table th, table td {
-            padding: 8px;
-            text-align: left;
-        }
-        #timeTableDeparture th, #timeTableDeparture td {
-            text-align: center; /* Ensure cells are centered */
-        }
-
-        /* Responsive adjustments */
-        @media only screen and (max-width: 600px) {
-            table, th, td {
-                width: 100%; /* Make sure table elements take full width on mobile */
-                display: block; /* Make table elements block to fit on small screens */
-            }
-            #timeTableDeparture th, #timeTableDeparture td {
-                text-align: left; /* Left-align text on smaller screens */
-            }
+        table td {
+            padding: 8px 8px;
         }
 
     </style>
@@ -33,17 +18,6 @@
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript">
         var Stations = new Array();
-
-        // Function to get URL parameter
-        function getParameterByName(name, url = window.location.href) {
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
-
         $(document).ready(function () {
             $.support.cors = true; // Enable Cross domain requests
             try {
@@ -100,16 +74,6 @@
                                 stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
                         });
                         fillSearchWidget(stationlist);
-                        // Get the station from the URL parameter
-                        var stationParam = getParameterByName('station');
-                        if (stationParam) {
-                            var defaultStation = stationlist.find(station => station.label === stationParam);
-                            if (defaultStation) {
-                                $("#station").val(defaultStation.label);
-                                $("#station").data("sign", defaultStation.value);
-                                Search(); // Trigger search for the station from the URL parameter
-                            }
-                        }
                     }
                     catch (ex) { }
                 }
@@ -217,20 +181,19 @@
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
-    <table border="0"><tr><td>
-        <div id="result">
-            <h3>Avgående tåg</h3></td><td><a href="index.html">
-                <button>Tillbaka</button>
-            </a></td></tr>
-    </table>
-    <table border="0" id="timeTableDeparture">
-        <tr>
-            <th scope="col" style="width:40px;">Tid</th>
-            <th scope="col" style="width:200px;">Till</th>
-            <th scope="col" style="width:80px;"></th>
-            <th scope="col" style="width:80px;">Spår</th>
-        </tr>
-    </table>
-</div>
+    <table border="0 "><tr><td>
+    <div id="result">
+        <h3>Avgående tåg</h3></td><td><a href="index.html">
+            <button>Tillbaka</button>
+        </a></td></tr></table>
+        <table border="0" id="timeTableDeparture">
+            <tr>
+                <th scope="col" style="width:40px;">Tid</th>
+                <th scope="col" style="width:200px;">Till</th>
+                <th scope="col" style="width:80px;"></th>
+                <th scope="col" style="width:80px;">Spår</th>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
