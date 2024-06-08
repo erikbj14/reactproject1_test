@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Avgående tåg</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
         table {
             border: 1px solid #000000;
             border-collapse: collapse;
-            border-spacing: 0px;
-            width: 100%; /* Make the table take full width */
+            width: 100%; /* Make table take full width */
         }
-        table td, table th {
+        table th, table td {
             padding: 8px;
-            text-align: left; /* Ensure text is aligned to the left */
+            text-align: left;
         }
         #timeTableDeparture th, #timeTableDeparture td {
             text-align: center; /* Ensure cells are centered */
@@ -34,6 +33,17 @@
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript">
         var Stations = new Array();
+
+        // Function to get URL parameter
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
         $(document).ready(function () {
             $.support.cors = true; // Enable Cross domain requests
             try {
@@ -59,15 +69,6 @@
             });
             // Load stations
             PreloadTrainStations();
-
-            // Check for query parameter and set the station
-            const urlParams = new URLSearchParams(window.location.search);
-            const station = urlParams.get('station');
-            if (station) {
-                $("#station").val(station);
-                $("#station").data("sign", station);
-                Search();
-            }
         });
 
         function PreloadTrainStations() {
@@ -99,6 +100,16 @@
                                 stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
                         });
                         fillSearchWidget(stationlist);
+                        // Get the station from the URL parameter
+                        var stationParam = getParameterByName('station');
+                        if (stationParam) {
+                            var defaultStation = stationlist.find(station => station.label === stationParam);
+                            if (defaultStation) {
+                                $("#station").val(defaultStation.label);
+                                $("#station").data("sign", defaultStation.value);
+                                Search(); // Trigger search for the station from the URL parameter
+                            }
+                        }
                     }
                     catch (ex) { }
                 }
@@ -209,220 +220,7 @@
     <table border="0"><tr><td>
         <div id="result">
             <h3>Avgående tåg</h3></td><td><a href="index.html">
-                <!DOCTYPE html>
-                <html xmlns="http://www.w3.org/1999/xhtml">
-                <head>
-                    <title></title>
-                    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-                    <style>
-                        table {
-                            border: 1px solid #000000;
-                            border-collapse: collapse;
-                            border-spacing: 0px;
-                        }
-                        table td {
-                            padding: 8px 8px;
-                        }
-                
-                    </style>
-                    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-                    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-                    <script type="text/javascript">
-                        var Stations = new Array();
-                
-                        // Function to get URL parameter
-                        function getParameterByName(name, url = window.location.href) {
-                            name = name.replace(/[\[\]]/g, '\\$&');
-                            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                                results = regex.exec(url);
-                            if (!results) return null;
-                            if (!results[2]) return '';
-                            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-                        }
-                
-                        $(document).ready(function () {
-                            $.support.cors = true; // Enable Cross domain requests
-                            try {
-                                $.ajaxSetup({
-                                    url: "https://api.trafikinfo.trafikverket.se/v2/data.json",
-                                    error: function (msg) {
-                                        if (msg.statusText == "abort") return;
-                                        alert("Request failed: " + msg.statusText + "" + msg.responseText);
-                                    }
-                                });
-                            }
-                            catch (e) { alert("Ett fel uppstod vid initialisering."); }
-                            // Create an ajax loading indicator
-                            var loadingTimer;
-                            $("#loader").hide();
-                            $(document).ajaxStart(function () {
-                                loadingTimer = setTimeout(function () {
-                                    $("#loader").show();
-                                }, 200);
-                            }).ajaxStop(function () {
-                                clearTimeout(loadingTimer);
-                                $("#loader").hide();
-                            });
-                            // Load stations
-                            PreloadTrainStations();
-                        });
-                
-                        function PreloadTrainStations() {
-                            // Request to load all stations
-                            var xmlRequest = "<REQUEST>" +
-                                                // Use your valid authenticationkey
-                                                "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1'/>" +
-                                                "<QUERY objecttype='TrainStation' schemaversion='1'>" +
-                                                    "<FILTER/>" +
-                                                    "<INCLUDE>Prognosticated</INCLUDE>" +
-                                                    "<INCLUDE>AdvertisedLocationName</INCLUDE>" +
-                                                    "<INCLUDE>LocationSignature</INCLUDE>" +
-                                                "</QUERY>" +
-                                             "</REQUEST>";
-                            $.ajax({
-                                type: "POST",
-                                contentType: "text/xml",
-                                dataType: "json",
-                                data: xmlRequest,
-                                success: function (response) {
-                                    if (response == null) return;
-                                    try {
-                                        var stationlist = [];
-                                        $(response.RESPONSE.RESULT[0].TrainStation).each(function (iterator, item) {
-                                            // Save a key/value list of stations
-                                            Stations[item.LocationSignature] = item.AdvertisedLocationName;
-                                            // Create an array to fill the search field autocomplete.
-                                            if (item.Prognosticated == true)
-                                                stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
-                                        });
-                                        fillSearchWidget(stationlist);
-                                        // Get the station from the URL parameter
-                                        var stationParam = getParameterByName('station');
-                                        if (stationParam) {
-                                            var defaultStation = stationlist.find(station => station.label === stationParam);
-                                            if (defaultStation) {
-                                                $("#station").val(defaultStation.label);
-                                                $("#station").data("sign", defaultStation.value);
-                                                Search(); // Trigger search for the station from the URL parameter
-                                            }
-                                        }
-                                    }
-                                    catch (ex) { }
-                                }
-                            });
-                        }
-                
-                        function fillSearchWidget(data) {
-                            $("#station").val("");
-                            $("#station").autocomplete({
-                                // Make the autocomplete fill with matches that "starts with" only
-                                source: function (request, response) {
-                                    var matches = $.map(data, function (tag) {
-                                        if (tag.label.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
-                                            return {
-                                                label: tag.label,
-                                                value: tag.value
-                                            }
-                                        }
-                                    });
-                                    response(matches);
-                                },
-                                select: function (event, ui) {
-                                    var selectedObj = ui.item;
-                                    $("#station").val(selectedObj.label);
-                                    // Save selected stations signature
-                                    $("#station").data("sign", selectedObj.value);
-                                    return false;
-                                },
-                                focus: function (event, ui) {
-                                    var selectedObj = ui.item;
-                                    // Show station name in search field
-                                    $("#station").val(selectedObj.label);
-                                    return false;
-                                }
-                            });
-                        }
-                
-                        function Search() {
-                            var sign = $("#station").data("sign");
-                            // Clear html table
-                            $('#timeTableDeparture tr:not(:first)').remove();
-                
-                            // Request to load announcements for a station by its signature
-                            var xmlRequest = "<REQUEST>" +
-                                                "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1' />" +
-                                                "<QUERY objecttype='TrainAnnouncement' " +
-                                                    "orderby='AdvertisedTimeAtLocation' schemaversion='1'>" +
-                                                    "<FILTER>" +
-                                                    "<AND>" +
-                                                        "<GT name='AdvertisedTimeAtLocation' value='$now' />" +
-                                                        "<EQ name='LocationSignature' value='" + sign + "' />" +
-                                                        "<EQ name='ActivityType' value='Avgang' />" +
-                                                    "</AND>" +
-                                                    "</FILTER>" +
-                                                    // Just include wanted fields to reduce response size.
-                                                    "<INCLUDE>InformationOwner</INCLUDE>" +
-                                                    "<INCLUDE>AdvertisedTimeAtLocation</INCLUDE>" +
-                                                    "<INCLUDE>TrackAtLocation</INCLUDE>" +
-                                                    "<INCLUDE>FromLocation</INCLUDE>" +
-                                                    "<INCLUDE>ToLocation</INCLUDE>" +
-                                                "</QUERY>" +
-                                                "</REQUEST>";
-                            $.ajax({
-                                type: "POST",
-                                contentType: "text/xml",
-                                dataType: "json",
-                                data: xmlRequest,
-                                success: function (response) {
-                                    if (response == null) return;
-                                    if (response.RESPONSE.RESULT[0].TrainAnnouncement == null)
-                                        jQuery("#timeTableDeparture tr:last").
-                                            after("<tr><td colspan='4'>Inga avgångar hittades</td></tr>");
-                                    try {
-                                        renderTrainAnnouncement(response.RESPONSE.RESULT[0].TrainAnnouncement);
-                                    }
-                                    catch (ex) { }
-                                }
-                            });
-                        }
-                
-                        function renderTrainAnnouncement(announcement) {
-                            $(announcement).each(function (iterator, item) {
-                                var advertisedtime = new Date(item.AdvertisedTimeAtLocation);
-                                var hours = advertisedtime.getHours()
-                                var minutes = advertisedtime.getMinutes()
-                                if (minutes < 10) minutes = "0" + minutes
-                                var toList = new Array();
-                                $(item.ToLocation).each(function (iterator, toItem) {
-                                    toList.push(Stations[toItem]);
-                                });
-                                var owner = "";
-                                if (item.InformationOwner != null) owner = item.InformationOwner;
-                                jQuery("#timeTableDeparture tr:last").
-                                    after("<tr><td>" + hours + ":" + minutes + "</td><td>" + toList.join(', ') +
-                                    "</td><td>" + owner + "</td><td style='text-align: center'>" + item.TrackAtLocation +
-                                    "</td></tr>");
-                            });
-                        }
-                
-                    </script>
-                </head>
-                <body>
-                    <div>
-                        <input id="station" type="text" />
-                        <input type="button" value="Visa" onclick="javascript: Search()" />
-                        <span id="loader" style="margin-left: 10px">Laddar data ...</span>
-                    </div>
-                    <table border="0 "><tr><td>
-                    <div id="result">
-                        <h3>Avgående tåg</h3></td><td><a href="index.html">
-                            <button>Tillbaka</button>
-                        </a></td></tr></table>
-                        <table border="0" id="timeTableDeparture">
-                            <tr>
-                                <th scope="col" style="width:40px;">Tid</th>
-                                <th scope="col" style="width:200
-                      <button>Tillbaka</button>
+                <button>Tillbaka</button>
             </a></td></tr>
     </table>
     <table border="0" id="timeTableDeparture">
@@ -433,5 +231,6 @@
             <th scope="col" style="width:80px;">Spår</th>
         </tr>
     </table>
+</div>
 </body>
 </html>
