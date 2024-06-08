@@ -12,11 +12,23 @@
         table td {
             padding: 8px 8px;
         }
+
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript">
         var Stations = new Array();
+
+        // Function to get URL parameter
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
         $(document).ready(function () {
             $.support.cors = true; // Enable Cross domain requests
             try {
@@ -73,6 +85,16 @@
                                 stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
                         });
                         fillSearchWidget(stationlist);
+                        // Get the station from the URL parameter
+                        var stationParam = getParameterByName('station');
+                        if (stationParam) {
+                            var defaultStation = stationlist.find(station => station.label === stationParam);
+                            if (defaultStation) {
+                                $("#station").val(defaultStation.label);
+                                $("#station").data("sign", defaultStation.value);
+                                Search(); // Trigger search for the station from the URL parameter
+                            }
+                        }
                     }
                     catch (ex) { }
                 }
@@ -179,16 +201,16 @@
         <input id="station" type="text" />
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
-    </div><div>
     </div>
+    <table border="0 "><tr><td>
     <div id="result">
-        <table><tr><td><h3>Avgående tåg</h3></td><td><a href="index.html">
+        <h3>Avgående tåg</h3></td><td><a href="index.html">
             <button>Tillbaka</button>
         </a></td></tr></table>
-        <table border="1" id="timeTableDeparture">
+        <table border="0" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:40px;">Tid</th>
-                <th scope="col" style="width:200px;">Till</th>
+                <th scope="col" style="width:200;">Till</th>
                 <th scope="col" style="width:80px;"></th>
                 <th scope="col" style="width:80px;">Spår</th>
             </tr>
