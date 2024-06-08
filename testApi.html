@@ -12,7 +12,6 @@
         table td {
             padding: 8px 8px;
         }
-
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -49,7 +48,7 @@
             // Request to load all stations
             var xmlRequest = "<REQUEST>" +
                                 // Use your valid authenticationkey
-                                "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1'/>" +
+                                "<LOGIN authenticationkey='YOUR_API_KEY'/>" +
                                 "<QUERY objecttype='TrainStation' schemaversion='1'>" +
                                     "<FILTER/>" +
                                     "<INCLUDE>Prognosticated</INCLUDE>" +
@@ -118,7 +117,7 @@
 
             // Request to load announcements for a station by its signature
             var xmlRequest = "<REQUEST>" +
-                                "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1' />" +
+                                "<LOGIN authenticationkey='YOUR_API_KEY' />" +
                                 "<QUERY objecttype='TrainAnnouncement' " +
                                     "orderby='AdvertisedTimeAtLocation' schemaversion='1'>" +
                                     "<FILTER>" +
@@ -181,12 +180,9 @@
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
-    <table border="0 "><tr><td>
     <div id="result">
-        <h3>Avgående tåg</h3></td><td><a href="index.html">
-            <button>Tillbaka</button>
-        </a></td></tr></table>
-        <table border="0" id="timeTableDeparture">
+        <h3>Avgående tåg</h3>
+        <table border="1" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:40px;">Tid</th>
                 <th scope="col" style="width:200px;">Till</th>
