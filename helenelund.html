@@ -442,48 +442,55 @@ map.addLayer(vectorLayer4);
 
 <script>
 function updateInformation() {
-    const currentDate = new Date();
-    const dayOfWeek = currentDate.getDay();
-    const currentHour = currentDate.getHours();
+            const currentDate = new Date();
+            const dayOfWeek = currentDate.getDay();
+            const currentHour = currentDate.getHours();
 
-    const timeRanges = [
-        { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
-        { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
-        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
-        { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
-    ];
+            const timeRanges9021 = [
+                { start: 0, end: 8.5, message: "Message 9021 for 00:00-08:30", color: "yellow" },
+                { start: 8.5, end: 16, message: "Message 9021 for 08:30-16:00", color: "red" },
+                { start: 16, end: 18, message: "Message 9021 for 16:00-18:00", color: "lightgreen" },
+                { start: 18, end: 24, message: "Message 9021 for 18:00-24:00", color: "lightgreen" },
+            ];
 
-    updateRowInformation(1, dayOfWeek, currentHour, timeRanges);
-    updateRowInformation(2, dayOfWeek, currentHour, timeRanges);
-}
+            const timeRanges9022 = [
+                { start: 0, end: 6, message: "Message 9022 for 00:00-06:00", color: "blue" },
+                { start: 6, end: 12, message: "Message 9022 for 06:00-12:00", color: "orange" },
+                { start: 12, end: 18, message: "Message 9022 for 12:00-18:00", color: "pink" },
+                { start: 18, end: 24, message: "Message 9022 for 18:00-24:00", color: "purple" },
+            ];
 
-function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges) {
-    let displayText = "";
-    let indicatorColor = "";
-    let id = (rowNumber === 1) ? "9021" : "9022"; // Replace with dynamic values based on rowNumber
-
-    if (dayOfWeek === 0 || dayOfWeek === 6) {
-        displayText = "Weekend message: Your message here.";
-        indicatorColor = "lightgreen";
-    } else {
-        for (const range of timeRanges) {
-            if (currentHour >= range.start && currentHour < range.end) {
-                displayText = range.message;
-                indicatorColor = range.color;
-                break;
-            }
+            updateRowInformation(1, dayOfWeek, currentHour, timeRanges9021, "9021");
+            updateRowInformation(2, dayOfWeek, currentHour, timeRanges9022, "9022");
         }
-    }
 
-    document.getElementById(`id-cell-${rowNumber}`).textContent = id;
-    document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
-}
+        function updateRowInformation(rowNumber, dayOfWeek, currentHour, timeRanges, id) {
+            let displayText = "";
+            let indicatorColor = "";
 
-// Call the updateInformation function when the page loads
-updateInformation();
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                displayText = "Weekend message: Your message here.";
+                indicatorColor = "lightgreen";
+            } else {
+                for (const range of timeRanges) {
+                    if (currentHour >= range.start && currentHour < range.end) {
+                        displayText = range.message;
+                        indicatorColor = range.color;
+                        break;
+                    }
+                }
+            }
 
-// Update the information every second (1000 milliseconds)
-setInterval(updateInformation, 1000);
+            document.getElementById(`id-cell-${rowNumber}`).textContent = id;
+            document.getElementById(`message-cell-${rowNumber}`).textContent = displayText;
+            document.getElementById(`color-indicator-cell-${rowNumber}`).style.backgroundColor = indicatorColor;
+        }
+
+        // Call the updateInformation function when the page loads
+        updateInformation();
+
+        // Update the information every second (1000 milliseconds)
+        setInterval(updateInformation, 1000);
 </script>
 
 
