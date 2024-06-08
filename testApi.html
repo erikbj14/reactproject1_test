@@ -8,24 +8,11 @@
             border: 1px solid #000000;
             border-collapse: collapse;
             border-spacing: 0px;
+            width: 100%;
         }
-        table td {
+        table td, table th {
             padding: 8px 8px;
         }
-
-        @media only screen and (max-width: 600px) {
-    #timeTableDeparture th {
-        width: 25%; /* Adjust these values as needed for small screens */
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    #timeTableDeparture th {
-        width: 20%; /* Adjust these values as needed for larger screens */
-    }
-}
-
-
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -220,10 +207,10 @@
         </a></td></tr></table>
         <table border="0" id="timeTableDeparture">
             <tr>
-                <th scope="col" style="width:20%;">Tid</th>
-                <th scope="col" style="width:50%;">Till</th>
-                <th scope="col" style="width:15%;"></th>
-                <th scope="col" style="width:15%;">Spår</th>
+                <th scope="col" style="width:80px;">Tid</th>
+                <th scope="col" style="width:400px;">Till</th>
+                <th scope="col" style="width:160px;">Ägare</th>
+                <th scope="col" style="width:160px;">Spår</th>
             </tr>
         </table>
     </div>
