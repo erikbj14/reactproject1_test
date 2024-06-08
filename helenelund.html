@@ -426,7 +426,7 @@ map.addLayer(vectorLayer4);
 
 </div>
 
-<table id="display-info-table" border="1">
+<table id="display-info-table" border="0">
     <tr>
         <th colspan="2" align="left">Prognos</th>
     </tr>
@@ -454,10 +454,10 @@ map.addLayer(vectorLayer4);
         ];
 
         const timeRanges9022 = [
-            { start: 0, end: 6, message: "Message 9022 for 00:00-06:00", color: "blue" },
-            { start: 6, end: 12, message: "Message 9022 for 06:00-12:00", color: "orange" },
-            { start: 12, end: 18, message: "Message 9022 for 12:00-18:00", color: "pink" },
-            { start: 18, end: 24, message: "Message 9022 for 18:00-24:00", color: "purple" },
+        { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
+        { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
+        { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
+        { start: 18, end: 24, message: "Your message for 18:00-24:00", color: "lightgreen" },
         ];
 
         updateRowInformation(1, dayOfWeek, currentHour, timeRanges9021, "9021");
@@ -469,7 +469,7 @@ map.addLayer(vectorLayer4);
         let indicatorColor = "";
 
         if (dayOfWeek === 0 || dayOfWeek === 6) {
-            displayText = "Weekend message: Your message here.";
+            //displayText = "Weekend message: Your message here.";
             indicatorColor = "lightgreen";
         } else {
             for (const range of timeRanges) {
