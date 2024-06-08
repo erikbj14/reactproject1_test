@@ -74,13 +74,6 @@
                                 stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
                         });
                         fillSearchWidget(stationlist);
-                        // Set the default station to "Sollentuna"
-                        var defaultStation = stationlist.find(station => station.label === "Sollentuna");
-                        if (defaultStation) {
-                            $("#station").val(defaultStation.label);
-                            $("#station").data("sign", defaultStation.value);
-                            Search(); // Trigger search for the default station
-                        }
                     }
                     catch (ex) { }
                 }
