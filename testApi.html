@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Avgående tåg</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
         table {
             border: 1px solid #000000;
             border-collapse: collapse;
             border-spacing: 0px;
+            width: 100%;
         }
-        table td {
+        table td, table th {
             padding: 8px 8px;
         }
-
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -36,7 +36,7 @@
                     url: "https://api.trafikinfo.trafikverket.se/v2/data.json",
                     error: function (msg) {
                         if (msg.statusText == "abort") return;
-                        alert("Request failed: " + msg.statusText + "" + msg.responseText);
+                        alert("Request failed: " + msg.statusText + " " + msg.responseText);
                     }
                 });
             }
@@ -59,7 +59,6 @@
         function PreloadTrainStations() {
             // Request to load all stations
             var xmlRequest = "<REQUEST>" +
-                                // Use your valid authenticationkey
                                 "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1'/>" +
                                 "<QUERY objecttype='TrainStation' schemaversion='1'>" +
                                     "<FILTER/>" +
@@ -96,7 +95,7 @@
                             }
                         }
                     }
-                    catch (ex) { }
+                    catch (ex) { console.error(ex); }
                 }
             });
         }
@@ -149,7 +148,6 @@
                                         "<EQ name='ActivityType' value='Avgang' />" +
                                     "</AND>" +
                                     "</FILTER>" +
-                                    // Just include wanted fields to reduce response size.
                                     "<INCLUDE>InformationOwner</INCLUDE>" +
                                     "<INCLUDE>AdvertisedTimeAtLocation</INCLUDE>" +
                                     "<INCLUDE>TrackAtLocation</INCLUDE>" +
@@ -170,7 +168,7 @@
                     try {
                         renderTrainAnnouncement(response.RESPONSE.RESULT[0].TrainAnnouncement);
                     }
-                    catch (ex) { }
+                    catch (ex) { console.error(ex); }
                 }
             });
         }
@@ -178,9 +176,9 @@
         function renderTrainAnnouncement(announcement) {
             $(announcement).each(function (iterator, item) {
                 var advertisedtime = new Date(item.AdvertisedTimeAtLocation);
-                var hours = advertisedtime.getHours()
-                var minutes = advertisedtime.getMinutes()
-                if (minutes < 10) minutes = "0" + minutes
+                var hours = advertisedtime.getHours();
+                var minutes = advertisedtime.getMinutes();
+                if (minutes < 10) minutes = "0" + minutes;
                 var toList = new Array();
                 $(item.ToLocation).each(function (iterator, toItem) {
                     toList.push(Stations[toItem]);
@@ -202,7 +200,7 @@
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
-    <table border="0 "><tr><td>
+    <table border="0"><tr><td>
     <div id="result">
         <h3>Avgående tåg</h3></td><td><a href="index.html">
             <button>Tillbaka</button>
@@ -210,8 +208,8 @@
         <table border="0" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:40px;">Tid</th>
-                <th scope="col" style="width:200;">Till</th>
-                <th scope="col" style="width:80px;"></th>
+                <th scope="col" style="width:200px;">Till</th>
+                <th scope="col" style="width:80px;">Ägare</th>
                 <th scope="col" style="width:80px;">Spår</th>
             </tr>
         </table>
