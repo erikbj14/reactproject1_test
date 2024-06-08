@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Avgående tåg</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
         table {
             border: 1px solid #000000;
             border-collapse: collapse;
             border-spacing: 0px;
+            width: 100%;
         }
-        table td {
-            padding: 8px 8px;
+        table th, table td {
+            padding: 8px;
+            text-align: left;
         }
-
+        #loader {
+            display: none;
+            margin-left: 10px;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript">
         var Stations = new Array();
+
         $(document).ready(function () {
             $.support.cors = true; // Enable Cross domain requests
             try {
@@ -25,14 +31,14 @@
                     url: "https://api.trafikinfo.trafikverket.se/v2/data.json",
                     error: function (msg) {
                         if (msg.statusText == "abort") return;
-                        alert("Request failed: " + msg.statusText + "" + msg.responseText);
+                        alert("Request failed: " + msg.statusText + " " + msg.responseText);
                     }
                 });
             }
             catch (e) { alert("Ett fel uppstod vid initialisering."); }
+
             // Create an ajax loading indicator
             var loadingTimer;
-            $("#loader").hide();
             $(document).ajaxStart(function () {
                 loadingTimer = setTimeout(function () {
                     $("#loader").show();
@@ -41,6 +47,7 @@
                 clearTimeout(loadingTimer);
                 $("#loader").hide();
             });
+
             // Load stations
             PreloadTrainStations();
         });
@@ -48,7 +55,6 @@
         function PreloadTrainStations() {
             // Request to load all stations
             var xmlRequest = "<REQUEST>" +
-                                // Use your valid authenticationkey
                                 "<LOGIN authenticationkey='34c3f329c6ab41699591c61dd07043f1'/>" +
                                 "<QUERY objecttype='TrainStation' schemaversion='1'>" +
                                     "<FILTER/>" +
@@ -74,8 +80,9 @@
                                 stationlist.push({ label: item.AdvertisedLocationName, value: item.LocationSignature });
                         });
                         fillSearchWidget(stationlist);
+                        handleParameter();
                     }
-                    catch (ex) { }
+                    catch (ex) { console.error(ex); }
                 }
             });
         }
@@ -90,7 +97,7 @@
                             return {
                                 label: tag.label,
                                 value: tag.value
-                            }
+                            };
                         }
                     });
                     response(matches);
@@ -111,6 +118,19 @@
             });
         }
 
+        function handleParameter() {
+            var params = new URLSearchParams(window.location.search);
+            if (params.has('station')) {
+                var station = params.get('station');
+                $("#station").val(station);
+                var selectedStation = Stations.find(item => item.label === station);
+                if (selectedStation) {
+                    $("#station").data("sign", selectedStation.value);
+                    Search();
+                }
+            }
+        }
+
         function Search() {
             var sign = $("#station").data("sign");
             // Clear html table
@@ -128,7 +148,6 @@
                                         "<EQ name='ActivityType' value='Avgang' />" +
                                     "</AND>" +
                                     "</FILTER>" +
-                                    // Just include wanted fields to reduce response size.
                                     "<INCLUDE>InformationOwner</INCLUDE>" +
                                     "<INCLUDE>AdvertisedTimeAtLocation</INCLUDE>" +
                                     "<INCLUDE>TrackAtLocation</INCLUDE>" +
@@ -149,7 +168,7 @@
                     try {
                         renderTrainAnnouncement(response.RESPONSE.RESULT[0].TrainAnnouncement);
                     }
-                    catch (ex) { }
+                    catch (ex) { console.error(ex); }
                 }
             });
         }
@@ -157,9 +176,9 @@
         function renderTrainAnnouncement(announcement) {
             $(announcement).each(function (iterator, item) {
                 var advertisedtime = new Date(item.AdvertisedTimeAtLocation);
-                var hours = advertisedtime.getHours()
-                var minutes = advertisedtime.getMinutes()
-                if (minutes < 10) minutes = "0" + minutes
+                var hours = advertisedtime.getHours();
+                var minutes = advertisedtime.getMinutes();
+                if (minutes < 10) minutes = "0" + minutes;
                 var toList = new Array();
                 $(item.ToLocation).each(function (iterator, toItem) {
                     toList.push(Stations[toItem]);
@@ -181,19 +200,19 @@
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
-    <table border="0 "><tr><td>
-    <div id="result">
-        <h3>Avgående tåg</h3></td><td><a href="index.html">
-            <button>Tillbaka</button>
-        </a></td></tr></table>
-        <table border="0" id="timeTableDeparture">
-            <tr>
-                <th scope="col" style="width:40px;">Tid</th>
-                <th scope="col" style="width:200px;">Till</th>
-                <th scope="col" style="width:80px;"></th>
-                <th scope="col" style="width:80px;">Spår</th>
-            </tr>
-        </table>
-    </div>
+    <table border="0">
+        <tr>
+            <td><h3>Avgående tåg</h3></td>
+            <td><a href="index.html"><button>Tillbaka</button></a></td>
+        </tr>
+    </table>
+    <table border="0" id="timeTableDeparture">
+        <tr>
+            <th scope="col" style="width:40px;">Tid</th>
+            <th scope="col" style="width:200px;">Till</th>
+            <th scope="col" style="width:80px;">Ägare</th>
+            <th scope="col" style="width:80px;">Spår</th>
+        </tr>
+    </table>
 </body>
 </html>
