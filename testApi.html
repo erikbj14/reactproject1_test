@@ -17,6 +17,9 @@
         th {
             background-color: #f2f2f2;
         }
+        td.owner, th.owner {
+            text-align: center;
+        }
 
         /* Responsive styles */
         @media (max-width: 768px) {
@@ -204,7 +207,7 @@
                 if (item.InformationOwner != null) owner = item.InformationOwner;
                 jQuery("#timeTableDeparture tr:last").
                     after("<tr><td>" + hours + ":" + minutes + "</td><td>" + toList.join(', ') +
-                    "</td><td>" + owner + "</td><td style='text-align: center'>" + item.TrackAtLocation +
+                    "</td><td class='owner'>" + owner + "</td><td style='text-align: center'>" + item.TrackAtLocation +
                     "</td></tr>");
             });
         }
@@ -225,8 +228,8 @@
         <table border="0" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:20%;">Tid</th>
-                <th scope="col" style="width:50%;">Till</th>
-                <th scope="col" style="width:15%;">Ägare</th>
+                <th scope="col" style="width:55%;">Till</th>
+                <th scope="col" class="owner" style="width:10%;">Ägare</th>
                 <th scope="col" style="width:15%;">Spår</th>
             </tr>
         </table>
