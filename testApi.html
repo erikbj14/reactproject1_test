@@ -35,13 +35,13 @@
         }
 
         /* Custom styles */
-        #result h3 {
+        #header-row {
             background-color: #e0f7fa; /* Light blue background */
-            padding: 10px;
-            margin: 0;
-            border-radius: 4px;
         }
-        #result a button {
+        #header-row h3 {
+            margin: 0;
+        }
+        #header-row a button {
             font-size: 1.4em; /* Increase button font size */
             font-weight: bold; /* Make button text bold */
             background-color: #007bff; /* Blue background */
@@ -51,7 +51,7 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        #result a button:hover {
+        #header-row a button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
     </style>
@@ -242,7 +242,7 @@
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
     <div id="result">
-        <table border="0">
+        <table border="0" id="header-row">
             <tr>
                 <td>
                     <h3>Avgående tåg</h3>
