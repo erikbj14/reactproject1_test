@@ -33,6 +33,27 @@
                 font-size: 1.4em; /* Increase input font size on smaller screens */
             }
         }
+
+        /* Custom styles */
+        #result h3 {
+            background-color: #e0f7fa; /* Light blue background */
+            padding: 10px;
+            margin: 0;
+            border-radius: 4px;
+        }
+        #result a button {
+            font-size: 1.4em; /* Increase button font size */
+            font-weight: bold; /* Make button text bold */
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #result a button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -220,16 +241,24 @@
         <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
-    <table border="0"><tr><td>
     <div id="result">
-        <h3>Avgående tåg</h3></td><td><a href="index.html">
-            <button>Tillbaka</button>
-        </a></td></tr></table>
+        <table border="0">
+            <tr>
+                <td>
+                    <h3>Avgående tåg</h3>
+                </td>
+                <td>
+                    <a href="index.html">
+                        <button>Tillbaka</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
         <table border="0" id="timeTableDeparture">
             <tr>
-                <th scope="col" style="width:20%;">Tid</th>
+                <th scope="col" style="width:10%;">Tid</th>
                 <th scope="col" style="width:55%;">Till</th>
-                <th scope="col" class="owner" style="width:10%;">Ägare</th>
+                <th scope="col" style="width:10%;" class="owner">Ägare</th>
                 <th scope="col" style="width:15%;">Spår</th>
             </tr>
         </table>
