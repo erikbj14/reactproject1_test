@@ -10,8 +10,22 @@
             border-spacing: 0px;
             width: 100%;
         }
-        table td, table th {
-            padding: 8px 8px;
+        table th, table td {
+            padding: 12px 8px; /* Increased padding for better spacing */
+            font-size: 1.2em; /* Increased font size */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            table th, table td {
+                font-size: 1.4em; /* Increase font size on smaller screens */
+            }
+            input[type="button"] {
+                font-size: 1.2em; /* Increase button font size on smaller screens */
+            }
         }
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -207,10 +221,10 @@
         </a></td></tr></table>
         <table border="0" id="timeTableDeparture">
             <tr>
-                <th scope="col" style="width:80px;">Tid</th>
-                <th scope="col" style="width:400px;">Till</th>
-                <th scope="col" style="width:160px;">Ägare</th>
-                <th scope="col" style="width:160px;">Spår</th>
+                <th scope="col" style="width:20%;">Tid</th>
+                <th scope="col" style="width:50%;">Till</th>
+                <th scope="col" style="width:15%;">Ägare</th>
+                <th scope="col" style="width:15%;">Spår</th>
             </tr>
         </table>
     </div>
