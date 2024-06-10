@@ -2,12 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Avgående tåg</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <style>
-        body {
-            font-size: 1em; /* Base font size */
-        }
         table {
             border: 1px solid #000000;
             border-collapse: collapse;
@@ -15,7 +11,7 @@
             width: 100%;
         }
         table th, table td {
-            padding: 14px 10px;
+            padding: 14px 10px; /* Increased padding for better spacing */
             font-size: 1.4em; /* Increased font size */
         }
         th {
@@ -237,7 +233,6 @@
             });
         }
 
-        // Function to close the window
         function closeWindow() {
             window.close();
         }
