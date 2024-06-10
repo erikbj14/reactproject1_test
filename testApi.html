@@ -20,11 +20,17 @@
         td.owner, th.owner {
             text-align: center;
         }
+        td.till, th.till {
+            font-size: 2em; /* Further increased font size for Till column */
+        }
 
         /* Responsive styles */
         @media (max-width: 768px) {
             table th, table td {
                 font-size: 1.7em; /* Increase font size on smaller screens */
+            }
+            td.till, th.till {
+                font-size: 2.2em; /* Increase font size for Till column on smaller screens */
             }
             input[type="button"] {
                 font-size: 1.5em; /* Increase button font size on smaller screens */
@@ -228,7 +234,7 @@
                 var owner = "";
                 if (item.InformationOwner != null) owner = item.InformationOwner;
                 jQuery("#timeTableDeparture tr:last").
-                    after("<tr><td>" + hours + ":" + minutes + "</td><td>" + toList.join(', ') +
+                    after("<tr><td>" + hours + ":" + minutes + "</td><td class='till'>" + toList.join(', ') +
                     "</td><td class='owner'>" + owner + "</td><td style='text-align: center'>" + item.TrackAtLocation +
                     "</td></tr>");
             });
@@ -259,7 +265,7 @@
         <table border="0" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:10%;">Tid</th>
-                <th scope="col" style="width:55%;">Till</th>
+                <th scope="col" style="width:55%;" class="till">Till</th>
                 <th scope="col" style="width:10%;" class="owner">Ägare</th>
                 <th scope="col" style="width:15%;">Spår</th>
             </tr>
