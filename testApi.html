@@ -12,7 +12,7 @@
         }
         table th, table td {
             padding: 14px 10px; /* Increased padding for better spacing */
-            font-size: 1.5em; /* Increased font size */
+            font-size: 1.6em; /* Increased font size */
         }
         th {
             background-color: #f2f2f2;
@@ -21,22 +21,22 @@
             text-align: center;
         }
         td.till, th.till {
-            font-size: 2em; /* Further increased font size for Till column */
+            font-size: 1.7em; /* Further increased font size for Till column */
         }
 
         /* Responsive styles */
         @media (max-width: 768px) {
             table th, table td {
-                font-size: 1.7em; /* Increase font size on smaller screens */
+                font-size: 1.8em; /* Increase font size on smaller screens */
             }
             td.till, th.till {
-                font-size: 2.2em; /* Increase font size for Till column on smaller screens */
+                font-size: 1.9em; /* Increase font size for Till column on smaller screens */
             }
             input[type="button"] {
-                font-size: 1.5em; /* Increase button font size on smaller screens */
+                font-size: 1.6em; /* Increase button font size on smaller screens */
             }
             input#station {
-                font-size: 1.5em; /* Increase input font size on smaller screens */
+                font-size: 1.6em; /* Increase input font size on smaller screens */
             }
         }
 
@@ -60,6 +60,10 @@
         }
         #header-row button:hover {
             background-color: #0056b3; /* Darker blue on hover */
+        }
+        #dimmed {
+            opacity: 0.5;
+            pointer-events: none;
         }
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -247,8 +251,8 @@
 </head>
 <body>
     <div>
-        <input id="station" type="text" />
-        <input type="button" value="Visa" onclick="javascript: Search()" />
+        <input id="station" type="text" class="dimmed"/>
+        <input type="button" value="Visa" onclick="javascript: Search()" class="dimmed"/>
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
     <div id="result">
