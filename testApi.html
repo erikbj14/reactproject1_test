@@ -61,9 +61,18 @@
         #header-row button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
-        #dimmed {
-            opacity: 0.5;
-            pointer-events: none;
+
+        /* Increase the size of the input and button row */
+        #input-row {
+            padding: 20px 0; /* Increased padding for larger area */
+        }
+        #station {
+            padding: 10px; /* Increased padding for larger input field */
+            font-size: 1.6em; /* Larger font size for input field */
+        }
+        input[type="button"] {
+            padding: 10px 20px; /* Increased padding for larger button */
+            font-size: 1.6em; /* Larger font size for button */
         }
     </style>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -250,9 +259,9 @@
     </script>
 </head>
 <body>
-    <div>
-        <input id="station" type="text" class="dimmed"/>
-        <input type="button" value="Visa" onclick="javascript: Search()" class="dimmed"/>
+    <div id="input-row">
+        <input id="station" type="text" />
+        <input type="button" value="Visa" onclick="javascript: Search()" />
         <span id="loader" style="margin-left: 10px">Laddar data ...</span>
     </div>
     <div id="result">
