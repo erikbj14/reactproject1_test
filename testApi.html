@@ -21,7 +21,9 @@
             text-align: center;
         }
         td.till, th.till {
-            font-size: 1.7em; /* Further increased font size for Till column */
+            font-size: 1.7em; /* Increased font size for Till column */
+            word-break: break-word; /* Allow breaking words to the next line */
+            white-space: normal; /* Allow wrapping text */
         }
 
         /* Responsive styles */
@@ -278,8 +280,8 @@
         <table border="0" id="timeTableDeparture">
             <tr>
                 <th scope="col" style="width:10%;">Tid</th>
-                <th scope="col" style="width:55%;" class="till">Till</th>
-                <th scope="col" style="width:10%;" class="owner">Ägare</th>
+                <th scope="col" style="width:45%;" class="till">Till</th>
+                <th scope="col" style="width:15%;" class="owner">Ägare</th>
                 <th scope="col" style="width:15%;">Spår</th>
             </tr>
         </table>
