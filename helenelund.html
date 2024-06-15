@@ -470,7 +470,8 @@ map.addLayer(vectorLayer4);
 
         if (dayOfWeek === 0 || dayOfWeek === 6) {
             //displayText = "Weekend message: Your message here.";
-            indicatorColor = "lightgreen";
+            //indicatorColor = "lightgreen";
+            indicatorColor = "red";
         } else {
             for (const range of timeRanges) {
                 if (currentHour >= range.start && currentHour < range.end) {
