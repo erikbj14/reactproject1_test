@@ -402,7 +402,7 @@ map.addLayer(vectorLayer3);
         <td id="color-indicator-cell-1" style="height: 5px; margin: 0; width: 80px;"></td>
     </tr>
     <tr>
-        <td id="id-cell-2" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">Tingsvägen</td>
+        <td id="id-cell-2" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">Tingsv.</td>
         <td id="color-indicator-cell-2" style="height: 5px; margin: 0; width: 80px;"></td>
     </tr>
 </table>
@@ -416,14 +416,16 @@ map.addLayer(vectorLayer3);
 
         // Define time ranges and messages
         const timeRanges = [
-            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
+            { start: 0, end: 7, message: "Your message for 00:00-08:30", color: "lightgreen" },
+            { start: 7, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
             { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
             { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
             { start: 18, end: 0, message: "Your message for 18:00-24:00", color: "lightgreen" },
         ];
 
         const timeRanges2 = [
-            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
+            { start: 0, end: 7, message: "Your message for 00:00-08:30", color: "lightgreen" },
+            { start: 7, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
             { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
             { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
             { start: 18, end: 0, message: "Your message for 18:00-24:00", color: "lightgreen" },
