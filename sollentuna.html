@@ -398,8 +398,12 @@ map.addLayer(vectorLayer3);
         <th colspan="2" align="left">Prognos</th>
     </tr>
     <tr>
-        <td id="id-cell" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;"></td>
-        <td id="color-indicator-cell" style="height: 5px; margin: 0; width: 80px;"></td>
+        <td id="id-cell-1" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">9032</td>
+        <td id="color-indicator-cell-1" style="height: 5px; margin: 0; width: 80px;"></td>
+    </tr>
+    <tr>
+        <td id="id-cell-2" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">Tingsvägen</td>
+        <td id="color-indicator-cell-2" style="height: 5px; margin: 0; width: 80px;"></td>
     </tr>
 </table>
 
@@ -409,11 +413,7 @@ map.addLayer(vectorLayer3);
         const currentDate = new Date();
         const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
         const currentHour = currentDate.getHours();
-    
-        let displayText = "";
-        let indicatorColor = "";
-        let id = "9032"; // You can replace this with a dynamic value
-    
+
         // Define time ranges and messages
         const timeRanges = [
             { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
@@ -421,53 +421,41 @@ map.addLayer(vectorLayer3);
             { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "lightgreen" },
             { start: 18, end: 0, message: "Your message for 18:00-24:00", color: "lightgreen" },
         ];
-    
-        // Check if it's the weekend
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
-            displayText = "Weekend message: Your message here.";
-            indicatorColor = "lightgreen"; // Change this to the desired color for weekends
-        } else {
-            // Check the current time range
+
+        const timeRanges2 = [
+            { start: 0, end: 8.5, message: "Your message for 00:00-08:30", color: "yellow" },
+            { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
+            { start: 16, end: 18, message: "Your message for 16:00-18:00", color: "yellow" },
+            { start: 18, end: 0, message: "Your message for 18:00-24:00", color: "lightgreen" },
+        ];
+
+        // Function to get display text and color based on time range
+        function getDisplayTextAndColor(timeRanges, currentHour) {
             for (const range of timeRanges) {
                 if (currentHour >= range.start && currentHour < range.end) {
-                    displayText = range.message;
-                    indicatorColor = range.color;
-                    break;
+                    return { message: range.message, color: range.color };
                 }
             }
+            return { message: "Unknown time range", color: "grey" };
         }
-    
-        // Set values for ID and color indicator cells
-        document.getElementById('id-cell').textContent = id;
-        document.getElementById('color-indicator-cell').style.backgroundColor = indicatorColor;
-        document.getElementById('time-indicator-cell').textContent = getTimeRangeString();
-        document.getElementById('time-indicator-cell').style.backgroundColor = indicatorColor;
-        document.getElementById('message-cell').textContent = displayText;
+
+        // Update the information for the first row (ID: 9032)
+        let info1 = getDisplayTextAndColor(timeRanges, currentHour);
+        document.getElementById('color-indicator-cell-1').style.backgroundColor = info1.color;
+        document.getElementById('message-cell-1').textContent = info1.message;
+
+        // Update the information for the second row (ID: Tingsvägen)
+        let info2 = getDisplayTextAndColor(timeRanges2, currentHour);
+        document.getElementById('color-indicator-cell-2').style.backgroundColor = info2.color;
+        document.getElementById('message-cell-2').textContent = info2.message;
     }
-    
-    function getTimeRangeString() {
-        const currentDate = new Date();
-        const currentHour = currentDate.getHours();
-    
-        if (currentHour >= 0 && currentHour < 8.5) {
-            return "00:00-08:30";
-        } else if (currentHour >= 8.5 && currentHour < 16) {
-            return "08:30-16:00";
-        } else if (currentHour >= 16 && currentHour < 18) {
-            return "16:00-18:00";
-        } else if (currentHour >= 18 && currentHour < 24) {
-            return "18:00-24:00";
-        } else {
-            return "Unknown";
-        }
-    }
-    
+
     // Call the updateInformation function when the page loads
     updateInformation();
-    
+
     // Update the information every second (1000 milliseconds)
     setInterval(updateInformation, 1000);
-    </script>
+</script>
 
 <script>
 
