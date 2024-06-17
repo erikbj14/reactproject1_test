@@ -142,21 +142,6 @@ table {
             /*border: 1px solid black;*/
         }
 
-        table {
-            background-color: rgba(255, 99, 71, 0.5);
-        }
-
-        #display-info-table {
-            width: 200px;
-            border: 0;
-        }
-
-        #color-indicator-cell-1, #color-indicator-cell-2 {
-            height: 5px;
-            margin: 0;
-            width: 80px;
-        }
-
     </style>
 </head>
 <body>
@@ -408,17 +393,17 @@ map.addLayer(vectorLayer3);
 
 </div>
 
-<table id="display-info-table" width="200" border="0">
+<table id="display-info-table">
     <tr>
         <th colspan="2" align="left">Prognos</th>
     </tr>
     <tr>
         <td id="id-cell-1" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">9032</td>
-        <td id="color-indicator-cell-1" style="height: 5px; margin: 0; width: 80px;"></td>
+        <td id="color-indicator-cell-1"></td>
     </tr>
     <tr>
         <td id="id-cell-2" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">Tingsv.</td>
-        <td id="color-indicator-cell-2" style="height: 5px; margin: 0; width: 80px;"></td>
+        <td id="color-indicator-cell-2"></td>
     </tr>
 </table>
 
@@ -426,7 +411,6 @@ map.addLayer(vectorLayer3);
     function updateInformation() {
         // Get the current date and time
         const currentDate = new Date();
-        const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
         const currentHour = currentDate.getHours();
 
         // Define time ranges and messages
@@ -456,25 +440,13 @@ map.addLayer(vectorLayer3);
             return { message: "Unknown time range", color: "grey" };
         }
 
-        // Function to get display text and color based on time range
-        function getDisplayTextAndColor(timeRanges2, currentHour) {
-            for (const range of timeRanges) {
-                if (currentHour >= range.start && currentHour < range.end) {
-                    return { message: range.message, color: range.color };
-                }
-            }
-            return { message: "Unknown time range", color: "grey" };
-        }
-
         // Update the information for the first row (ID: 9032)
         let info1 = getDisplayTextAndColor(timeRanges, currentHour);
         document.getElementById('color-indicator-cell-1').style.backgroundColor = info1.color;
-        document.getElementById('message-cell-1').textContent = info1.message;
 
         // Update the information for the second row (ID: Tingsvägen)
         let info2 = getDisplayTextAndColor(timeRanges2, currentHour);
         document.getElementById('color-indicator-cell-2').style.backgroundColor = info2.color;
-        document.getElementById('message-cell-2').textContent = info2.message;
     }
 
     // Call the updateInformation function when the page loads
