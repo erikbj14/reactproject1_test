@@ -257,6 +257,33 @@ const vectorLayer2a = new ol.layer.Vector({
 map.addLayer(vectorLayer2a);
 //--------------------------------
 
+// Tingsvägen
+const marker3 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.fromLonLat([17.94834, 59.42781])), // Adjust the longitude value
+});
+//EB 240604
+const markerStyle3 = new ol.style.Style({
+    image: new ol.style.Icon({
+        anchor: [0.5, 1],
+        //src: './Bild4.png', //Gjorde en bild som liknade en polygon
+        src: './parking2.svg',
+        scale: 2,
+    }),
+});
+ 
+marker3.setStyle(markerStyle3);
+
+const vectorSource3 = new ol.source.Vector({
+    features: [marker3], // Use marker2 as the feature
+});
+
+const vectorLayer3 = new ol.layer.Vector({
+    source: vectorSource3, // Use vectorSource2 for the source
+});
+
+map.addLayer(vectorLayer3);
+
+
 </script>
 
 <table width="440" border="0">
