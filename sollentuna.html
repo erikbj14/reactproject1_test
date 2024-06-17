@@ -81,6 +81,22 @@ table {
             z-index: 3000;
             display: none; /* Initially hidden */
         }
+
+        /*Tingsvägen*/
+       #popup-container3 {
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 110px;
+            width: 450px;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid blue; /* Change the border color to blue */
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 3000;
+            display: none; /* Initially hidden */
+        }
    
         #popup3 {
             position: absolute;
@@ -338,6 +354,26 @@ map.addLayer(vectorLayer3);
 
     </div>
 
+    <!--Tingsvägen-->
+    <div id="popup-container3">
+        <table width="300" border="0">
+
+            <tr>
+                <th width="15"><img src="parking2.svg"></th>
+
+
+
+                <th colspan=" 4" align="left">Tingsvägen</th>
+
+
+            </tr>
+            <tr>
+                <td colspan="5" rowspan="4"><table border="0"><tr><td align="left">Taxa A</td></tr><tr><td>Kostnad: 20 kr per 24 timmar</td></tr><tr><td align="left"> Kan vara fullt på vardagar.</td></tr></table></td>
+            </tr>
+        </table>
+
+    </div>
+
 
 <!--<div id="popup-container3"></div>-->
 
@@ -346,6 +382,10 @@ map.addLayer(vectorLayer3);
 </div>
 
 <div id="popup-container2">
+
+</div>
+
+<div id="popup-container3">
 
 </div>
 
@@ -453,6 +493,7 @@ document.getElementById("reloadButton").hidden = "";
 //document.getElementById("marker7Layer").style.visibility = "none"; 
 //document.getElementById("popup-container4").style.display = "none";
 document.getElementById("popup-container2").style.display = "none";
+document.getElementById("popup-container3").style.display = "none";
 document.getElementById("popup-container4").style.display = "none";
 const clickedCoord = event.coordinate;
 
@@ -507,7 +548,7 @@ popupContainer.style.top = pixel[1] + 'px';
         if (id === "demo2") {
             //alert(document.getElementById("demo").innerHTML)
             document.getElementById("demo2").innerHTML = "Tingsvägen";
-            document.getElementById("popup-container2").style.display = "block";
+            document.getElementById("popup-container3").style.display = "block";
         }
         
     }
@@ -526,7 +567,7 @@ popupContainer.style.top = pixel[1] + 'px';
         // Perform actions based on the logic you need
         if (id === "demo2") {
             document.getElementById("demo2").innerHTML = "Tingsvägen";
-            document.getElementById("popup-container2").style.display = "none";
+            document.getElementById("popup-container3").style.display = "none";
         }
     }
 </script>
