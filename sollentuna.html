@@ -306,7 +306,7 @@ map.addLayer(vectorLayer3);
         <th width="15"></th>
         <td width="125" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Vallen,</td>
         <th width="15"></th>
-        <td width="285" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_staffan27">Tingsvägen</td>        
+        <td width="285" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_staffan27">Tingsvägen</td>        
     </tr>
     <tr>
         <th width="15"></th>
@@ -502,11 +502,30 @@ popupContainer.style.top = pixel[1] + 'px';
         
     }
 
+    function mouseOver(id) {
+        // Check the ID and perform actions accordingly
+        if (id === "demo2") {
+            //alert(document.getElementById("demo").innerHTML)
+            document.getElementById("demo2").innerHTML = "Tingsvägen";
+            document.getElementById("popup-container2").style.display = "block";
+        }
+        
+    }
+
     function mouseOut(id) {
         // No parameter (id) is needed in this function
         // Perform actions based on the logic you need
         if (id === "demo") {
             document.getElementById("demo").innerHTML = "Vallen, Arenavägen";
+            document.getElementById("popup-container2").style.display = "none";
+        }
+    }
+
+    function mouseOut(id) {
+        // No parameter (id) is needed in this function
+        // Perform actions based on the logic you need
+        if (id === "demo2") {
+            document.getElementById("demo2").innerHTML = "Tingsvägen";
             document.getElementById("popup-container2").style.display = "none";
         }
     }
