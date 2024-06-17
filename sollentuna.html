@@ -441,6 +441,16 @@ map.addLayer(vectorLayer3);
             return { message: "Unknown time range", color: "grey" };
         }
 
+        // Function to get display text and color based on time range
+        function getDisplayTextAndColor(timeRanges2, currentHour) {
+            for (const range of timeRanges) {
+                if (currentHour >= range.start && currentHour < range.end) {
+                    return { message: range.message, color: range.color };
+                }
+            }
+            return { message: "Unknown time range", color: "grey" };
+        }
+
         // Update the information for the first row (ID: 9032)
         let info1 = getDisplayTextAndColor(timeRanges, currentHour);
         document.getElementById('color-indicator-cell-1').style.backgroundColor = info1.color;
