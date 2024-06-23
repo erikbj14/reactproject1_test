@@ -401,17 +401,24 @@ map.addLayer(vectorLayer3);
 
 </div>
 
-<table id="display-info-table">
+<table id="display-info-table" width="200" border="0">
+    <tr>
+        <td colspan="2" align="left">
+            <span style="display: inline-block; width: 10px; height: 10px; background-color: lightgreen; margin-right: 5px;"></span>Ledigt
+            <span style="display: inline-block; width: 10px; height: 10px; background-color: yellow; margin-left: 10px; margin-right: 5px;"></span>Ev. ledigt
+            <span style="display: inline-block; width: 10px; height: 10px; background-color: red; margin-left: 10px; margin-right: 5px;"></span>Fullt
+        </td>
+    </tr>
     <tr>
         <th colspan="2" align="left">Prognos</th>
     </tr>
     <tr>
         <td id="id-cell-1" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">9032</td>
-        <td id="color-indicator-cell-1"></td>
+        <td id="color-indicator-cell-1" style="height: 5px; margin: 0; width: 80px;"></td>
     </tr>
     <tr>
         <td id="id-cell-2" width="40" align="center" style="height: 8px; padding: 1px; margin: 0;">Tingsv.</td>
-        <td id="color-indicator-cell-2"></td>
+        <td id="color-indicator-cell-2" style="height: 5px; margin: 0; width: 80px;"></td>
     </tr>
 </table>
 
@@ -467,6 +474,7 @@ map.addLayer(vectorLayer3);
     // Update the information every second (1000 milliseconds)
     setInterval(updateInformation, 1000);
 </script>
+
 
 <script>
 /*openstreetmap contributors*/
