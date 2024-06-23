@@ -420,6 +420,7 @@ map.addLayer(vectorLayer3);
         // Get the current date and time
         const currentDate = new Date();
         const currentHour = currentDate.getHours();
+        const currentDay = currentDate.getDay(); // 0 = Sunday, 6 = Saturday
 
         // Define time ranges and messages
         const timeRanges = [
@@ -439,7 +440,10 @@ map.addLayer(vectorLayer3);
         ];
 
         // Function to get display text and color based on time range
-        function getDisplayTextAndColor(timeRanges, currentHour) {
+        function getDisplayTextAndColor(timeRanges, currentHour, currentDay) {
+            if (currentDay === 0 || currentDay === 6) { // Check if it's Saturday or Sunday
+                return { message: "Weekend", color: "yellow" };
+            }
             for (const range of timeRanges) {
                 if (currentHour >= range.start && currentHour < range.end) {
                     return { message: range.message, color: range.color };
@@ -449,11 +453,11 @@ map.addLayer(vectorLayer3);
         }
 
         // Update the information for the first row (ID: 9032)
-        let info1 = getDisplayTextAndColor(timeRanges, currentHour);
+        let info1 = getDisplayTextAndColor(timeRanges, currentHour, currentDay);
         document.getElementById('color-indicator-cell-1').style.backgroundColor = info1.color;
 
         // Update the information for the second row (ID: Tingsvägen)
-        let info2 = getDisplayTextAndColor(timeRanges2, currentHour);
+        let info2 = getDisplayTextAndColor(timeRanges2, currentHour, currentDay);
         document.getElementById('color-indicator-cell-2').style.backgroundColor = info2.color;
     }
 
@@ -465,7 +469,6 @@ map.addLayer(vectorLayer3);
 </script>
 
 <script>
-
 /*openstreetmap contributors*/
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.ol-control.ol-attribution').style.left = '50px';
