@@ -126,14 +126,14 @@ table {
 
     #display-info-table {
             position: absolute;
-            top: 420px;
-            left: 0px;
+            top: 180px;
+            left: 200px;
             background-color: white;
             padding: 10px;
             border: 2px solid black;
             border-radius: 5px;
             max-width: 300px;
-            z-index: 3000;
+            z-index: 2000;/*så parkeringstexten hamnar ovanför*/
         }
 
         #display-info-table th, #display-info-table td {
@@ -405,6 +405,11 @@ map.addLayer(vectorLayer3a);
 </div>
 
 <table id="display-info-table">
+    <td colspan="2" align="left" style="font-size: smaller;">
+        <span style="display: inline-block; width: 10px; height: 10px; background-color: lightgreen; margin-right: 2px;"></span>Ledigt
+        <span style="display: inline-block; width: 10px; height: 10px; background-color: yellow; margin-left: 5px; margin-right: 2px;"></span>Ev. ledigt
+        <span style="display: inline-block; width: 10px; height: 10px; background-color: red; margin-left: 5px; margin-right: 2px;"></span>Fullt
+    </td>
     <tr>
         <th colspan="2" align="left">Prognos</th>
     </tr>
