@@ -84,7 +84,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 120px;
+            height: 130px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -99,7 +99,7 @@
             position: absolute;
             top: 100px;
             left: 0px;
-            height: 120px;
+            height: 130px;
             width: 450px;
             background-color: white;
             padding: 10px;
@@ -112,7 +112,7 @@
 
         #display-info-table {
             position: absolute;
-            top: 560px;
+            top: 460px;
             left: 230px;
             background-color: white;
             padding: 10px;
@@ -297,16 +297,16 @@ map.addLayer(vectorLayer4);
         <td width="265"align="left">Tåg-tider <a href="testApi.html?station=B&aring;lsta" onclick="window.open(this.href, 'targetWindow', 'top=100, width=440, height=800'); return false;">Bålsta</a></td>
         <tr>
         <th width="15"></th>
-        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Stationsvägen</td>
+        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Ullevivägen P1</td>
         <th width="15"></th>
         <td width="265" align="left">Trafikverket</td>
     
     </tr>
     <tr>
         <th width="15"></th>
-        <td width="145" align="left" id="demo" onmouseover="mouseOver('demo')" onmouseout="mouseOut('demo')" class="highlight_stationsvagen">Sydvästra</td>
+        <td width="145" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_stationsvagen">Ullevivägen P2</td>
         <th width="15"></th>
-        <td width="265" align="left" id="demo2" onmouseover="mouseOver('demo2')" onmouseout="mouseOut('demo2')" class="highlight_skolvagen"></td>
+        <td width="265" align="left"></td>
     </tr>
     <tr>
         <th width="15"></th>
@@ -328,7 +328,7 @@ map.addLayer(vectorLayer4);
 
 
 
-            <th colspan=" 4" align="left">Stationsvägen P1</th>
+            <th colspan=" 4" align="left">Ullevivägen P1</th>
 
 
         </tr>
@@ -347,7 +347,7 @@ map.addLayer(vectorLayer4);
 
 
 
-            <th colspan=" 4" align="left">Parkering sydväst P2</th>
+            <th colspan=" 4" align="left">Ullevivägen P2</th>
 
 
         </tr>
@@ -391,10 +391,11 @@ function updateInformation() {
     const dayOfWeek = currentDate.getDay();
 
     const timeRangesRow1 = [
-    { start: 0, end: 8.5, message: "Your message for 00:00-07:00", color: "lightgreen" },
-    { start: 0, end: 8.5, message: "Your message for 07:00-08:30", color: "yellow" },
-    { start: 8.5, end: 16, message: "Your message for 08:30-16:00", color: "red" },
-    { start: 16, end: 24, message: "Your message for 16:00-24:00", color: "lightgreen" },
+    { start: 0, end: 8, message: "Your message for 00:00-08:00", color: "lightgreen" },
+    { start: 8, end: 10, message: "Your message for 08:00-09:00", color: "yellow" },
+    { start: 10, end: 15, message: "Your message for 09:00-15:00", color: "red" },
+    { start: 15, end: 17, message: "Your message for 15:00-17:00", color: "yellow" },
+    { start: 17, end: 24, message: "Your message for 17:00-24:00", color: "lightgreen" },
 ];
 
 const timeRangesRow2 = [
@@ -508,12 +509,12 @@ map.on('click', function (event) {
         // Check the ID and perform actions accordingly
         if (id === "demo") {
             //alert('Kolla: ' + id);
-            demoElement.innerHTML = "Stationsvägen";//Pga av 2 rader så är det endast Stationsvägen här
+            demoElement.innerHTML = "Ullevivägen P1";
             document.getElementById("popup-container2").style.display = "block";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla: ' + id);
-            document.getElementById("demo2").innerHTML = "";
+            document.getElementById("demo2").innerHTML = "Ullevivägen P2";
             document.getElementById("popup-container4").style.display = "block";
             document.getElementById("popup-container2").style.display = "none";
         }
@@ -521,12 +522,12 @@ map.on('click', function (event) {
     function mouseOut(id) {
         if (id === "demo") {
             //alert('Kolla2: ' + id);
-            demoElement.innerHTML = "Stationsvägen";
+            demoElement.innerHTML = "Ullevivägen P1";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         } else if (id === "demo2") {
             //alert('Kolla2: ' + id);
-            document.getElementById("demo2").innerHTML = "";
+            document.getElementById("demo2").innerHTML = "Ullevivägen P2";
             document.getElementById("popup-container2").style.display = "none";
             document.getElementById("popup-container4").style.display = "none";
         }
