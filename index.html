@@ -482,10 +482,38 @@
 
             marker19.setStyle(markerStyle19);
 
-            
+            // Marker 20 Stockholm City
+            const marker20 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0553, 59.3316]))
+            });
 
+            const markerStyle20 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker20.setStyle(markerStyle20);
+
+            // Marker 21 Stockholm City
+            const marker21 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0455, 59.3433]))
+            });
+
+            const markerStyle21 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker21.setStyle(markerStyle21);
+            
             const vectorSource = new ol.source.Vector({
-                features: [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19]
+                features: [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, marker21]
             });
 
             const vectorLayer = new ol.layer.Vector({
