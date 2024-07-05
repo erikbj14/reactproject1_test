@@ -7,71 +7,564 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script type="module" src="./src/main.js" defer></script>
     <style>
-        /* Add your CSS styles here */
+    
+    /*openstreetmap contributors*/
+    .ol-control.ol-attribution {
+        left: 140px;
+        padding-right: 120px; /* Adjust the padding on the right side */
+        bottom: 20px; /* Adjust the bottom position */
+    }
+
+       /* Set the map height */
+       #osm-map {
+            position: fixed;
+            height: 740px;
+            width: 440px;
+            top: 0px;
+            left: 0px;
+        }
+        #balstalinjen {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 550px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+        #marstalinjen {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 550px; /* Adjust the top position as needed */
+            left: 160px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+   
+            .dropdown:hover .dropdown-content {
+                display: block;
+                bottom: 100%;
+            }
+
+            .dropdown2:hover .dropdown-content {
+                display: block;
+                bottom: 100%;
+            }
+   
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+   
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+   
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown2-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+   
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+   
+
+            .dropdown2-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown2 a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown {
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 550px; /* Adjust the top position as needed */
+            left: 155px; /* Adjust the left position as needed */
+            display: inline-block;
+            z-index: 4000;
+        }
+
+        .dropdown2 { /*Bålstalinjen*/
+            bottom: 100%;
+            display: none;
+            position: absolute;
+            top: 550px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */            display: inline-block;
+            z-index: 4000;
+        }
+   
+        #popup2 {
+            position: absolute;
+            top: 20px;
+            left: 200px;
+            font-size: 40px;
+            color: black;
+            font-size: 50px;
+            z-index: 2; /* Set a higher z-index value */
+        }
+   
+        #popup3 {
+            position: absolute;
+            top: 35px;
+            left: 40px;
+            font-size: 40px;
+            color: blue;
+            font-size: 50px;
+            z-index: 2; /* Set a higher z-index value */
+        }
+
+        /*rubrik*/
+        p {
+  font-size: 35px;
+}
+
     </style>
 </head>
 <body>
 
-<div id="osm-map"></div>
+<!-- First Map -->
+<div id="osm-map">
+</div>
 
-<script>
+<!-- Second Map 
+<div id="osm-map2" style="width: 100%; height: 500px;"></div>-->
+    <!-- First Map Script -->
+    <!-- Map Script -->
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-    var map = new ol.Map({
-        target: 'osm-map',
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-        ],
-        view: new ol.View({
-            center: ol.proj.fromLonLat([17.8500, 59.5067]),
-            zoom: 9.7
-        })
+        /*openstreetmap contributors*/
+        document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector('.ol-control.ol-attribution').style.left = '50px';
     });
 
-    // Example for one marker (Marker 1 Häggvik)
-    const marker1 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
-    });
+    function closeWindow() {
+    window.open('', '_self', '');
+    window.close();
+}
 
-    const markerStyle1 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
-            scale: 0.3
-        })
-    });
 
-    marker1.setStyle(markerStyle1);
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = new ol.Map({
+                target: 'osm-map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    //center: ol.proj.fromLonLat([17.9997, 59.4884]),
+                    center: ol.proj.fromLonLat([17.8500, 59.5067]),
+                    zoom: 9.7
+                })
+            });
+            // Marker 1 Häggvik
+            const marker1 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+            });
 
-    // Define URL for Marker 1
-    marker1.setProperties({ url: 'haggvik.html' });
+            const markerStyle1 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
 
-    // Add marker to the map
-    const vectorSource = new ol.source.Vector({
-        features: [marker1] // Add other markers similarly
-    });
+            marker1.setStyle(markerStyle1);
 
-    const vectorLayer = new ol.layer.Vector({
-        source: vectorSource
-    });
+            // Marker 2 Rotebro//EB240502
+            const marker2 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.91465, 59.47586]))
+            });
 
-    map.addLayer(vectorLayer);
+            const markerStyle2 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
 
-    // Function to handle marker click
-    map.on('click', function (evt) {
-        map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-            const url = feature.get('url');
-            if (url !== undefined) {
-                window.open(url, '_self'); // Open link in the same window/tab
-            }
+            marker2.setStyle(markerStyle2);
+
+            // Marker 3 Upplands Väsby
+            const marker3 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.899, 59.5208]))
+            });
+
+            const markerStyle3 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker3.setStyle(markerStyle3);
+
+             // Marker 4 Rosersberg
+             const marker4 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8801, 59.5836]))
+            });
+
+            const markerStyle4 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker4.setStyle(markerStyle4);
+
+            // Marker 5 Märsta
+            const marker5 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86122, 59.62734]))
+            });
+
+            const markerStyle5 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker5.setStyle(markerStyle5);
+
+             // Marker 6 Solna
+             const marker6 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0096, 59.3664]))
+            });
+
+            const markerStyle6 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker6.setStyle(markerStyle6);
+
+            // Marker 7 Ulriksdal
+            const marker7 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.00038, 59.38073]))
+            });
+
+            const markerStyle7 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker7.setStyle(markerStyle7);
+
+            // Marker 8 Helenelund
+            const marker8 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9624, 59.409]))
+            });
+
+            const markerStyle8 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker8.setStyle(markerStyle8);
+
+            // Marker 9 Sollentuna
+            const marker9 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9482, 59.4287]))
+            });
+
+            const markerStyle9 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker9.setStyle(markerStyle9);
+
+            // Marker 10 Norrviken
+            const marker10 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9243, 59.459]))
+            });
+
+            const markerStyle10 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker10.setStyle(markerStyle10);
+
+            // Marker 11 Arlanda
+            const marker11 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.9364, 59.6461]))
+            });
+            
+            const markerStyle11 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker11.setStyle(markerStyle11);
+
+
+
+            // Marker12 Sundbyberg
+            const marker12 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.97187, 59.36073]))
+            });
+
+            const markerStyle12 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker12.setStyle(markerStyle12);
+
+            // Marker 13 Spånga
+            const marker13 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8982, 59.3836]))
+            });
+ 
+            const markerStyle13 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker13.setStyle(markerStyle13);
+
+            // Marker 14 Barkarby
+            const marker14 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.86436, 59.40515]))
+            });
+ 
+            const markerStyle14 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker14.setStyle(markerStyle14);
+
+             // Marker 15 Jakobsberg
+             const marker15 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.833, 59.4237]))
+            });
+ 
+            const markerStyle15 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker15.setStyle(markerStyle15);
+
+            // Marker 16 Kallhäll
+            const marker16 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.8073, 59.4522]))
+            });
+            
+            const markerStyle16 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker16.setStyle(markerStyle16);
+
+             // Marker 17 Kungsängen
+             const marker17 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.7522, 59.4776]))
+            });
+
+            const markerStyle17 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker17.setStyle(markerStyle17);
+
+            // Marker 18 Bro
+            const marker18 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.63285, 59.51224]))
+            });
+             
+            const markerStyle18 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker18.setStyle(markerStyle18);
+
+            // Marker 19 Bålsta
+            const marker19 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.53369, 59.56834]))
+            });
+
+            const markerStyle19 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker19.setStyle(markerStyle19);
+
+            // Marker 20 Stockholm City
+            const marker20 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0553, 59.3316]))
+            });
+
+            const markerStyle20 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker20.setStyle(markerStyle20);
+
+            // Marker 21 Stockholm City
+            const marker21 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([18.0455, 59.3433]))
+            });
+
+            const markerStyle21 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
+
+            marker21.setStyle(markerStyle21);
+            
+            const vectorSource = new ol.source.Vector({
+                features: [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, marker21]
+            });
+
+            const vectorLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+
+            map.addLayer(vectorLayer);
         });
-    });
-});
+    </script>
 
-</script>
+    <!--Ev. för att 
+        stänga ned fönster, se script ovan-->
+   <!-- <div id="popup2"> -->
+        <!-- Content for popup2 goes here -->
+        <!--<button onclick="closeWindow()">X</button>-->
+    
+    <!--</div>-->
+   
+    <div id="popup3"><i><b><p>Pendelparkering</p></b></i></div>
 
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Märsta 41/42<br><font size="2">& Arlanda</font></button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="arlanda.html">Arlanda</a>
+            <a href="marsta.html">Märsta</a>
+            <a href="rosersberg.html">Rosersberg</a>
+            <a href="upplands_vasby.html">Upplands Väsby</a>
+            <a href="rotebro.html" target="_self">Rotebro</a>
+            <a href="norrviken.html">Norrviken</a>
+            <a href="haggvik.html" target="_self">Häggvik</a>
+            <a href="sollentuna.html">Sollentuna</a>
+            <a href="helenelund.html">Helenelund</a>
+            <a href="ulriksdal.html">Ulriksdal</a>
+            <a href="solna.html">Solna</a>
+            <!--<a href="testApi.html">API</a>-->
+        </div>
+    </div>
+        <div class="dropdown2">
+        <button onclick="myFunction()" class="dropbtn">Bålsta 43<br><font size="2">Sthlm C, Odenplan</font></button>
+        <div id="myDropdown" class="dropdown-content"> 
+            <a href="balsta.html">Bålsta</a>
+            <a href="bro.html">Bro</a>
+            <a href="kungsangen.html">Kungsängen</a>
+            <a href="kallhall.html">Kallhäll</a>
+            <a href="jakobsberg.html">Jakobsberg</a>
+            <a href="barkarby.html">Barkarby</a>
+            <a href="spanga.html">Spånga</a>   
+            <a href="sundbyberg.html">Sundbyberg</a>
+            <a href="stockholm_odenplan.html">Odenplan</a>
+            <a href="stockholm_city.html">Stockholm City</a>
+        </div>
+    </div>
 </body>
 </html>
