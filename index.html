@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <style>
-        /* Add your CSS styles here */
+        /* CSS for dropdowns and map */
         /* Set the map height */
         #osm-map {
             position: fixed;
@@ -17,7 +17,7 @@
             top: 0px;
             left: 0px;
         }
-        /* Adjust dropdown styles as needed */
+        /* Dropdown styles */
         .dropdown, .dropdown2 {
             position: absolute;
             display: inline-block;
@@ -76,26 +76,54 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     });
 
-    // Marker for Häggvik
-    const marker1 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+    // Define markers
+    const markers = [
+        { coords: [17.93242, 59.44424], url: 'haggvik.html' },         // Häggvik
+        { coords: [17.91465, 59.47586], url: 'rotebro.html' },         // Rotebro
+        { coords: [17.899, 59.5208], url: 'upplands_vasby.html' },     // Upplands Väsby
+        { coords: [17.8801, 59.5836], url: 'rosersberg.html' },        // Rosersberg
+        { coords: [17.86122, 59.62734], url: 'marsta.html' },          // Märsta
+        { coords: [18.0096, 59.3664], url: 'solna.html' },             // Solna
+        { coords: [18.00038, 59.38073], url: 'ulriksdal.html' },       // Ulriksdal
+        { coords: [17.9624, 59.409], url: 'helenelund.html' },         // Helenelund
+        { coords: [17.9482, 59.4287], url: 'sollentuna.html' },        // Sollentuna
+        { coords: [17.9243, 59.459], url: 'norrviken.html' },          // Norrviken
+        { coords: [17.9364, 59.6461], url: 'arlanda.html' },           // Arlanda
+        { coords: [17.97187, 59.36073], url: 'sundbyberg.html' },      // Sundbyberg
+        { coords: [17.8982, 59.3836], url: 'spanga.html' },            // Spånga
+        { coords: [17.86436, 59.40515], url: 'barkarby.html' },        // Barkarby
+        { coords: [17.833, 59.4237], url: 'jakobsberg.html' },         // Jakobsberg
+        { coords: [17.8073, 59.4522], url: 'kallhall.html' },          // Kallhäll
+        { coords: [17.7522, 59.4776], url: 'kungsangen.html' },        // Kungsängen
+        { coords: [17.63285, 59.51224], url: 'bro.html' },             // Bro
+        { coords: [17.53369, 59.56834], url: 'balsta.html' },          // Bålsta
+        { coords: [18.0553, 59.3316], url: 'stockholm_city.html' },    // Stockholm City
+        { coords: [18.0455, 59.3433], url: 'stockholm_odenplan.html' } // Stockholm Odenplan
+    ];
+
+    // Create features and styles for each marker
+    const features = markers.map(marker => {
+        const feature = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat(marker.coords))
+        });
+
+        const markerStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                scale: 0.3
+            })
+        });
+
+        feature.setStyle(markerStyle);
+        feature.setProperties({ url: marker.url });
+
+        return feature;
     });
 
-    const markerStyle1 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
-            scale: 0.3
-        })
-    });
-
-    marker1.setStyle(markerStyle1);
-
-    // Define URL for Häggvik
-    marker1.setProperties({ url: 'haggvik.html' });
-
+    // Vector source and layer
     const vectorSource = new ol.source.Vector({
-        features: [marker1] // Add other markers similarly
+        features: features
     });
 
     const vectorLayer = new ol.layer.Vector({
@@ -117,6 +145,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+<!-- Dropdowns for stations -->
+<div class="dropdown" style="top: 550px; left: 155px;">
+    <button class="dropbtn">Märsta 41/42<br><font size="2">& Arlanda</font></button>
+    <div class="dropdown-content">
+        <a href="arlanda.html">Arlanda</a>
+        <a href="marsta.html">Märsta</a>
+        <a href="rosersberg.html">Rosersberg</a>
+        <a href="upplands_vasby.html">Upplands Väsby</a>
+        <a href="rotebro.html">Rotebro</a>
+        <a href="norrviken.html">Norrviken</a>
+        <a href="haggvik.html">Häggvik</a>
+        <a href="sollentuna.html">Sollentuna</a>
+        <a href="helenelund.html">Helenelund</a>
+        <a href="ulriksdal.html">Ulriksdal</a>
+        <a href="solna.html">Solna</a>
+    </div>
+</div>
+
+<div class="dropdown2" style="top: 550px; left: 10px;">
+    <button class="dropbtn">Bålsta 43<br><font size="2">Sthlm C, Odenplan</font></button>
+    <div class="dropdown2-content">
+        <a href="balsta.html">Bålsta</a>
+        <a href="bro.html">Bro</a>
+        <a href="kungsangen.html">Kungsängen</a>
+        <a href="kallhall.html">Kallhäll</a>
+        <a href="jakobsberg.html">Jakobsberg</a>
+        <a href="barkarby.html">Barkarby</a>
+        <a href="spanga.html">Spånga</a>
+        <a href="sundbyberg.html">Sundbyberg</a>
+        <a href="stockholm_odenplan.html">Odenplan</a>
+        <a href="stockholm_city.html">Stockholm City</a>
+    </div>
+</div>
 
 </body>
 </html>
