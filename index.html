@@ -195,45 +195,20 @@
                     zoom: 9.7
                 })
             });
-           // Example for one marker (Marker 1 Häggvik)
-    const marker1 = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
-    });
+            // Marker 1 Häggvik
+            const marker1 = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([17.93242, 59.44424]))
+            });
 
-    const markerStyle1 = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
-            scale: 0.3
-        })
-    });
+            const markerStyle1 = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: 'https://www.openrailwaymap.org/js/images/marker-icon-2x.png',
+                    scale: 0.3
+                })
+            });
 
-    marker1.setStyle(markerStyle1);
-
-    // Define URL for Marker 1
-    marker1.setProperties({ url: 'haggvik.html' });
-
-    // Add marker to the map
-    const vectorSource = new ol.source.Vector({
-        features: [marker1] // Add other markers similarly
-    });
-
-    const vectorLayer = new ol.layer.Vector({
-        source: vectorSource
-    });
-
-    map.addLayer(vectorLayer);
-
-    // Function to handle marker click
-    map.on('click', function (evt) {
-        map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-            const url = feature.get('url');
-            if (url !== undefined) {
-                window.open(url, '_self'); // Open link in the same window/tab
-            }
-        });
-    });
-
+            marker1.setStyle(markerStyle1);
 
             // Marker 2 Rotebro//EB240502
             const marker2 = new ol.Feature({
